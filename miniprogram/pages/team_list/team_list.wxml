@@ -1,0 +1,46 @@
+<head></head>
+<view class="search-bar">
+  <view class="search-wrap">
+    <icon type="search" size="25" />
+    <input type="text" placeholder="输入关键字，快速查找相关队伍" class="search-input" confirm-type="搜索" />
+  </view>
+</view>
+
+
+<swiper indicator-dots="true" next-margin="20rpx" indicator-active-color="rgb(255, 255, 255)" previous-margin="20rpx" autoplay circular="">
+  <swiper-item>
+    <view class="swip-con"></view>
+  </swiper-item>
+  <swiper-item>
+    <view class="swip-con"></view>
+  </swiper-item>
+  <swiper-item>
+    <view class="swip-con"></view>
+  </swiper-item>
+</swiper>
+
+<view class="team-list">
+  <view class="one-team" wx:for="{{teamList}}" wx:for-item="Item">
+    <view class="self-info">
+      <view class="img">
+        <image src="{{Item.icon}}"></image>
+      </view>
+
+      <view class="info-text">
+        <text class="name">{{Item.name}}</text>
+        <text class="time">{{Item.time}}</text>
+      </view>
+    </view>
+    <view class="self-info">
+      <view class="tag" wx:for="{{Item.tag}}" wx:for-item="tagCon">
+        <text class="tag-con">{{tagCon}}</text>
+      </view>
+    </view>
+    <view class="self-info ">
+      <text class="team-name">队伍名称：{{Item.teamName}}</text>
+    </view>
+    <view class="self-info">
+      <text class="team-disc">队伍简介：{{Item.teamDisc}}</text>
+    </view>
+  </view>
+</view>

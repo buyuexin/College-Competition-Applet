@@ -1,0 +1,39 @@
+<head></head>
+
+<view class="content">
+  <textarea placeholder="赛事内容介绍，最多可输入500字" maxlength='500' placeholder-class="ph" />
+</view>
+
+<view class="info content">
+  <view class="item">
+    <view class="text">赛事名称：</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+  <view class="item">
+    <view class="text">发起人：</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+  <view class="item">
+    <view class="text">主办单位：</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+  <view class="item">
+    <view class="text">举办地点：</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+  <view class="item" style="border-bottom:0;">
+    <view class="text">受众对象：</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+
+</view>

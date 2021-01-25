@@ -1,0 +1,31 @@
+.content{
+  margin: 0 auto;
+  margin-top: 20rpx;
+  padding: 10rpx;
+  padding-right: 0rpx;
+  background: #ffffff;
+  height: 300rpx;
+  width: 92%;
+  border-radius: 10rpx;
+  box-shadow: 0rpx 8rpx 8rpx 3rpx rgb(221,220,220);
+}
+
+.ph{
+  font-size: 16px;
+  color: #c9c9c9;
+}
+
+.info{
+  height: auto;
+  padding: 0;
+  margin-top: 50rpx;
+}
+
+.item{
+  display: flex;
+  flex-direction: row;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding-left: 20rpx;
+  border-bottom: 1rpx solid #c9c9c9;
+}

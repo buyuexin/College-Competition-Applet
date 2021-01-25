@@ -1,0 +1,59 @@
+<head></head>
+<view class="item icon">
+  <view class="text">头像</view>
+  <view>
+    <image src="{{iconPath}}"></image>
+  </view>
+</view>
+<view class="item">
+  <view class="text">昵称</view>
+  <view class="info">{{nickname}}</view>
+  <view class="input">
+    <input value=""></input>
+  </view>
+</view>
+<view class="item">
+  <view class="text">姓名</view>
+  <view class="info">{{name}}</view>
+  <view class="input">
+    <input value="选填"></input>
+  </view>
+</view>
+<view class="item">
+  <view class="text">性别</view>
+  <view class="info">{{gender}}</view>
+  <view class="input">
+    <input value=""></input>
+  </view>
+</view>
+<view class="item">
+  <view class="text">学校</view>
+  <view class="info">{{university}}</view>
+  <view class="input">
+    <input value="必填"></input>
+  </view>
+</view>
+<view class="item">
+  <view class="text">院系</view>
+  <view class="info">{{college}}</view>
+  <view class="input">
+    <input value="选填"></input>
+  </view>
+</view>
+<view class="item">
+  <view class="text">专业</view>
+  <view class="info">{{major}}</view>
+  <view class="input">
+    <input value="选填"></input>
+  </view>
+</view>
+<view class="item">
+  <view class="text">年级</view>
+  <view class="info">{{grade}}</view>
+  <view class="input">
+    <input value="选填"></input>
+  </view>
+</view>
+
+
+<button></button>

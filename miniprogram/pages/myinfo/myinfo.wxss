@@ -1,0 +1,26 @@
+
+.icon image{
+  height: 80rpx;
+  width: 80rpx;
+}
+.item{
+  display: flex;
+  justify-content: space-between;
+  height: 90rpx;
+  width: 92%;
+  padding-left: 4%;
+  padding-right: 4%;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #c9c9c9;
+  align-items: center;
+}
+.icon{
+  height: 120rpx;
+}
+.info{
+  color: #5f5f5f;
+}
+.input{
+  color: #5f5f5f;
+  display: none;
+}

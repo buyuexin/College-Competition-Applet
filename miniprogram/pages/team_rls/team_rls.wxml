@@ -1,0 +1,34 @@
+<!--pages/team_rls/team_rls.wxml-->
+<head></head>
+
+<view class="content">
+  <textarea placeholder="队伍简介，最多可输入300字" maxlength='300' placeholder-class="ph" />
+</view>
+
+<view class="info content">
+  <view class="item">
+    <view class="text">赛事名称：</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+  <view class="item">
+    <view class="text">发起人姓名：</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+  <view class="item">
+    <view class="text">所在学校及院系</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+  <view class="item" style="border-bottom:0;">
+    <view class="text">结束日期</view>
+    <view>
+      <input></input>
+    </view>
+  </view>
+
+</view>

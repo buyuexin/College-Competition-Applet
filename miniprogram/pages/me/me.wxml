@@ -1,0 +1,58 @@
+<view class="bg" style="padding-top: {{pageTopHeight}}px;">
+  <view class="usericon">
+    <image src="../../images/icon.png" style="width:86px;height:86px"></image>
+  </view>
+  <view class="account">
+    <view class="name">Nicole.</view>
+  </view>
+</view>
+
+<view class="center">
+  <view class="square">
+    <view class="squ_img"><image src="../../images/upload.png"></image></view>
+    <view class="text">我的发布</view>
+  </view>
+  <view class="cut"></view>
+  <view class="square">
+    <view class="squ_img"><image src="../../images/collection.png"></image></view>
+    <view class="text">我的关注</view>
+  </view>
+  <view class="cut"></view>
+  <view class="square">
+    <view class="squ_img"><image src="../../images/user.png"></image></view>
+    <view class="text">个人资料</view>
+  </view>
+</view>
+
+<view class="block">
+  <view class="block_title">我的信息</view>
+  <view class="item">
+    <view class="icon"><image src="../../images/team.png"></image></view>
+    <view class="itemname">管理队伍</view>
+    <view class="arrow"></view>
+  </view>
+  <view class="item">
+    <view class="icon"><image src="../../images/cominfo.png"></image></view>
+    <view class="itemname">赛事信息</view>
+    <view class="arrow"></view>
+  </view>
+</view>
+
+<view class="block">
+  <view class="block_title">关于我们</view>
+  <view class="item">
+    <view class="icon"><image src="../../images/instruction.png"></image></view>
+    <view class="itemname">使用指南</view>
+    <view class="arrow"></view>
+  </view>
+  <view class="item">
+    <view class="icon"><image src="../../images/feedback.png"></image></view>
+    <view class="itemname">我要反馈</view>
+    <view class="arrow"></view>
+  </view>
+  <view class="item">
+    <view class="icon"><image src="../../images/money.png"></image></view>
+    <view class="itemname">赞赏开发者</view>
+    <view class="arrow"></view>
+  </view>
+</view>
