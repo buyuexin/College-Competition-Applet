@@ -37,7 +37,7 @@
     "packNpmRelationList": [],
     "minifyWXSS": true
   },
-  "appid": "wx4359844a5cd6f71c",
+  "appid": "wx174be210d92fefbe",
   "projectname": "first-project",
   "libVersion": "2.14.1",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",

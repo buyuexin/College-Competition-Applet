@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/comp_info/comp_info",
     "pages/myinfo/myinfo",
     "pages/team_rls/team_rls",
     "pages/comp_list/comp_list",
@@ -16,7 +18,8 @@
     "navigationStyle": "custom"
   },
   "usingComponents":{
-    "head":"components/head/head"
+    "head":"components/head/head",
+    "cu-custom":"/colorui/components/cu-custom"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
