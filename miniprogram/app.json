@@ -2,12 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/comp_info/comp_info",
+    "pages/team_list/team_list",
     "pages/myinfo/myinfo",
     "pages/team_rls/team_rls",
     "pages/comp_list/comp_list",
     "pages/me/me",
-    "pages/comp_rls/comp_rls",
-    "pages/team_list/team_list"
+    "pages/comp_rls/comp_rls"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

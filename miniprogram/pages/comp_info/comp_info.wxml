@@ -1,2 +1,97 @@
-<!--pages/comp_info/comp_info.wxml-->
-<text>pages/comp_info/comp_info.wxml</text>
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">{{title}}</view>
+</cu-custom>
+
+<!--上导航栏-->
+<scroll-view scroll-x class="bg-white nav text-center fixed" style="top:{{CustomBar}}px">
+  <view class="nav-item {{index==TabCur?'text-blue bottom-border':''}}" wx:for="{{tabNav}}" bindtap='changeTab' data-id="{{index}}">
+    {{tabNav[index]}}
+  </view>
+</scroll-view>
+
+<view style="height:{{CustomBar-10}}px; ">></view>
+
+<!--比赛详情-->
+<block wx:if="{{TabCur==0}}">
+  <view class="cu-card case">
+    <view class="cu-item shadow">
+      <view class="image">
+        <image src="{{image}}" mode="widthFix"></image>
+      </view>
+        <view class="title solid-bottom">{{title}}</view>
+        <view class="item solid-bottom">
+          <view class="item-left">
+            <view class="line-orange bg-white cu-tag radius">主办方</view>
+          </view>
+          <view class="item-right">{{sponsor}}</view>
+        </view>
+        <view class="item solid-bottom">
+          <view class="item-left">
+            <view class="line-orange bg-white cu-tag radius">报名时间</view>
+          </view>
+          <view class="item-right">{{registrationTime}}</view>
+        </view>
+        <view class="item solid-bottom">
+          <view class="item-left">
+            <view class="line-orange bg-white cu-tag radius">比赛时间</view>
+          </view>
+          <view class="item-right">{{startTime}}</view>
+        </view>
+        <view class="item solid-bottom">
+          <view class="item item-50 solid-right">
+            <view class="item-40">
+              <view class="line-orange bg-white cu-tag radius">类型</view>
+            </view>
+            <view class="item-60">{{type}}</view>
+          </view>
+          <view class="item item-50">
+            <view class="item-40">
+              <view class="line-orange bg-white cu-tag radius">级别</view>
+            </view>
+            <view class="item-60">{{rank}}</view>
+          </view>
+        </view>
+        <view class="item">{{content}}</view>
+    </view>
+
+  </view>
+</block>
+
+<!--招募消息-->
+<block wx:if="{{TabCur==1}}">
+  <view class="one-team" wx:for="{{teamList}}" wx:for-item="Item">
+    <!--icon  name time-->
+    <view class="self-info">
+      <view class="img">
+        <image src="{{Item.icon}}"></image>
+      </view>
+
+      <view class="info-text">
+        <text class="name">{{Item.name}}</text>
+        <text class="time">{{Item.time}}</text>
+      </view>
+    </view>
+    <!--tag-->
+    <view class="self-info">
+      <view class="tag" wx:for="{{Item.tag}}" wx:for-item="tagCon">
+        <text class="tag-con">{{tagCon}}</text>
+      </view>
+    </view>
+    <!--team name-->
+    <view class="self-info ">
+      <text class="cuIcon-right text-orange"></text>
+      <text class="team-name">队伍名称：{{Item.teamName}}</text>
+    </view>
+    <!--team desc-->
+    <view class="self-info">
+      <text class="cuIcon-right text-orange"></text>
+      <text class="team-desc">队伍简介：{{Item.teamDisc}}</text>
+    </view>
+  </view>
+
+  <view class='cu-tabbar-height'></view>
+  <view class="cu-bar foot-bar bg-white shadow">
+    <button class="mybtn bg-orange margin-tb-sm">发布队伍招募信息</button>
+  </view>
+</block>

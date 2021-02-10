@@ -1,5 +1,7 @@
 Page({
   data: {
+    title: null,
+
     // 当前轮播图的id
     cardCur: 0,
     // 轮播图数据
@@ -42,7 +44,7 @@ Page({
       },
     ],
   },
-  onLoad() {
+  onLoad(options) {
     // 初始化towerSwiper 传已有的数组名即可
   },
 

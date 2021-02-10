@@ -1,66 +1,66 @@
-// pages/comp_info/comp_info.js
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  data:{
+    CustomBar: app.globalData.CustomBar,
+    TabCur:0,
+    tabNav: ['比赛详情', '招募消息'],
+    teamList:[
+      {
+        icon:"../../images/icon.png",
+        name:"李默",
+        time:"4月11日 12:24",
+        tag:["互联网+", "校赛", "华南师大"],
+        teamName:"nb队",
+        teamDisc:"xxx"
+      },
+      {
+        icon:"../../images/icon.png",
+        name:"李默",
+        time:"4月11日 12:24",
+        tag:["互联网+", "校赛", "华南师大"],
+        teamName:"nb队",
+        teamDisc:"xxx"
+      },
+      {
+        icon:"../../images/icon.png",
+        name:"李默",
+        time:"4月11日 12:24",
+        tag:["互联网+", "校赛", "华南师大"],
+        teamName:"nb队",
+        teamDisc:"xxx"
+      },
+      {
+        icon:"../../images/icon.png",
+        name:"李默",
+        time:"4月11日 12:24",
+        tag:["互联网+", "校赛", "华南师大"],
+        teamName:"nb队",
+        teamDisc:"xxx"
+      },
+      {
+        icon:"../../images/icon.png",
+        name:"李默",
+        time:"4月11日 12:24",
+        tag:["互联网+", "校赛", "华南师大"],
+        teamName:"nb队",
+        teamDisc:"xxx"
+      },
+    ],
+    image:"../../images/comp_pic.png", // 插图
+    title:"2021年第十一届MathorCup高校数学建模挑战赛", // 比赛名
+    sponsor:"中国优选法统筹法与经济数学研究会",  // 主办方
+    registrationTime:"2021.01.01 00:00--2021.04.14 12:00",  // 报名时间
+    startTime:"2021.04.15 08:00--2021.04.19 09:00",  // 参赛时间
+    rank:"全国性",  // 级别
+    type:"组队赛",  // 类型
+    content:"",
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  changeTab(e) {
+    console.log(e.currentTarget.dataset.id);
+    this.setData({
+      TabCur: e.currentTarget.dataset.id,
+      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+    })
   }
 })
