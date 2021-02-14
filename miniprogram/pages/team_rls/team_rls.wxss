@@ -1,14 +1,17 @@
 /* pages/team_rls/team_rls.wxss */
-.content{
+.text-content{
   margin: 0 auto;
   margin-top: 20rpx;
-  padding: 10rpx;
-  padding-right: 0rpx;
+  padding: 20rpx;
   background: #ffffff;
-  height: 300rpx;
+  height: 340rpx;
   width: 92%;
   border-radius: 10rpx;
   box-shadow: 0rpx 8rpx 8rpx 3rpx rgb(221,220,220);
+}
+
+.border{
+  border: 1px solid black;
 }
 
 .ph{
@@ -28,5 +31,40 @@
   height: 90rpx;
   line-height: 90rpx;
   padding-left: 20rpx;
+}
+
+.border-bottom{
   border-bottom: 1rpx solid #c9c9c9;
+}
+
+.down-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 380rpx;
+  left: 50rpx;
+  width: 92%;
+}
+
+.img-btn{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.img-icon{
+  display: inline-flex;
+  font-size: 24px;
+  height: 26px;
+  width: 26px;
+}
+
+.text-count{
+  color: var(--weui-FG-2);
+  font-size: 28rpx;
+  width: 20%;
+  display: flex;
+  justify-content: center;
 }

@@ -1,39 +1,30 @@
 <view class="bg" style="padding-top: {{pageTopHeight}}px;">
-  <view class="usericon">
-    <image src="../../images/icon.png" style="width:86px;height:86px"></image>
-  </view>
-  <view class="account">
-    <view class="name">Nicole.</view>
-  </view>
-</view>
-
-<view class="center">
-  <view class="square">
-    <view class="squ_img"><image src="../../images/upload.png"></image></view>
-    <view class="text">我的发布</view>
-  </view>
-  <view class="cut"></view>
-  <view class="square">
-    <view class="squ_img"><image src="../../images/collection.png"></image></view>
-    <view class="text">我的关注</view>
-  </view>
-  <view class="cut"></view>
-  <view class="square">
-    <view class="squ_img"><image src="../../images/user.png"></image></view>
-    <view class="text">个人资料</view>
-  </view>
+  <image src="../../images/icon.png" class="usericon" mode="widthFix"></image>
+  <view class="text-xl margin-top-xs">Nicole</view>
+  <view class="text-sm">xxx(个性签名)</view>
+  <image class="bg-image" src="../../images/background.jpg"></image>
 </view>
 
 <view class="block">
   <view class="block_title">我的信息</view>
   <view class="item">
     <view class="icon"><image src="../../images/team.png"></image></view>
-    <view class="itemname">管理队伍</view>
+    <view class="itemname">我的招募</view>
     <view class="arrow"></view>
   </view>
   <view class="item">
-    <view class="icon"><image src="../../images/cominfo.png"></image></view>
-    <view class="itemname">赛事信息</view>
+    <view class="icon"><image src="../../images/upload.png"></image></view>
+    <view class="itemname">我的发布</view>
+    <view class="arrow"></view>
+  </view>
+  <view class="item">
+    <view class="icon"><image src="../../images/collection.png"></image></view>
+    <view class="itemname">关注赛事</view>
+    <view class="arrow"></view>
+  </view>
+  <view class="item">
+    <view class="icon"><image src="../../images/icon_set.png"></image></view>
+    <view class="itemname">信息设置</view>
     <view class="arrow"></view>
   </view>
 </view>
@@ -54,5 +45,20 @@
     <view class="icon"><image src="../../images/money.png"></image></view>
     <view class="itemname">赞赏开发者</view>
     <view class="arrow"></view>
+  </view>
+</view>
+
+<view class='cu-tabbar-height'></view>
+
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action text-gray" bindtap="">
+    <view class="cuIcon-homefill"></view> 首页
+  </view>
+  <view class="action text-gray add-action">
+    <button class="cu-btn cuIcon-order bg-orange shadow"></button>
+    赛事
+  </view>
+  <view class="action text-orange">
+    <view class="cuIcon-my"></view>我的
   </view>
 </view>

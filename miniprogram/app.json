@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/team_rls/team_rls",
+    "pages/me/me",
     "pages/comp_info/comp_info",
     "pages/team_list/team_list",
     "pages/myinfo/myinfo",
-    "pages/team_rls/team_rls",
     "pages/comp_list/comp_list",
-    "pages/me/me",
     "pages/comp_rls/comp_rls"
   ],
   "window": {
@@ -20,6 +20,9 @@
   "usingComponents":{
     "head":"components/head/head",
     "cu-custom":"/colorui/components/cu-custom"
+  },
+  "useExtendedLib":{
+    "weui":true
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

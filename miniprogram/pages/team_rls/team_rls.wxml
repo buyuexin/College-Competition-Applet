@@ -1,34 +1,52 @@
-<!--pages/team_rls/team_rls.wxml-->
-<head></head>
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">队伍招募</view>
+</cu-custom>
 
-<view class="content">
-  <textarea placeholder="队伍简介，最多可输入300字" maxlength='300' placeholder-class="ph" />
+<!--文本框-->
+<view class="text-content">
+  <textarea class="weui-textarea" placeholder="队伍简介，最多可输入300字" maxlength='300' placeholder-class="weui-input__placeholder" />
+</view>
+<view class="down-info align-center">
+  <view class="img-btn" bindtap="chooseImage">
+      <image src="../../images/img.png" class="img-icon" bindtap="chooseImage"></image>
+      <view class="text-sm text-gray">照片</view>
+  </view>
+  <view class="text-count">{{contentCount}}/300</view>
 </view>
 
-<view class="info content">
-  <view class="item">
-    <view class="text">赛事名称：</view>
-    <view>
-      <input></input>
+<view>
+  <block wx:for="{{images}}" wx:key="*this">
+    <view class="q-image-wrap">
+      <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="previewImage"></image>
     </view>
+  </block>
+</view>
+
+<view class="info text-content">
+  <view class="border-bottom cu-form-group">
+    <view class="title">队伍名称</view>
+    <input placeholder="请输入队伍名称"></input>
   </view>
-  <view class="item">
-    <view class="text">发起人姓名：</view>
-    <view>
-      <input></input>
-    </view>
+  <view class="border-bottom cu-form-group">
+    <view class="title">发起人姓名</view>
+    <input placeholder="请输入姓名"></input>
   </view>
-  <view class="item">
-    <view class="text">所在学校及院系</view>
-    <view>
-      <input></input>
-    </view>
+  <view class="border-bottom cu-form-group">
+    <view class="title">所在学校及院系</view>
+    <input value="{{major}}"></input>
   </view>
-  <view class="item" style="border-bottom:0;">
-    <view class="text">结束日期</view>
-    <view>
-      <input></input>
-    </view>
+  <view class="border-bottom cu-form-group">
+    <view class="title">联系方式</view>
+    <input value="{{contact}}"></input>
+  </view>
+  <view class="border-bottom cu-form-group" style="border-bottom:0;">
+    <view class="title">结束日期</view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+			<view class="picker">
+				{{date}}
+			</view>
+		</picker>
   </view>
 
 </view>

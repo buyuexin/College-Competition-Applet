@@ -1,4 +1,6 @@
 // pages/team_rls/team_rls.js
+
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -6,12 +8,55 @@ Page({
    */
   data: {
     pageTopHeight: wx.getSystemInfoSync().statusBarHeight + 30 + 7 + 4,
+    contentCount: 0,
+    content: "",
+    date: '',
+    major: '',  // 所在学校及院系
+    contact: '',  // 联系方式
+  },
+
+  // 获取输入文本框的字数
+  getContentInput(e){
+    const value = e.detail.value;
+    this.data.content = value;
+    this.data.contentCount = valu.length;
+    $digest(this);
+  },
+
+  // 选择图片
+  chooseImage(e) {
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可选择原图或压缩
+      sourceType: ['album','camera'], // 开放相册/相机
+      success: res => {
+        const images = this.data.images.concat(res.tempFilePaths)
+        this.data.images = images.length <=6 ? images : images.slice(0, 6)
+        $digest(this)
+      }
+    })
+  },
+
+  // 预览图片
+  previewImage(e){
+    const idx = e.target.dataset.idx;
+    const images = this.data.images;
+    wx.previewImage({
+      current: images[idx],
+      urls: images,
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    // 调用函数时，传入new Date()参数，返回值是日期和时间
+    var date = util.formatDate(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据
+    this.setData({
+      date: date
+    });
 
   },
 
