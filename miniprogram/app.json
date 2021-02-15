@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/comp_list/comp_list",
     "pages/team_rls/team_rls",
+    "pages/index/index",
     "pages/me/me",
     "pages/comp_info/comp_info",
     "pages/team_list/team_list",
     "pages/myinfo/myinfo",
-    "pages/comp_list/comp_list",
     "pages/comp_rls/comp_rls"
   ],
   "window": {
