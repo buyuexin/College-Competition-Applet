@@ -10,7 +10,7 @@ Page({
     competitionList:[
       {
         url: "",
-        image:"../../images/comp_pic.png",
+        image:"../../../images/comp_pic.png",
         name:"2021年第十一届MathorCup高校数学建模挑战赛hhhhhhhh",
         date:"2020-3-5",
         level:"国家级",
@@ -21,7 +21,7 @@ Page({
       },
       {
         url: "",
-        image:"../../images/comp_pic.png",
+        image:"../../../images/comp_pic.png",
         name:"MathorCup高校数学建模挑战赛",
         level:"校级",
         registrationTime:"2021.01.01-2021.04.14",  // 报名时间
@@ -31,7 +31,7 @@ Page({
       },
       {
         url: "",
-        image:"../../images/comp_pic.png",
+        image:"../../../images/comp_pic.png",
         name:"2021年第十一届MathorCup高校数学建模挑战赛",
         level:"院级",
         registrationTime:"2021.01.01-2021.04.14",  // 报名时间

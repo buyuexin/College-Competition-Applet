@@ -8,6 +8,19 @@ Page({
     pageTopHeight: wx.getSystemInfoSync().statusBarHeight+30+7
   },
 
+  
+  // tab页面跳转
+  pageChange(e){
+    var page_name = e.currentTarget.dataset.cur;
+    // console.log(page_name);
+    if(page_name != "my") 
+    {
+      wx.redirectTo({
+        url: '../../'+page_name+'/home/home',
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

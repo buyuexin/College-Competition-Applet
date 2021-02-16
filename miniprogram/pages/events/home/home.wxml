@@ -1,0 +1,17 @@
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+	<view slot="content">校内赛事</view>
+</cu-custom>
+
+<view class='cu-tabbar-height'></view>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action text-orange" bindtap="pageChange" data-cur="index">
+    <view class="cuIcon-homefill"></view> 首页
+  </view>
+  <view class="action text-gray add-action" bindtap="pageChange" data-cur="events">
+    <button class="cu-btn cuIcon-order bg-orange shadow"></button>
+    赛事
+  </view>
+  <view class="action text-gray" bindtap="pageChange" data-cur="my">
+    <view class="cuIcon-my"></view>我的
+  </view>
+</view>

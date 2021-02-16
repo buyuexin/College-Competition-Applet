@@ -1,64 +1,65 @@
 <view class="bg" style="padding-top: {{pageTopHeight}}px;">
-  <image src="../../images/icon.png" class="usericon" mode="widthFix"></image>
+  <image src="../../../images/icon.png" class="usericon" mode="widthFix"></image>
   <view class="text-xl margin-top-xs">Nicole</view>
   <view class="text-sm">xxx(个性签名)</view>
-  <image class="bg-image" src="../../images/background.jpg"></image>
+  <image class="bg-image" src="../../../images/background.jpg"></image>
 </view>
 
 <view class="block">
   <view class="block_title">我的信息</view>
   <view class="item">
-    <view class="icon"><image src="../../images/team.png"></image></view>
+    <view class="icon"><image src="../../../images/team.png"></image></view>
     <view class="itemname">我的招募</view>
     <view class="arrow"></view>
   </view>
   <view class="item">
-    <view class="icon"><image src="../../images/upload.png"></image></view>
+    <view class="icon"><image src="../../../images/upload.png"></image></view>
     <view class="itemname">我的发布</view>
     <view class="arrow"></view>
   </view>
   <view class="item">
-    <view class="icon"><image src="../../images/collection.png"></image></view>
+    <view class="icon"><image src="../../../images/collection.png"></image></view>
     <view class="itemname">关注赛事</view>
     <view class="arrow"></view>
   </view>
-  <view class="item">
-    <view class="icon"><image src="../../images/icon_set.png"></image></view>
-    <view class="itemname">信息设置</view>
-    <view class="arrow"></view>
-  </view>
+  <navigator url="../myinfo/myinfo" open-type="navigate">
+    <view class="item">
+      <view class="icon"><image src="../../../images/icon_set.png"></image></view>
+      <view class="itemname">信息设置</view>
+      <view class="arrow"></view>
+    </view>
+  </navigator>
 </view>
 
 <view class="block">
   <view class="block_title">关于我们</view>
   <view class="item">
-    <view class="icon"><image src="../../images/instruction.png"></image></view>
+    <view class="icon"><image src="../../../images/instruction.png"></image></view>
     <view class="itemname">使用指南</view>
     <view class="arrow"></view>
   </view>
   <view class="item">
-    <view class="icon"><image src="../../images/feedback.png"></image></view>
+    <view class="icon"><image src="../../../images/feedback.png"></image></view>
     <view class="itemname">我要反馈</view>
     <view class="arrow"></view>
   </view>
   <view class="item">
-    <view class="icon"><image src="../../images/money.png"></image></view>
+    <view class="icon"><image src="../../../images/money.png"></image></view>
     <view class="itemname">赞赏开发者</view>
     <view class="arrow"></view>
   </view>
 </view>
 
 <view class='cu-tabbar-height'></view>
-
 <view class="cu-bar tabbar bg-white shadow foot">
-  <view class="action text-gray" bindtap="">
+  <view class="action text-orange" bindtap="pageChange" data-cur="index">
     <view class="cuIcon-homefill"></view> 首页
   </view>
-  <view class="action text-gray add-action">
+  <view class="action text-gray add-action" bindtap="pageChange" data-cur="events">
     <button class="cu-btn cuIcon-order bg-orange shadow"></button>
     赛事
   </view>
-  <view class="action text-orange">
+  <view class="action text-gray" bindtap="pageChange" data-cur="my">
     <view class="cuIcon-my"></view>我的
   </view>
 </view>

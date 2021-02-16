@@ -55,5 +55,17 @@ Page({
       cardCur: e.detail.current,
     })
   },
+
+  // tab页面跳转
+  pageChange(e){
+    var page_name = e.currentTarget.dataset.cur;
+    // console.log(page_name);
+    if(page_name != "index") 
+    {
+      wx.redirectTo({
+        url: '../../'+page_name+'/home/home',
+      })
+    }
+  },
   
 })

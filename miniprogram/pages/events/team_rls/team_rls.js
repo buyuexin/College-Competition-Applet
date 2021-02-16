@@ -1,6 +1,6 @@
 // pages/team_rls/team_rls.js
 
-var util = require('../../utils/util.js');
+var util = require('../../../utils/util.js');
 Page({
 
   /**
