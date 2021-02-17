@@ -3,6 +3,7 @@
 	<view slot="content">{{title}}</view>
 </cu-custom>
 
+<!-- 赛氪比赛列表 -->
 <view class="cu-card" wx:if="{{type==0}}" wx:for="{{competitionList}}" wx:key="*this">
   <view class="cu-item shadow">
     <view class="desc margin-top-sm justify-start">
@@ -20,6 +21,7 @@
   </view>
 </view>
 
+<!-- 校内赛事列表 -->
 <view class="cu-card" wx:if="{{type==1}}" wx:for="{{competitionList}}" wx:key="*this">
   <view class="cu-item shadow">
     <view class="cont align-center margin-top justify-start">

@@ -56,6 +56,12 @@ Page({
     content:"",
   },
 
+  toTeamrls(e) {
+    wx.navigateTo({
+      url: '../events/team_rls/team_rls',
+    })
+  },
+
   changeTab(e) {
     console.log(e.currentTarget.dataset.id);
     this.setData({

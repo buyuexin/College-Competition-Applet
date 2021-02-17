@@ -9,7 +9,6 @@
     {{tabNav[index]}}
   </view>
 </scroll-view>
-
 <view style="height:{{CustomBar-10}}px; ">></view>
 
 <!--比赛详情-->
@@ -92,6 +91,6 @@
 
   <view class='cu-tabbar-height'></view>
   <view class="cu-bar foot-bar bg-white shadow">
-    <button class="mybtn bg-orange margin-tb-sm">发布队伍招募信息</button>
+      <button class="mybtn bg-orange margin-tb-sm" bindtap="toTeamrls">发布队伍招募信息</button>
   </view>
 </block>

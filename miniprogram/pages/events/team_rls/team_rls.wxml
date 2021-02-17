@@ -4,26 +4,29 @@
 </cu-custom>
 
 <!--文本框-->
-<view class="text-content">
-  <textarea class="weui-textarea" placeholder="队伍简介，最多可输入300字" maxlength='300' placeholder-class="weui-input__placeholder" />
-</view>
-<view class="down-info align-center">
-  <view class="img-btn" bindtap="chooseImage">
-      <image src="../../images/img.png" class="img-icon" bindtap="chooseImage"></image>
-      <view class="text-sm text-gray">照片</view>
+<view class="text">
+  <view class="text-content">
+    <textarea class="weui-textarea" placeholder="队伍简介，最多可输入300字" maxlength='300' placeholder-class="weui-input__placeholder" bindinput="getContentInput" />
   </view>
-  <view class="text-count">{{contentCount}}/300</view>
+  <view class="down-info bg-white align-center">
+    <view class="img-btn" bindtap="chooseImage">
+        <image src="../../../images/img.png" class="img-icon"></image>
+        <view class="text-sm text-gray">照片</view>
+    </view>
+    <view class="text-count">{{contentCount}}/300</view>
+  </view>
 </view>
 
-<view>
+<!-- 图片显示 -->
+<scroll-view scroll-x="true" class="view-image text" wx:if="{{images.length!=0}}">
   <block wx:for="{{images}}" wx:key="*this">
-    <view class="q-image-wrap">
-      <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="previewImage"></image>
+    <view class="img">
+      <image src="{{item}}" mode="heightFix" data-idx="{{index}}" bindtap="previewImage" bindlongpress="deleteImage"></image>
     </view>
   </block>
-</view>
+</scroll-view>
 
-<view class="info text-content">
+<view class="info text">
   <view class="border-bottom cu-form-group">
     <view class="title">队伍名称</view>
     <input placeholder="请输入队伍名称"></input>
@@ -48,5 +51,9 @@
 			</view>
 		</picker>
   </view>
+</view>
 
+<view class="margin-top ">
+  <button class="block lg" type="primary">
+  <text class="cuIcon-upload"></text>发布</button>
 </view>

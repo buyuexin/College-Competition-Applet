@@ -129,7 +129,7 @@
 	border: 0 rpx;
 	display: inline-flex;
 	align-items: center;
-	/* justify-content: center; */
+	margin: 0 auto;
 	box-sizing: border-box;
 	font-size: 26rpx;
 	line-height: 1;
