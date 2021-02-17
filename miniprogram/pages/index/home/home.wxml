@@ -5,11 +5,10 @@
 <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
 	<view slot="content">首页</view>
 </cu-custom>
-
 <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
   <swiper-item wx:for="{{swiperList}}" wx:key="id" class="{{cardCur==index?'cur':''}}">
     <view class= "swiper-item">
-      <navigator url="../comp_info/comp_info" open-type="navigate" class="navigator">
+      <navigator url="../../comp_info/comp_info" open-type="navigate" class="navigator">
         <image src="{{item.url}}" mode="aspectFill"></image>
       </navigator>
     </view>
@@ -20,34 +19,34 @@
   <!--到时候文字要换成图片-->
   <view class="flex row">
     <view class="block radius">
-      <navigator url="../comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list">
         数学建模
       </navigator>
     </view>
     <view class="block radius">
-      <navigator url="../comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list">
         程序设计
       </navigator>
       </view>
     <view class="block radius">
-      <navigator url="../comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list">
         创业
       </navigator>
     </view>
   </view>
   <view class="flex row">
     <view class="block radius">
-      <navigator url="../comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list">
         UI设计
       </navigator>
     </view>
     <view class="block radius">
-      <navigator url="../comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list">
         外语
       </navigator>
     </view>
     <view class="block radius">
-      <navigator url="../comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list">
         职业技能
       </navigator>
     </view>
