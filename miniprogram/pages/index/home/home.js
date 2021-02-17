@@ -55,12 +55,17 @@ Page({
   //触底加载更多
   onReachBottom(){
     var that=this
-    that.data.end=that.data.end+5//具体加载多少待定
+    that.data.end=that.data.end+3//具体加载多少待定
     DB.collection("articleList").get({
       success(res){
-        that.setData({//此处用setData让数据从逻辑层传到渲染层，实现动态渲染
-          articleList:res.data.slice(0,that.data.end)
-        })
+        if(that.data.end>res.data.length){//何时到底待数据量确定后来完善
+          wx.showToast({ title: '到底了哟~', })
+        }else{
+          that.setData({
+            articleList:res.data.slice(0,that.data.end)
+          })
+        }
+        
       }
     })
   }
