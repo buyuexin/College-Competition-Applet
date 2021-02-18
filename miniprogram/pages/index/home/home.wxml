@@ -19,35 +19,35 @@
   <!--到时候文字要换成图片-->
   <view class="flex row">
     <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list?title=0">
         数学建模
       </navigator>
     </view>
     <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list?title=1">
         程序设计
       </navigator>
       </view>
     <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list">
-        创业
+      <navigator url="../../events/comp_list/comp_list?title=2">
+       创业
       </navigator>
     </view>
   </view>
   <view class="flex row">
     <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list">
+      <navigator url="../../events/comp_list/comp_list?title=3">
+        数学
+      </navigator>
+    </view>
+    <view class="block radius">
+      <navigator url="../../events/comp_list/comp_list?title=4">
         UI设计
       </navigator>
     </view>
     <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list">
-        外语
-      </navigator>
-    </view>
-    <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list">
-        职业技能
+      <navigator url="../../events/comp_list/comp_list?title=5">
+        挑战杯
       </navigator>
     </view>
   </view>

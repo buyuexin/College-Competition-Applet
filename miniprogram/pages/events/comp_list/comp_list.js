@@ -1,4 +1,5 @@
 // pages/comp_list/comp_list.js
+let DB=wx.cloud.database()
 Page({
 
   /**
@@ -6,47 +7,91 @@ Page({
    */
   data: {
     type: 0,  // 有两种形式，0或1，赛氪上的列表用0，自己创建的赛事列表用1
-    title:"程序设计",
-    competitionList:[
-      {
-        url: "",
-        image:"../../../images/comp_pic.png",
-        name:"2021年第十一届MathorCup高校数学建模挑战赛hhhhhhhh",
-        level:"国家级",
-        registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-        startTime:"2021.04.15-2021.04.19",  // 参赛时间
-        statecolor:"green",  // gray/green/yellow
-        state:"正在报名"  // 已结束/正在报名/正在进行
-      },
-      {
-        url: "",
-        image:"../../../images/comp_pic.png",
-        name:"MathorCup高校数学建模挑战赛",
-        level:"校级",
-        registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-        startTime:"2021.04.15-2021.04.19",  // 参赛时间
-        statecolor:"gray",  
-        state:"已结束"  
-      },
-      {
-        url: "",
-        image:"../../../images/comp_pic.png",
-        name:"2021年第十一届MathorCup高校数学建模挑战赛",
-        level:"院级",
-        registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-        startTime:"2021.04.15-2021.04.19",  // 参赛时间
-        statecolor:"yellow",  
-        state:"正在进行"  
-      },
-    ],
-
+    title:"",
+    end:3,//用于实现触底加载更多
+    competitionList:[],//赛事列表
+    compListname:""//某类赛事列表名
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    console.log(options.title)
+    if(options.title==0){
+      that.setData({
+        compListname:"mathemodel",
+        title:"数学建模"
+      })
+      DB.collection(that.data.compListname).get({
+        success(res){
+          that.setData({
+            competitionList:res.data.slice(0,that.data.end)
+          })
+        }
+      })
+    }else if(options.title==1){
+      that.setData({
+        compListname:"programming",
+        title:"程序设计"
+      })
+      DB.collection(that.data.compListname).get({
+        success(res){
+          that.setData({
+            competitionList:res.data.slice(0,that.data.end)
+          })
+        }
+      })
+    }else if(options.title==2){
+      that.setData({
+        compListname:"sbusiness",
+        title:"创业"
+      })
+      DB.collection(that.data.compListname).get({
+        success(res){
+          that.setData({
+            competitionList:res.data.slice(0,that.data.end)
+          })
+        }
+      })
+    }else if(options.title==3){
+      that.setData({
+        compListname:"math",
+        title:"数学"
+      })
+      DB.collection(that.data.compListname).get({
+        success(res){
+          that.setData({
+            competitionList:res.data.slice(0,that.data.end)
+          })
+        }
+      })
+    }else if(options.title==4){
+      that.setData({
+        compListname:"_uidesign",
+        title:"UI设计"
+      })
+      DB.collection(that.data.compListname).get({
+        success(res){
+          that.setData({
+            competitionList:res.data.slice(0,that.data.end)
+          })
+        }
+      })
+    }else if(options.title==5){
+      that.setData({
+        compListname:"challenge",
+        title:"挑战杯"
+      })
+      DB.collection(that.data.compListname).get({
+        success(res){
+          that.setData({
+            competitionList:res.data.slice(0,that.data.end)
+          })
+        }
+      })
+    }
   },
 
   /**
@@ -88,7 +133,20 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that=this
+    this.data.end+=2
+    DB.collection(that.data.compListname).get({
+      success(res){
+        if(that.data.end>res.data.length){
+          wx.showToast({ title: '到底了哟~', })
+        }else{
+          that.setData({
+            competitionList:res.data.slice(0,that.data.end)
+          })
+        }
+      }
+    })
+    
   },
 
   /**
@@ -96,5 +154,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
 })
