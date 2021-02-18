@@ -12,7 +12,6 @@ Page({
         url: "",
         image:"../../../images/comp_pic.png",
         name:"2021年第十一届MathorCup高校数学建模挑战赛hhhhhhhh",
-        date:"2020-3-5",
         level:"国家级",
         registrationTime:"2021.01.01-2021.04.14",  // 报名时间
         startTime:"2021.04.15-2021.04.19",  // 参赛时间

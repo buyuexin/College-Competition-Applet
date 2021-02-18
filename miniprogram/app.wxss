@@ -2,9 +2,7 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 
-.bar{
-  background: linear-gradient(to top, #de4e30,#aa062f);
-}
+
 .container {
   display: flex;
   flex-direction: column;

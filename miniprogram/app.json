@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/events/home/home",
     "pages/index/home/home",
     "pages/events/team_rls/team_rls",
     "pages/comp_info/comp_info",
     "pages/events/comp_list/comp_list",
-    "pages/events/home/home",
     "pages/my/home/home",
     "pages/events/team_list/team_list",
     "pages/my/myinfo/myinfo",

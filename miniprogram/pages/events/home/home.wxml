@@ -1,13 +1,74 @@
-<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-orange" bgImage="../../../images/bg-bar.jpg" isBack="{{true}}">
 	<view slot="content">校内赛事</view>
 </cu-custom>
 
+<!-- 搜索栏 -->
+<view class="bar cu-bar bg-white search fixed" style="top:{{CustomBar}}px">
+  <view class="srh search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索" confirm-type="search" bindinput="searchItem"></input>
+  </view>
+  <navigator url="../comp_rls/comp_rls">
+    <view class="bg-orange rls-btn">发布</view>
+  </navigator>
+</view>
+<view style="height: 80rpx;">></view>
+
+<!-- 筛选栏 -->
+<view class="margin-0 bar align-center flex bg-white scr-bar">
+  <view class="flex flex-sub  justify-center margin-xs" bindtap="screenChange" data-cur="levelList">
+    按级别筛选<text class="margin-left-xs cuIcon-unfold"></text>
+  </view>
+  <view class="border-right flex justify-center"></view>
+  <view class="flex flex-sub justify-center margin-xs" bindtap="screenChange" data-cur="collegeList">
+    按学院筛选<text class="margin-left-xs cuIcon-unfold"></text>
+  </view>
+  <!-- 筛选item -->
+  <view class="screen bg-white border-top flex" wx:if="{{screenShow!='none'}}">
+    <view class="padding-xs flex flex-wrap" wx:if="{{screenShow=='levelList'}}">
+      <view class="padding-xs" wx:for="{{levelList}}" wx:key="*item" >
+        <view style="height: 58rpx" class="cu-tag {{item.status}}" bindtap="screenClick" data-idx="{{index}}" data-type="levelList">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="padding-xs flex flex-wrap" wx:if="{{screenShow=='collegeList'}}">
+      <view class="padding-xs" wx:for="{{collegeList}}" wx:key="*item" >
+        <view style="height: 58rpx" class="cu-tag {{item.status}}" bindtap="screenClick" data-idx="{{index}}" data-type="collegeList">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="flex padding-left-xs padding-right-xs">
+      <view class="round flex-sub bg-gray scr-btn" bindtap="reset">重置</view>
+      <view class="round flex-sub bg-orange scr-btn" bindtap="confirm">确定</view>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 赛事列表 -->
+<view class="cu-card" wx:for="{{competitionList}}" wx:key="*this">
+  <view class="cu-item shadow" wx:if="{{item.isShow}}">
+    <view class="desc margin-top-sm justify-start">
+      <view class="pic radius">
+        <image mode="widthFix" src="{{item.image}}"></image>
+      </view>
+      <view class="margin-left-xs">
+        <view class="text-title0  margin-top-xs">
+          <text class="tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs">{{item.name}}</text>
+        </view>
+        <view class="text-content">报名时间：{{item.registrationTime}}</view>
+        <view class="text-content">比赛时间：{{item.startTime}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- tabbar -->
 <view class='cu-tabbar-height'></view>
 <view class="cu-bar tabbar bg-white shadow foot">
-  <view class="action text-orange" bindtap="pageChange" data-cur="index">
+  <view class="action text-gray" bindtap="pageChange" data-cur="index">
     <view class="cuIcon-homefill"></view> 首页
   </view>
-  <view class="action text-gray add-action" bindtap="pageChange" data-cur="events">
+  <view class="action text-orange add-action" bindtap="pageChange" data-cur="events">
     <button class="cu-btn cuIcon-order bg-orange shadow"></button>
     赛事
   </view>

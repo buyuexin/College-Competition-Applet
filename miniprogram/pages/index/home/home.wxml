@@ -2,7 +2,7 @@
   isBack:是否开启返回(false) bgColor:背景颜色类名 isCustom:是否开启左侧胶囊(false) bgImage:背景图片路径
   slot  backText:返回时的文字  content:中间区域  right:右侧区域(范围窄)
 -->
-<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-orange" bgImage="../../../images/bg-bar.jpg" isBack="{{true}}">
 	<view slot="content">首页</view>
 </cu-custom>
 <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">

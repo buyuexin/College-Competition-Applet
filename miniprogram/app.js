@@ -19,5 +19,21 @@ App({
       }
     })
   },
-  globalData: {}
+  globalData: {
+    levelList:[
+      {status: "line-gray",name: "院级",},
+      {status: "line-gray",name: "校级",},
+      {status: "line-gray",name: "市级",},
+      {status: "line-gray",name: "省级",},
+      {status: "line-gray",name: "国家级",},
+      {status: "line-gray",name: "国际级",},
+    ],
+    collegeList:[
+      {status: "line-gray",name: "软件学院",},
+      {status: "line-gray",name: "国际商学院",},
+      {status: "line-gray",name: "城市文化学院",},
+      {status: "line-gray",name: "职业教育学院",},
+      {status: "line-gray",name: "经济管理学院",},
+      ],
+  }
 })
