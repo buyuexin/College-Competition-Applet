@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-orange"  bgImage="../../../images/bg-bar.jpg" isBack="{{true}}">
 	<view slot="backText">返回</view>
 	<view slot="content">队伍招募</view>
 </cu-custom>
@@ -45,7 +45,7 @@
   </view>
   <view class="border-bottom cu-form-group" style="border-bottom:0;">
     <view class="title">结束日期</view>
-    <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+    <picker mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange">
 			<view class="picker">
 				{{date}}
 			</view>

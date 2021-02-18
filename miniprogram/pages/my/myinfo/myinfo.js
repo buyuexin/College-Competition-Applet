@@ -5,8 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageTopHeight: wx.getSystemInfoSync().statusBarHeight + 30 + 7 + 4,
-    iconPath:"../../images/icon.png",
+    iconPath:"../../../images/icon.png",
     nickname:"Nicole",
     name:"王老二",
     gender:"男",

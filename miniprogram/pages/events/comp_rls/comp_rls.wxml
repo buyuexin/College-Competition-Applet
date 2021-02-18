@@ -1,39 +1,75 @@
-<head></head>
+<cu-custom bgColor="bg-gradual-orange" bgImage="../../../images/bg-bar.jpg" isBack="{{true}}">
+  <view slot="backText">返回</view>
+	<view slot="content">发布赛事</view>
+</cu-custom>
 
-<view class="content">
-  <textarea placeholder="赛事内容介绍，最多可输入500字" maxlength='500' placeholder-class="ph" />
+<!-- 文本框 -->
+<view class="text">
+  <view class="text-content">
+    <textarea class="weui-textarea" placeholder="赛事内容，最多可输入300字" maxlength='300' placeholder-class="weui-input__placeholder" bindinput="getContentInput" />
+  </view>
+  <view class="down-info bg-white align-center">
+    <view class="img-btn" bindtap="chooseImage">
+        <image src="../../../images/img.png" class="img-icon"></image>
+        <view class="text-sm text-gray">照片</view>
+    </view>
+    <view class="text-count">{{contentCount}}/300</view>
+  </view>
 </view>
 
-<view class="info content">
-  <view class="item">
-    <view class="text">赛事名称：</view>
-    <view>
-      <input></input>
+<!-- 图片显示 -->
+<scroll-view scroll-x="true" class="view-image text" wx:if="{{images.length!=0}}">
+  <block wx:for="{{images}}" wx:key="*this">
+    <view class="img">
+      <image src="{{item}}" mode="heightFix" data-idx="{{index}}" bindtap="previewImage" bindlongpress="deleteImage"></image>
     </view>
-  </view>
-  <view class="item">
-    <view class="text">发起人：</view>
-    <view>
-      <input></input>
-    </view>
-  </view>
-  <view class="item">
-    <view class="text">主办单位：</view>
-    <view>
-      <input></input>
-    </view>
-  </view>
-  <view class="item">
-    <view class="text">举办地点：</view>
-    <view>
-      <input></input>
-    </view>
-  </view>
-  <view class="item" style="border-bottom:0;">
-    <view class="text">受众对象：</view>
-    <view>
-      <input></input>
-    </view>
-  </view>
+  </block>
+</scroll-view>
 
+<view class="info text">
+  <view class="border-bottom cu-form-group">
+    <view class="title">赛事名称</view>
+    <input placeholder="请输入赛事名称"></input>
+  </view>
+  <view class="border-bottom cu-form-group">
+    <view class="title">发布人</view>
+    <input placeholder=""></input>
+  </view>
+  <view class="border-bottom cu-form-group">
+    <view class="title">发布学院</view>
+    <picker bindchange="collegeChange" value="{{college}}" range="{{collegeList}}" range-key="name">
+			<view class="picker">{{collegeList[college].name}}</view>
+		</picker>
+  </view>
+  <view class="border-bottom cu-form-group">
+    <view class="title">赛事级别</view>
+    <picker bindchange="levelChange" value="{{level}}" range="{{levelList}}" range-key="name">
+			<view class="picker">{{levelList[level].name}}</view>
+		</picker>
+  </view>
+  <view class="border-bottom date-form-group">
+    <view class="title">报名时间</view>
+    <picker class="pick" mode="date" value="{{regStart}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange" data-time="regStart">
+			<view class="picker">{{regStart}}</view>
+    </picker>
+    --
+    <picker class="pick" mode="date" value="{{regEnd}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange" data-time="regEnd">
+			<view class="picker">{{regEnd}}</view>
+		</picker>
+  </view>
+  <view class="date-form-group">
+    <view class="title">参赛时间</view>
+    <picker class="pick" mode="date" value="{{compStart}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange" data-time="compStart">
+			<view class="picker">{{compStart}}</view>
+    </picker>
+    --
+    <picker class="pick" mode="date" value="{{compEnd}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange" data-time="compEnd">
+			<view class="picker">{{compEnd}}</view>
+		</picker>
+  </view>
+</view>
+
+<view class="margin-top ">
+  <button class="block lg" type="primary">
+  <text class="cuIcon-upload"></text>发布</button>
 </view>
