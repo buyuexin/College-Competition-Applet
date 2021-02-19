@@ -64,7 +64,7 @@
 		</picker>
   </view>
   <view class="date-form-group">
-    <view class="title">参赛时间</view>
+    <view class="title">比赛时间</view>
     <picker class="pick" mode="date" value="{{compStart}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange" data-time="compStart">
 			<view class="picker">{{compStart}}</view>
     </picker>

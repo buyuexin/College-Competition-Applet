@@ -7,7 +7,7 @@
 
 <view class="block">
   <view class="block_title">我的信息</view>
-  <navigator url="../myinfo/myinfo" open-type="navigate">
+  <navigator url="../myrls/myrls" open-type="navigate">
     <view class="item">
       <view class="icon"><image src="../../../images/upload.png"></image></view>
       <view class="itemname">我的发布</view>

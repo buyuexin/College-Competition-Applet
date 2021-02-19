@@ -1,0 +1,46 @@
+<cu-custom bgColor="bg-gradual-orange"  bgImage="../../../images/bg-bar.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">我的发布</view>
+</cu-custom>
+
+<view class="margin-0 bar align-center flex bg-white">
+  <view class="flex flex-sub height justify-center {{cur==0?'border-bottom':''}}" bindtap="click" data-idx="0">队伍招募</view>
+  <view class="border-right flex justify-center"></view>
+  <view class="flex flex-sub height justify-center {{cur==1?'border-bottom':''}}" bindtap="click" data-idx="1">赛事发布</view>
+</view>
+
+<swiper current="{{cur}}" class="flex align-center margin-top-xs" style="height: {{height_sys}}px" bindchange="bindChange">
+  <!-- 队伍招募 -->
+  <swiper-item>
+    <scroll-view class="padding-sm flex align-center" style="height: {{height_sys}}px">
+      <view class="radius padding-top-xs padding-sm bg-white margin-bottom-xs relative" wx:for="{{teamList}}">
+        <image src="../../../images/triangle.png" class="tri"></image>
+        <view class="item-border-bottom time">
+          <text class="cuIcon-time"></text>
+          {{item.time}}</view>
+        <view class="" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
+          队伍名称：{{item.name}}</view>
+        <view class="desc" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
+          关联赛事：{{item.comp}}</view>
+        <view class="tag-list">
+          <view class="tag" wx:for="{{item.tag}}" wx:for-item="tagCon">
+            <text class="tag-con">{{tagCon}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- 赛事发布 -->
+  <swiper-item>
+    <scroll-view class="padding-sm flex align-center" style="height: {{height_sys}}px">
+      <view class="radius padding-sm bg-white margin-bottom-xs relative" wx:for="{{compList}}">
+        <image src="../../../images/triangle.png" class="tri"></image>
+        <view class="" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
+          赛事名称：{{item.name}}</view>
+        <view class="desc" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
+          主办方：{{item.host}}</view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

@@ -23,7 +23,7 @@
           <view class="item-left">
             <view class="line-orange bg-white cu-tag radius">主办方</view>
           </view>
-          <view class="item-right">{{sponsor}}</view>
+          <view class="item-right">{{host}}</view>
         </view>
         <view class="item solid-bottom">
           <view class="item-left">
