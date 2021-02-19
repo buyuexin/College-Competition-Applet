@@ -15,39 +15,11 @@
   </swiper-item>
 </swiper>
 
-<view class="medium">
-  <!--到时候文字要换成图片-->
-  <view class="flex row">
-    <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list?title=0">
-        数学建模
-      </navigator>
-    </view>
-    <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list?title=1">
-        程序设计
-      </navigator>
-      </view>
-    <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list?title=2">
-       创业
-      </navigator>
-    </view>
-  </view>
-  <view class="flex row">
-    <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list?title=3">
-        数学
-      </navigator>
-    </view>
-    <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list?title=4">
-        UI设计
-      </navigator>
-    </view>
-    <view class="block radius">
-      <navigator url="../../events/comp_list/comp_list?title=5">
-        挑战杯
+<view class="bg-white padding">
+  <view class="grid col-5 grid-square">
+    <view class="bg-img bg-gray" wx:for="{{nav}}" wx:key="{{index}}" >
+      <navigator url="../../events/comp_list/comp_list?title={{index}}">
+        <image src=""></image>
       </navigator>
     </view>
   </view>

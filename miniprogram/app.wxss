@@ -2,6 +2,9 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 
+.border {
+  border: 1px solid black;
+}
 
 .container {
   display: flex;

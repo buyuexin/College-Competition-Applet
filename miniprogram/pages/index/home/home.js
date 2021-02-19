@@ -4,6 +4,7 @@ Page({
     title: null,
     //当前轮播图的id
     cardCur: 0,
+    nav:["理科","工科","商科","文体","综合"],
     //轮播图数据
     swiperList:[],
     //热点资讯数据
