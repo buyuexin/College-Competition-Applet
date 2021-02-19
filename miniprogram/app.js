@@ -35,5 +35,6 @@ App({
       {status: "line-gray",name: "职业教育学院",},
       {status: "line-gray",name: "经济管理学院",},
       ],
+    typeList:['个人赛','团队赛'],
   }
 })

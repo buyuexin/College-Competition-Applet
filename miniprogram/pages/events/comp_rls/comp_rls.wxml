@@ -32,8 +32,8 @@
     <input placeholder="请输入赛事名称"></input>
   </view>
   <view class="border-bottom cu-form-group">
-    <view class="title">发布人</view>
-    <input placeholder=""></input>
+    <view class="title">主办方</view>
+    <input placeholder="请输入主办方"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">发布学院</view>
@@ -45,6 +45,12 @@
     <view class="title">赛事级别</view>
     <picker bindchange="levelChange" value="{{level}}" range="{{levelList}}" range-key="name">
 			<view class="picker">{{levelList[level].name}}</view>
+		</picker>
+  </view>
+  <view class="border-bottom cu-form-group">
+    <view class="title">赛事类型</view>
+    <picker bindchange="typeChange" value="{{type}}" range="{{typeList}}">
+			<view class="picker">{{typeList[type]}}</view>
 		</picker>
   </view>
   <view class="border-bottom date-form-group">

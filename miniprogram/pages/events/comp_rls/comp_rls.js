@@ -9,8 +9,10 @@ Page({
   data: {
     levelList: app.globalData.levelList,
     collegeList: app.globalData.collegeList,
+    typeList: app.globalData.typeList,
     level: 0,  // 赛事级别序号
     college: 0,  // 发布学院序号
+    type: 0, // 赛事类型序号
     contentCount: 0,
     content: "",
     regStart: '',  // 报名开始时间
@@ -100,6 +102,13 @@ Page({
   collegeChange(e) {
     this.setData({
       college: e.detail.value
+    })
+  },
+
+  // 赛事类型选择
+  typeChange(e) {
+    this.setData({
+      type: e.detail.value
     })
   },
 

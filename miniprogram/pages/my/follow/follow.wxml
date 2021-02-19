@@ -1,0 +1,25 @@
+<cu-custom bgColor="bg-gradual-orange"  bgImage="../../../images/bg-bar.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">我关注的赛事</view>
+</cu-custom>
+
+<view class="list menu-avatar">
+    <view class="shadow margin-top-xs cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{competitionList}}" wx:key="{{index}}" data-idx="{{index}}" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
+      <view class="cont align-center justify-start">
+        <view class="img">
+          <image src="{{item.image}}" mode="aspectFill"></image>
+        </view>
+        <view class="desc">
+          <view class="text-title">
+            <text class="align-center tag bg-{{item.statecolor}} radius">{{item.state}}</text>
+            <text class="margin-left-xs align-center hidden">{{item.name}}</text>
+          </view>
+          <view class="text-content">报名时间：{{item.registrationTime}}</view>
+          <view class="text-content">比赛时间：{{item.startTime}}</view>
+        </view>
+      </view>
+      <view class="move">
+        <view bindtap="delete" data-idx="{{index}}" class="cuIcon-deletefill text-red" style="font-size: 56rpx;"></view>
+      </view>
+    </view>
+  </view>
