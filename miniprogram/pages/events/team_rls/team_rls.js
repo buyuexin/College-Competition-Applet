@@ -7,13 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageTopHeight: wx.getSystemInfoSync().statusBarHeight + 30 + 7 + 4,
+    isShowModel: null,  // 是否弹出标签输入框
+    inputValue: "",  // 标签输入框的值
     contentCount: 0,
     content: "",
     date: '',
-    major: '',  // 所在学校及院系
+    college: '',  // 所在学校及院系(可以是该用户填的university+college)
     contact: '',  // 联系方式
-    images:[],  // 上传的图片数组
+    tags: [], // 标签列表
+    images:[],  // 上传的图片列表
   },
 
   // 获取输入文本框的字数
@@ -80,6 +82,68 @@ Page({
         else if (res.cancel) {
           console.log('点击取消');
           return false;
+        }
+      }
+    })
+  },
+
+  addTag(e) {
+    this.setData({
+      modalName: 'DialogModal2',
+    })
+  },
+
+  hideModal(e) {
+    this.setData({
+      inputValue: "",
+      modalName: null
+    })
+  },
+
+  formSubmit(e) {
+    let that = this;
+    let tags = that.data.tags;
+    let tag = e.detail.value.tag;
+    if(tags.length>=5) {
+      wx.showToast({
+        title: '最多只能添加5个标签！',
+        icon: 'none',
+      })
+      that.hideModal();
+    } else if(tag.length>=7) {
+      wx.showToast({
+        title: '最多只能输入7个字符！',
+        icon: 'none',
+      })
+    } else if(tag.length==0) {
+      wx.showToast({
+        title: '标签不能为空！',
+        icon: 'none',
+      })
+    } else {
+      tags.push(tag);
+      that.setData({
+        tags: tags,
+      })
+      that.hideModal();
+    }
+  },
+
+  deletetag(e) {
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除该标签吗？',
+      success (res) {
+        if (res.confirm) {
+          let idx = e.currentTarget.dataset.idx;
+          let tags = that.data.tags;
+          if(idx>=0) {
+            tags.splice(idx,1);
+            that.setData({
+              tags: tags
+            })
+          }
         }
       }
     })

@@ -2,8 +2,7 @@ const app = getApp();
 Page({
   data:{
     CustomBar: app.globalData.CustomBar,
-    TabCur:0,
-    tabNav: ['比赛详情', '招募消息'],
+    cur: 0, 
     teamList:[
       {
         icon:"../../images/icon.png",
@@ -56,6 +55,19 @@ Page({
     content:"",
   },
 
+  click(e) {
+    console.log(parseInt(e.currentTarget.dataset.idx))
+    this.setData({
+      cur: parseInt(e.currentTarget.dataset.idx),
+    })
+  },
+
+  bindChange: function(e) {
+    this.setData({
+      cur: e.detail.current
+    });
+  },
+
   toTeamrls(e) {
     wx.navigateTo({
       url: '../events/team_rls/team_rls',
@@ -68,5 +80,20 @@ Page({
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
-  }
+  },
+
+  onLoad: function (options) {
+    var that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        var Client = wx.getMenuButtonBoundingClientRect();
+        var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
+        that.setData({
+          clientHeight: res.windowHeight,
+          height_sys: height - 58,
+        });
+      }
+    });
+
+  },
 })

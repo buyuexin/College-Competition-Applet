@@ -180,3 +180,17 @@
 .item-50{
   flex: 1;
 }
+
+.border-right{
+  border-right: 1px solid #f0f0f0;
+  height: 60rpx;
+}
+
+.border-bottom{
+  border-bottom: 2px solid var(--yellow);
+}
+
+.height{
+  height: 80rpx;
+  line-height: 80rpx;
+}

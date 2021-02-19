@@ -37,19 +37,49 @@
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">所在学校及院系</view>
-    <input value="{{major}}"></input>
+    <input value="{{college}}"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">联系方式</view>
-    <input value="{{contact}}"></input>
+    <input value="{{contact}}" placeholder="(手机号/微信/邮箱/qq等)"></input>
   </view>
-  <view class="border-bottom cu-form-group" style="border-bottom:0;">
+  <view class="border-bottom cu-form-group">
     <view class="title">结束日期</view>
     <picker mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange">
 			<view class="picker">{{date}}</view>
 		</picker>
   </view>
+  <view class="cu-form-group">
+    <view class="title" bindtap="addTag">
+      <text class="cuIcon-roundadd text-orange" style="font-size: 36rpx;"></text>
+      添加标签</view>
+    <view class="tag-list">
+      <view class="tag" wx:for="{{tags}}" wx:key="index" bindtap="deletetag" data-idx="{{index}}" wx:for-item="tagCon">
+        <text class="tag-con">{{tagCon}}</text>
+      </view>
+    </view>
+  </view>
 </view>
+
+<form bindsubmit="formSubmit">
+  <view class="cu-modal {{modalName=='DialogModal2'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">每次添加一个标签</view>
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close text-red"></text>
+        </view>
+      </view>
+      <view class="padding-xl">
+        <input class="bg-white tag-input" type="text" name="tag" value="{{inputValue}}"></input>
+      </view>
+      <view class="cu-bar bg-white">
+        <button class="border-right action margin-0 flex-sub text-gray solid-left" bindtap="hideModal">取消</button>
+        <button class="action margin-0 flex-sub text-green solid-left" formType="submit">确定</button>
+      </view>
+    </view>
+  </view>
+</form>
 
 <view class="margin-top ">
   <button class="block lg" type="primary">

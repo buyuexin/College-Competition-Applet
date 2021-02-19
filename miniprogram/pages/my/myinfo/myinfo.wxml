@@ -23,22 +23,26 @@
     </picker>
   </view>
   <view class="border-bottom cu-form-group">
+    <view class="title">手机号/邮箱</view>
+    <input class="text-right" value="{{info[4]}}" name="contact" bindblur="inputChange" bindconfirm="inputChange" data-type="4"></input>
+  </view>
+  <view class="border-bottom cu-form-group">
     <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>学校</view>
-    <input class="text-right" name="university" value="{{info[4]}}" placeholder="请填写学校" bindblur="inputChange" bindconfirm="inputChange" data-type="4"></input>
+    <input class="text-right" name="university" value="{{info[5]}}" placeholder="请填写学校" bindblur="inputChange" bindconfirm="inputChange" data-type="5"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>院系</view>
-    <input class="text-right" name="college" value="{{info[5]}}" placeholder="请填写院系" bindblur="inputChange" bindconfirm="inputChange" data-type="5"></input>
+    <input class="text-right" name="college" value="{{info[6]}}" placeholder="请填写院系" bindblur="inputChange" bindconfirm="inputChange" data-type="6"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">专业</view>
-    <input class="text-right" name="major" value="{{info[6]}}" placeholder="请填写专业" bindblur="inputChange" bindconfirm="inputChange" data-type="6"></input>
+    <input class="text-right" name="major" value="{{info[7]}}" placeholder="请填写专业" bindblur="inputChange" bindconfirm="inputChange" data-type="7"></input>
   </view>
   
   <view class="cu-form-group">
     <view class="title">年级</view>
-    <picker bindchange="pickerChange" data-type="7" name="grade" value="{{info[7]}}" range="{{gradeList}}">
-      <view class="picker">{{gradeList[info[7]]}}</view>
+    <picker bindchange="pickerChange" data-type="8" name="grade" value="{{info[7]}}" range="{{gradeList}}">
+      <view class="picker">{{gradeList[info[8]]}}</view>
     </picker>
   </view>
   
