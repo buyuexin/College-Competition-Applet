@@ -3,25 +3,25 @@
 	<view slot="content">{{title}}</view>
 </cu-custom>
 
-<!-- 赛氪比赛列表 -->
 <view class="cu-card" wx:if="{{type==0}}" wx:for="{{competitionList}}" wx:key="*this">
-  <view class="cu-item shadow">
-    <view class="desc margin-top-sm justify-start">
-      <view class="pic radius">
-        <image mode="widthFix" src="{{item.image}}"></image>
-      </view>
-      <view class="margin-left-xs">
-        <view class="text-title0  margin-top-xs">
-          <text class="tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs">{{item.name}}</text>
+  <navigator url="../../comp_info/comp_info?title=0&which=0">
+    <view class="cu-item shadow">
+      <view class="desc margin-top-sm justify-start">
+        <view class="pic radius">
+          <image v-if="item.image" mode="widthFix" src="{{item.image}}"></image>
         </view>
-        <view class="text-content">报名时间：{{item.registrationTime}}</view>
-        <view class="text-content">比赛时间：{{item.startTime}}</view>
+        <view class="margin-left-xs">
+          <view class="text-title0  margin-top-xs">
+            <text class="tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs">{{item.name}}</text>
+          </view>
+          <view class="text-content">报名时间：{{item.registrationTime}}</view>
+          <view class="text-content">比赛时间：{{item.startTime}}</view>
+        </view>
       </view>
     </view>
-  </view>
+  </navigator>
 </view>
 
-<!-- 校内赛事列表 -->
 <view class="cu-card" wx:if="{{type==1}}" wx:for="{{competitionList}}" wx:key="*this">
   <view class="cu-item shadow">
     <view class="cont align-center margin-top justify-start">
