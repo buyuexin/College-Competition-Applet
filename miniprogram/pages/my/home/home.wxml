@@ -7,21 +7,20 @@
 
 <view class="block">
   <view class="block_title">我的信息</view>
-  <view class="item">
-    <view class="icon"><image src="../../../images/team.png"></image></view>
-    <view class="itemname">我的招募</view>
-    <view class="arrow"></view>
-  </view>
-  <view class="item">
-    <view class="icon"><image src="../../../images/upload.png"></image></view>
-    <view class="itemname">我的发布</view>
-    <view class="arrow"></view>
-  </view>
-  <view class="item">
-    <view class="icon"><image src="../../../images/collection.png"></image></view>
-    <view class="itemname">关注赛事</view>
-    <view class="arrow"></view>
-  </view>
+  <navigator url="../myinfo/myinfo" open-type="navigate">
+    <view class="item">
+      <view class="icon"><image src="../../../images/upload.png"></image></view>
+      <view class="itemname">我的发布</view>
+      <view class="arrow"></view>
+    </view>
+  </navigator>
+  <navigator url="../follow/follow" open-type="navigate">
+    <view class="item">
+      <view class="icon"><image src="../../../images/collection.png"></image></view>
+      <view class="itemname">关注赛事</view>
+      <view class="arrow"></view>
+    </view>
+  </navigator>
   <navigator url="../myinfo/myinfo" open-type="navigate">
     <view class="item">
       <view class="icon"><image src="../../../images/icon_set.png"></image></view>
