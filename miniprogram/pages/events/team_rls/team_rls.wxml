@@ -46,9 +46,7 @@
   <view class="border-bottom cu-form-group" style="border-bottom:0;">
     <view class="title">结束日期</view>
     <picker mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange">
-			<view class="picker">
-				{{date}}
-			</view>
+			<view class="picker">{{date}}</view>
 		</picker>
   </view>
 </view>

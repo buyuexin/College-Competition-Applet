@@ -5,14 +5,71 @@ Page({
    * 页面的初始数据
    */
   data: {
-    iconPath:"../../../images/icon.png",
-    nickname:"Nicole",
-    name:"王老二",
-    gender:"男",
-    university:"华南师范大学",
-    college:"软件学院",
-    major:"软件工程",
-    grade:"大二"
+    genderList:["男","女"],
+    gradeList:["大一","大二","大三","大四","研一","研二","研三"],
+    info:[
+      "../../../images/icon.png",  // 头像url
+      "Nicole",  // 昵称
+      "王老二",  // 姓名
+      0,  // 性别 genderList的序号
+      "华南师范大学",  // 学校 
+      "软件学院",  // 院系
+      "软件工程",  // 专业
+      1  // 年级 gradeList的序号
+    ],
+    disabled: true,  // 保存按钮是否禁用，有修改才启用
+  },
+
+  // input框内容修改
+  inputChange(e) {
+    console.log(e);
+    let type = parseInt(e.currentTarget.dataset.type);
+    if(e.detail.value != this.data.info[type]) {
+      this.setData({
+        disabled: false
+      })
+    }
+  },
+
+  pickerChange(e) {
+    let type = parseInt(e.currentTarget.dataset.type);
+    if(e.detail.value != this.data.info[type]) {
+      let key = "info["+type+"]";
+      let param = {};
+      param[key] = e.detail.value;
+      param['disabled'] = false;
+      this.setData(param);
+    }
+
+  } ,
+
+  // 性别选择
+  genderChange(e) {
+    // console.log(e);
+    let g = this.data.gender;
+    if(g != e.detail.value) {
+      this.setData({
+        disabled: false,
+        gender: e.detail.value
+      })
+    }
+  },
+  
+  // 年级选择
+  gradeChange(e) {
+    // console.log(e);
+    let g = this.data.grade;
+    if(g != e.detail.value) {
+      this.setData({
+        disabled: false,
+        grade: e.detail.value
+      })
+    }
+  },
+
+  // 表单提交
+  formSubmit(e) {
+    console.log(e.detail)
   },
 
   /**
