@@ -9,11 +9,18 @@ Page({
   data: {
     isShowModel: null,  // 是否弹出标签输入框
     inputValue: "",  // 标签输入框的值
+    //发布时需获取的值
+    class:"",
+    id:"",
+    icon:"",
+    name:"",
+    college: '',  // 所在学校及院系(可以是该用户填的university+college)
+    teamname:"",  
+    contact: '',  // 联系方式
+    startday: '',
+    endday:"",
     contentCount: 0,
     content: "",
-    date: '',
-    college: '',  // 所在学校及院系(可以是该用户填的university+college)
-    contact: '',  // 联系方式
     tags: [], // 标签列表
     images:[],  // 上传的图片列表
   },
@@ -48,9 +55,11 @@ Page({
           this.setData({
             images: images.length <=6 ? images : images.slice(0, 6)
           })
+
         }
       })
     }
+    console.log(this.data.images)
   },
 
   // 预览图片
@@ -97,6 +106,24 @@ Page({
     this.setData({
       inputValue: "",
       modalName: null
+    })
+  },
+
+  getteamname(e){
+    this.setData({
+      teamname:e.detail.value
+    })
+  },
+
+  getcontact(e){
+    this.setData({
+      contact:e.detail.value
+    })
+  },
+
+  getchange(e){
+    this.setData({
+      endday:e.detail.value
     })
   },
 
@@ -153,14 +180,59 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //为日期赋值 
+    var date = util.formatDate(new Date());// 调用函数时，传入new Date()参数，返回值是日期和时间
+    this.setData({// 再通过setData更改Page()里面的data，动态更新页面的数据
+      endday: date
+    })
+    var that=this
+    //获取发布者个人信息,为icon，name，college，class，id赋值
+    const openid=wx.getStorageSync("openid");
+    const classvalue=wx.getStorageSync("class");
+    const idvalue=wx.getStorageSync("id");
+    let userinfo=Promise.resolve(wx.cloud.database().collection("users").where({useropenid:openid}).get())
+    userinfo.then(res=>{
+      that.setData({
+        icon:res.data[0].avatarUrl,
+        name:res.data[0].name,
+        college:res.data[0].college+res.data[0].major+"专业", 
+        class:classvalue,
+        id:idvalue
+      })
+    })
+  },
 
-    // 调用函数时，传入new Date()参数，返回值是日期和时间
-    var date = util.formatDate(new Date());
-    // 再通过setData更改Page()里面的data，动态更新页面的数据
-    this.setData({
-      date: date
-    });
-
+  formsubmit(){
+      var that=this
+      //获取当前时间戳  
+      var timestamp = Date.parse(new Date());
+      timestamp = timestamp / 1000;
+      console.log("当前时间戳为：" + timestamp); 
+      //获取当前时间  
+      var n = timestamp * 1000;
+      var date = new Date(n);
+      //转换为时间格式字符串  
+      // console.log(date.toLocaleDateString());
+      that.setData({
+        startday:date.toLocaleDateString()
+      })
+      wx.cloud.database().collection("comp_team_rls").add({
+        data:{
+          class:that.data.class,
+          id:that.data.id,
+          icon:that.data.icon,
+          name:that.data.name,
+          college: that.data.college,  // 所在学校及院系(可以是该用户填的university+college)
+          teamname:that.data.teamname,  
+          contact: that.data.contact,  // 联系方式
+          startday: that.data.startday,
+          endday:that.data.endday,
+          contentCount: that.data.contentCount,
+          content: that.data.content,
+          tags: that.data.tags,
+          images:that.data.images
+        }
+      })
   },
 
   /**
@@ -174,7 +246,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+ 
   },
 
   /**

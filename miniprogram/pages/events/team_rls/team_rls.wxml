@@ -29,11 +29,11 @@
 <view class="info text">
   <view class="border-bottom cu-form-group">
     <view class="title">队伍名称</view>
-    <input placeholder="请输入队伍名称"></input>
+    <input placeholder="请输入队伍名称" bindinput="getteamname"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">发起人姓名</view>
-    <input placeholder="请输入姓名"></input>
+    <input value="{{name}}"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">所在学校及院系</view>
@@ -41,12 +41,12 @@
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">联系方式</view>
-    <input value="{{contact}}" placeholder="(手机号/微信/邮箱/qq等)"></input>
+    <input value="{{contact}}" placeholder="(手机号/微信/邮箱/qq等)" bindinput="getcontact"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">结束日期</view>
-    <picker mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange">
-			<view class="picker">{{date}}</view>
+    <picker mode="date" value="{{endday}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange" bindchange="getchange">
+			<view class="picker">{{endday}}</view>
 		</picker>
   </view>
   <view class="cu-form-group">
@@ -80,8 +80,9 @@
     </view>
   </view>
 </form>
-
-<view class="margin-top ">
-  <button class="block lg" type="primary">
-  <text class="cuIcon-upload"></text>发布</button>
-</view>
+<navigator open-type="navigateBack" >
+  <view class="margin-top ">
+    <button class="block lg" type="primary" bindtap="formsubmit">
+    <text class="cuIcon-upload"></text>发布</button>
+  </view>
+</navigator>

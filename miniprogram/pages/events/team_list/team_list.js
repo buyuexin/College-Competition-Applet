@@ -5,39 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    teamList:[
-      {
-        icon:"../../images/icon.png",
-        name:"李默",
-        time:"4月11日 12:24",
-        tag:["互联网+", "校赛", "华南师大"],
-        teamName:"nb队",
-        teamDisc:"xxx"
-      },
-      {
-        icon:"../../images/icon.png",
-        name:"李默",
-        time:"4月11日 12:24",
-        tag:["互联网+", "校赛", "华南师大"],
-        teamName:"nb队",
-        teamDisc:"xxx"
-      },
-      {
-        icon:"../../images/icon.png",
-        name:"李默",
-        time:"4月11日 12:24",
-        tag:["互联网+", "校赛", "华南师大"],
-        teamName:"nb队",
-        teamDisc:"xxx"
-      },
-    ],
+    teamList:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    const classvalue=wx.getStorageSync("class");
+    const idvalue=wx.getStorageSync("id");
+    wx.cloud.callFunction({
+      name:"Gteamlist",
+      data:{
+        class:classvalue,
+        id:idvalue
+      },
+      success(res){
+        that.setData({
+          teamList:res.result.data
+        })
+      }
+    })
   },
 
   /**

@@ -28,19 +28,19 @@
 
       <view class="info-text">
         <text class="name">{{Item.name}}</text>
-        <text class="time">{{Item.time}}</text>
+        <text class="time">{{Item.startday}}</text>
       </view>
     </view>
     <view class="self-info">
-      <view class="tag" wx:for="{{Item.tag}}" wx:for-item="tagCon">
+      <view class="tag" wx:for="{{Item.tags}}" wx:for-item="tagCon">
         <text class="tag-con">{{tagCon}}</text>
       </view>
     </view>
     <view class="self-info ">
-      <text class="team-name">队伍名称：{{Item.teamName}}</text>
+      <text class="team-name">队伍名称：{{Item.teamname}}</text>
     </view>
     <view class="self-info">
-      <text class="team-disc">队伍简介：{{Item.teamDisc}}</text>
+      <text class="team-disc">队伍简介：{{Item.content}}</text>
     </view>
   </view>
 </view>
