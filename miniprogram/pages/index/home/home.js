@@ -12,7 +12,51 @@ Page({
     end:2
   },
   onLoad(options) {
+    var that=this
     // 初始化towerSwiper 传已有的数组名即可
+    wx.cloud.callFunction({//获取用户openID
+      name:"Gusermess",
+      success(res){
+        let bigopenid=res.result.event.userInfo.openId
+        const openid=bigopenid;//将openid存入缓存
+        wx.setStorageSync('openid',openid)
+          wx.cloud.callFunction({//判断用户存在users中
+            name:"IfopenID",
+            data:{
+              Iopenid:res.result.event.userInfo.openId//Iopenid为参数
+            },
+            success(res){
+              if(res.result.data.length==0){//用户不存在
+                wx.cloud.database().collection("users").add({
+                  data:{
+                    useropenid:bigopenid,
+                    avatarUrl:"miniprogram\images\icon.png",
+                    nickname:"小明",
+                    name:"王小明",
+                    gender:"男",
+                    contact:"******@qq.com/139*****383",
+                    school:"华南师范大学",
+                    college:"软件学院",
+                    major:"软件工程",
+                    grade:"大一",
+                  }
+                })
+                wx.showModal({//提示是否前往授权
+                  openid:"提示",
+                  content: "前往授权",
+                  success: function(res){
+                  if (res.confirm) {//点击确定，前往授权
+                    wx.redirectTo({
+                      url: '../../my/home/home',
+                    })
+                  } else if (res.cancel) {}
+                  }
+                })                 
+              }else{}//用户存在无需作为
+            }
+          })
+      }
+    })
     //初始化swiperList
     var that=this
     DB.collection("swiperList").get({
@@ -30,6 +74,10 @@ Page({
         })
       }
     })
+  },
+
+  onLaunch(){
+    
   },
 
   // cardSwiper
