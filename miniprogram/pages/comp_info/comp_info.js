@@ -3,48 +3,7 @@ Page({
   data:{
     CustomBar: app.globalData.CustomBar,
     cur: 0, 
-    teamList:[
-      {
-        icon:"../../images/icon.png",
-        name:"李默",
-        time:"4月11日 12:24",
-        tag:["互联网+", "校赛", "华南师大"],
-        teamName:"nb队",
-        teamDisc:"xxx"
-      },
-      {
-        icon:"../../images/icon.png",
-        name:"李默",
-        time:"4月11日 12:24",
-        tag:["互联网+", "校赛", "华南师大"],
-        teamName:"nb队",
-        teamDisc:"xxx"
-      },
-      {
-        icon:"../../images/icon.png",
-        name:"李默",
-        time:"4月11日 12:24",
-        tag:["互联网+", "校赛", "华南师大"],
-        teamName:"nb队",
-        teamDisc:"xxx"
-      },
-      {
-        icon:"../../images/icon.png",
-        name:"李默",
-        time:"4月11日 12:24",
-        tag:["互联网+", "校赛", "华南师大"],
-        teamName:"nb队",
-        teamDisc:"xxx"
-      },
-      {
-        icon:"../../images/icon.png",
-        name:"李默",
-        time:"4月11日 12:24",
-        tag:["互联网+", "校赛", "华南师大"],
-        teamName:"nb队",
-        teamDisc:"xxx"
-      },
-    ],
+    teamList:[],
     image:"",
     title:"", 
     host:"",  
@@ -55,11 +14,37 @@ Page({
     content:"",
   },
 
-  click(e) {
-    //console.log(parseInt(e.currentTarget.dataset.idx))
+  clickrls(e) {
     this.setData({
       cur: parseInt(e.currentTarget.dataset.idx),
     })
+    this.upteamlist()
+  },
+
+  upteamlist(){
+    var that=this
+    const classvalue=wx.getStorageSync("class");
+    const idvalue=wx.getStorageSync("id");
+    wx.cloud.callFunction({
+      name:"Gteamlist",
+      data:{
+        type:0,
+        class:classvalue,
+        id:idvalue
+      },
+      success(res){
+        var newteamList=res.result.data.concat(app.globalData.teamlist)
+        that.setData({
+          teamList:newteamList,
+        })
+      }
+    })
+  },
+
+  clickinfo(e){
+    this.setData({
+         cur: parseInt(e.currentTarget.dataset.idx),
+       })
   },
 
   bindChange: function(e) {
@@ -94,7 +79,7 @@ Page({
         });
       }
     });
-    // console.log(options)
+    //获取比赛具体信息
     wx.cloud.callFunction({
       name:"Getcompinfo",
       data:{
@@ -121,4 +106,8 @@ Page({
       }
     })
   },
+
+  onShow:function(){
+   this.upteamlist()
+  }
 })

@@ -10,6 +10,17 @@ Page({
     levelList: app.globalData.levelList,
     collegeList: app.globalData.collegeList,
     typeList: app.globalData.typeList,
+    // content:"",
+    // images:[],
+    // compname:"",
+    // sponsor:"",
+    // college:"",
+    // level:"",
+    // type:"",
+    // compstart:"",
+    // compend:"",
+    // state:"",
+    // statecolor:""
     level: 0,  // 赛事级别序号
     college: 0,  // 发布学院序号
     type: 0, // 赛事类型序号

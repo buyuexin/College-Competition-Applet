@@ -17,7 +17,7 @@
 
 <view class="bg-white padding">
   <view class="grid col-5 grid-square">
-    <view class="bg-img bg-gray" wx:for="{{5}}" wx:key="{{index}}" >
+    <view class="bg-img bg-gray" wx:for="{{5}}" wx:key="index" >
       <navigator url="../../events/comp_list/comp_list?title={{index}}">
         <image src=""></image>
       </navigator>

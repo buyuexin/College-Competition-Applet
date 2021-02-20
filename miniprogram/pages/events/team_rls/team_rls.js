@@ -12,6 +12,7 @@ Page({
     //发布时需获取的值
     class:"",
     id:"",
+    compname:"",
     icon:"",
     name:"",
     college: '',  // 所在学校及院系(可以是该用户填的university+college)
@@ -200,6 +201,19 @@ Page({
         id:idvalue
       })
     })
+    wx.cloud.callFunction({
+      name:"Getcompinfo",
+      data:{
+        class:classvalue,
+        id:idvalue
+      },
+      success(res){
+        that.setData({
+          compname:res.result.data[0].name
+        })
+      }
+      
+    })
   },
 
   formsubmit(){
@@ -207,7 +221,7 @@ Page({
       //获取当前时间戳  
       var timestamp = Date.parse(new Date());
       timestamp = timestamp / 1000;
-      console.log("当前时间戳为：" + timestamp); 
+      //console.log("当前时间戳为：" + timestamp); 
       //获取当前时间  
       var n = timestamp * 1000;
       var date = new Date(n);
@@ -218,6 +232,7 @@ Page({
       })
       wx.cloud.database().collection("comp_team_rls").add({
         data:{
+          compname:that.data.compname,
           class:that.data.class,
           id:that.data.id,
           icon:that.data.icon,
@@ -233,7 +248,13 @@ Page({
           images:that.data.images
         }
       })
+      wx.navigateBack({
+        delta: 0,
+      })
   },
+
+    
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -246,7 +267,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
- 
+    
   },
 
   /**

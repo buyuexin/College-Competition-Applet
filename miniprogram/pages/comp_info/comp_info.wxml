@@ -5,9 +5,9 @@
 
 <!--上导航栏-->
 <view class="margin-0 bar align-center flex bg-white">
-  <view class="flex flex-sub height justify-center {{cur==0?'border-bottom':''}}" bindtap="click" data-idx="0">比赛详情</view>
+  <view class="flex flex-sub height justify-center {{cur==0?'border-bottom':''}}" bindtap="clickinfo" data-idx="0">比赛详情</view>
   <view class="border-right flex justify-center"></view>
-  <view class="flex flex-sub height justify-center {{cur==1?'border-bottom':''}}" bindtap="click" data-idx="1">招募消息</view>
+  <view class="flex flex-sub height justify-center {{cur==1?'border-bottom':''}}" bindtap="clickrls" data-idx="1">招募消息</view>
 </view>
 
 <swiper current="{{cur}}" class="flex align-center margin-top-xs" style="height: {{height_sys}}px" bindchange="bindChange">
@@ -61,7 +61,7 @@
   <!-- 招募消息 -->
   <swiper-item>
     <scroll-view class="bg-white flex align-center"  scroll-y="true"  style="height: {{height_sys}}px">
-      <view class="one-team" wx:for="{{teamList}}" wx:for-item="Item">
+      <view class="one-team" wx:for="{{teamList}}" wx:for-item="Item" wx:key="*this">
         <!--icon  name time-->
         <view class="self-info">
           <view class="img radius">
@@ -70,24 +70,24 @@
 
           <view class="info-text">
             <text class="name">{{Item.name}}</text>
-            <text class="time">{{Item.time}}</text>
+            <text class="time">{{Item.startday}}</text>
           </view>
         </view>
         <!--tag-->
         <view class="self-info">
-          <view class="tag" wx:for="{{Item.tag}}" wx:for-item="tagCon">
+          <view class="tag" wx:for="{{Item.tags}}" wx:for-item="tagCon" wx:key="*this">
             <text class="tag-con">{{tagCon}}</text>
           </view>
         </view>
         <!--team name-->
         <view class="self-info ">
           <text class="cuIcon-right text-orange"></text>
-          <text class="team-name">队伍名称：{{Item.teamName}}</text>
+          <text class="team-name">队伍名称：{{Item.teamname}}</text>
         </view>
         <!--team desc-->
         <view class="self-info">
           <text class="cuIcon-right text-orange"></text>
-          <text class="team-desc">队伍简介：{{Item.teamDisc}}</text>
+          <text class="team-desc">队伍简介：{{Item.content}}</text>
         </view>
       </view>
       <view class='cu-tabbar-height'></view>

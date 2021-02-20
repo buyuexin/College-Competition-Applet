@@ -19,7 +19,8 @@ Page({
       name:"Gteamlist",
       data:{
         class:classvalue,
-        id:idvalue
+        id:idvalue,
+        type:0
       },
       success(res){
         that.setData({
