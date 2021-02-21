@@ -11,19 +11,12 @@
 .bottom-border{
   border-bottom: 4rpx solid;
 }
-
-.border{
-  border: 1px solid black;
-}
-
 .solid-bottom{
   border-bottom: 1rpx solid #eee;
 }
 .solid-right{
   border-right: 1rpx solid #eee;
 }
-
-
 .one-team{
   position: relative;
   display: flex;

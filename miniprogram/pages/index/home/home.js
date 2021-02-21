@@ -2,12 +2,25 @@ let DB=wx.cloud.database()
 Page({
   data: {
     title: null,
+    nav: [
+      {color:'#ad1010', title:'工科'},
+      {color:'#1979d3', title:'理科'},
+      {color:'#e9ad09', title:'商科'},
+      {color:'#f71239', title:'文体'},
+      {color:'#ff7f1c', title:'综合'}],
     //当前轮播图的id
     cardCur: 0,
     //轮播图数据
     swiperList:[],
     //热点资讯数据
-    articleList:[],
+    articleList:[
+      {
+        title: "【必考】大学最有含金量的9大类证书！ ",
+        src: "http://cdn1.52jingsai.com/portal/201810/31/131938axfalcczicu5c9zu.jpg",
+        outline: "拥有证书不仅说明你的学习能力很强，而且你还勤奋努力，而这才是企业所看重的，也是你未来的生存之道。其实有很多的同学很想知道，大学必考的类目和证书有哪些，哪些又是比较有价值的，为此小编整理了相关信息，希望会对大家有所帮助！",
+        tag:["大学","考证"]
+      },
+    ],
     //用于触底加载更多
     end:2
   },

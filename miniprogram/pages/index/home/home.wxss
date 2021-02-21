@@ -42,4 +42,22 @@
   margin-top: 20rpx;
 }
 
+.nav-item{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item>image{
+  height: 80rpx;
+  width: 95rpx;
+}
+
+.nav-item>view{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--white);
+}
 
