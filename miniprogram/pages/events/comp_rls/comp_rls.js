@@ -78,7 +78,7 @@ Page({
         sourceType: ['album','camera'], // 开放相册/相机
         success: res => {
           const tempFilePaths = res.tempFilePaths
-          console.log(tempFilePaths)
+          //console.log(tempFilePaths)
           const images = this.data.images.concat(tempFilePaths)
           this.setData({
             images: images.length <=6 ? images : images.slice(0, 6)

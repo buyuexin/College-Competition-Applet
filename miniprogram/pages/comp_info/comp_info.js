@@ -1,26 +1,20 @@
 const app = getApp();
+let classvalue=0;
+let idvalue=0;
 Page({
   data:{
     CustomBar: app.globalData.CustomBar,
     cur: 0, 
-    teamList:[],
-    image:"",
-    title:"", 
-    host:"",  
-    registrationTime:"",  
-    startTime:"", 
-    rank:"",  
-    type:"",
-    content:"",
+    teamList:[]
   },
-
+  //点击“招募消息”
   clickrls(e) {
     this.setData({
       cur: parseInt(e.currentTarget.dataset.idx),
     })
     this.upteamlist()
   },
-
+  //更新“招募消息”列表
   upteamlist(){
     var that=this
     const classvalue=wx.getStorageSync("class");
@@ -33,14 +27,15 @@ Page({
         id:idvalue
       },
       success(res){
-        var newteamList=res.result.data.concat(app.globalData.teamlist)
+        var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
+        if(changeteamList.length>1){changeteamList.splice(0,1)}
         that.setData({
-          teamList:newteamList,
+          teamList:changeteamList,
         })
       }
     })
   },
-
+  //点击“比赛详情”
   clickinfo(e){
     this.setData({
          cur: parseInt(e.currentTarget.dataset.idx),
@@ -48,6 +43,7 @@ Page({
   },
 
   bindChange: function(e) {
+    console.log(e.detail.current)
     this.setData({
       cur: e.detail.current
     });
@@ -60,7 +56,7 @@ Page({
   },
 
   changeTab(e) {
-    //console.log(e.currentTarget.dataset.id);
+    console.log(e.currentTarget.dataset.id);
     this.setData({
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
@@ -69,6 +65,10 @@ Page({
 
   onLoad: function (options) {
     var that = this;
+    classvalue=options.class
+    idvalue=options.id
+    wx.setStorageSync('class',classvalue)
+    wx.setStorageSync('id',idvalue)
     wx.getSystemInfo({
       success: function(res) {
         var Client = wx.getMenuButtonBoundingClientRect();
@@ -79,30 +79,21 @@ Page({
         });
       }
     });
-    //获取比赛具体信息
+    that.getcompinfo()
+  },
+  //获取比赛具体信息
+  getcompinfo(){
+    var that=this
     wx.cloud.callFunction({
       name:"Getcompinfo",
       data:{
-        class:options.class,
-        id:options.id
+        class:classvalue,
+        id:idvalue
       },
       success(res){
-        var comp=res.result.data[0]
-        // console.log(res.result.data[0])获取到具体比赛相关信息
         that.setData({
-          image:comp.image, 
-          title:comp.name, 
-          host:comp.sponsor,  
-          registrationTime:comp.registrationTime, 
-          startTime:comp.startTime,  
-          rank:comp.level, 
-          type:comp.type, 
-          content:"了解详情:"+comp.link,
-        })
-        const classvalue=comp.class;
-        const idvalue=comp.id;
-        wx.setStorageSync('class',classvalue)
-        wx.setStorageSync('id',idvalue)
+          complist:res.result.data[0]
+        })   
       }
     })
   },

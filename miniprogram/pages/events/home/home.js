@@ -1,6 +1,5 @@
-const app = getApp();
+const app = getApp(); console
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -21,8 +20,6 @@ Page({
   searchItem(e) {
     let key = e.detail.value.toLowerCase();//获取输入框内的值
     let list = this.data.competitionList;//获取当前的列表数据
-    console.log(key)
-    console.log(list)
     for (let i = 0; i < list.length; i++) {
       let a = key;
       let b = list[i].compname.toLowerCase();
@@ -36,7 +33,6 @@ Page({
       competitionList: list
     })
   },
-
   // 筛选列表替换
   screenChange(e) {
     var cur = e.currentTarget.dataset.cur;
@@ -50,7 +46,6 @@ Page({
       screenShow: screenShow,
     })
   },
-
   // 点击筛选中的item
   screenClick(e) {
     let listname = e.currentTarget.dataset.type;
@@ -82,11 +77,12 @@ Page({
       keyword: word,
     })
   },
-
   // 确定
   confirm(e) {
     this.setData({//筛选前先将列表数组清空
-      competitionList:[]
+      competitionList:[],
+      levelnum:[],
+      collegenum:[]
     })
     var that=this
     let word = this.data.keyword;//两个筛选框中选中的选项（文字呈现、数组）
@@ -105,26 +101,64 @@ Page({
       }
     }
     //注意：接下来每次筛选完毕后需将levelnum和collegenum数组置空
-    // console.log(that.data.levelnum)  
-    // console.log(that.data.collegenum)
-    for(let i=0;i<that.data.levelnum.length;i++){//获取competitionList
-      for(let j=0;j<that.data.collegenum.length;j++){
+    // console.log(that.data.levelnum.length)  
+    // console.log(that.data.collegenum.length)
+    if((that.data.levelnum.length==0)&&(that.data.collegenum.length!=0)){  
+      console.log(1)
+        for(let i=0;i<that.data.collegenum.length;i++){//获取competitionList
+          wx.cloud.callFunction({
+            name:"screencomp",
+            data:{
+              levelnum:-1,
+              collegenum:that.data.collegenum[i]
+            },
+            success(res){             
+              that.setData({
+                competitionList:that.data.competitionList.concat(res.result.data),
+              })                         
+            }
+          })
+        }
+    }else if((that.data.levelnum.length!=0)&&(that.data.collegenum.length==0)){
+      console.log(that.data.levelnum)
+      for(let i=0;i<that.data.levelnum.length;i++){//获取competitionList
         wx.cloud.callFunction({
           name:"screencomp",
           data:{
-            levelnum:i,
-            collegenum:j
+            levelnum:that.data.levelnum[i],
+            collegenum:-1
           },
           success(res){
+            console.log(res)
             that.setData({
               competitionList:that.data.competitionList.concat(res.result.data),
-              levelnum:[],//清空
-              collegenum:[]//清空
             })
           }
         })
       }
+    }else if((that.data.collegenum.length==0)&&(that.data.levelnum.length==0)){
+      console.log(1)
+      that.getalllist()
+    }else{
+      for(let i=0;i<that.data.levelnum.length;i++){//获取competitionList
+        for(let j=0;j<that.data.collegenum.length;j++){
+          wx.cloud.callFunction({
+            name:"screencomp",
+            data:{
+              levelnum:that.data.levelnum[i],
+              collegenum:that.data.collegenum[j]
+            },
+            success(res){     
+              that.setData({
+                competitionList:that.data.competitionList.concat(res.result.data),
+              })
+            }
+          })
+        }
+      }
     }
+
+    
     // console.log(that.data.competitionList)     获取成功
     this.setData({
       screenShow: 'none',
@@ -152,18 +186,7 @@ Page({
       keyword: [],
     })
     //重置后重新获取全部数据
-    var that=this
-    wx.cloud.callFunction({
-      name:"Bcomplist",
-      data:{
-        school:1
-      },
-      success(res){
-        that.setData({
-          competitionList:res.result.data
-        })
-      }
-    })
+    this.getalllist()
     this.setData({
       screenShow: 'none',
     })
@@ -180,12 +203,8 @@ Page({
       })
     }
   },
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function () {
+  //获取所有赛事信息
+  getalllist(){
     var that=this
     wx.cloud.callFunction({
       name:"Bcomplist",
@@ -194,10 +213,17 @@ Page({
       },
       success(res){
         that.setData({
-          competitionList:res.result.data
+          competitionList:res.result.data.reverse()
         })
       }
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function () {
+    this.getalllist()
   },
 
   /**

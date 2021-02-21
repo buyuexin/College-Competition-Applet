@@ -1,7 +1,6 @@
 // pages/comp_list/comp_list.js
 let DB=wx.cloud.database()
 Page({
-
   /**
    * 页面的初始数据
    */
