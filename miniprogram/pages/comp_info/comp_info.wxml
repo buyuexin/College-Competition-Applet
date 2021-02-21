@@ -19,40 +19,48 @@
           <view class="image">
             <image class="radius" src="{{image}}" mode="widthFix"></image>
           </view>
-            <view class="title solid-bottom">{{title}}</view>
-            <view class="item solid-bottom">
-              <view class="item-left">
-                <view class="line-orange bg-white cu-tag radius">主办方</view>
-              </view>
-              <view class="item-right">{{host}}</view>
-            </view>
-            <view class="item solid-bottom">
-              <view class="item-left">
-                <view class="line-orange bg-white cu-tag radius">报名时间</view>
-              </view>
-              <view class="item-right">{{registrationTime}}</view>
-            </view>
-            <view class="item solid-bottom">
-              <view class="item-left">
-                <view class="line-orange bg-white cu-tag radius">比赛时间</view>
-              </view>
-              <view class="item-right">{{startTime}}</view>
-            </view>
-            <view class="item solid-bottom">
-              <view class="item item-50 solid-right">
-                <view class="item-40">
-                  <view class="line-orange bg-white cu-tag radius">类型</view>
-                </view>
-                <view class="item-60">{{type}}</view>
-              </view>
-              <view class="item item-50">
-                <view class="item-40">
-                  <view class="line-orange bg-white cu-tag radius">级别</view>
-                </view>
-                <view class="item-60">{{rank}}</view>
+          <view class="solid-bottom">
+            <view class="title">{{title}}</view>
+            <view class="collect" bindtap="collect">
+              <view>
+                <text class="cuIcon-{{islike==1?'likefill':'like'}}  margin-right-xs" style="font-size: 36rpx;"></text>
+                收藏
               </view>
             </view>
-            <view class="item">{{content}}</view>
+          </view>
+          <view class="item solid-bottom">
+            <view class="item-left">
+              <view class="line-orange bg-white cu-tag radius">主办方</view>
+            </view>
+            <view class="item-right">{{host}}</view>
+          </view>
+          <view class="item solid-bottom">
+            <view class="item-left">
+              <view class="line-orange bg-white cu-tag radius">报名时间</view>
+            </view>
+            <view class="item-right">{{registrationTime}}</view>
+          </view>
+          <view class="item solid-bottom">
+            <view class="item-left">
+              <view class="line-orange bg-white cu-tag radius">比赛时间</view>
+            </view>
+            <view class="item-right">{{startTime}}</view>
+          </view>
+          <view class="item solid-bottom">
+            <view class="item item-50 solid-right">
+              <view class="item-40">
+                <view class="line-orange bg-white cu-tag radius">类型</view>
+              </view>
+              <view class="item-60">{{type}}</view>
+            </view>
+            <view class="item item-50">
+              <view class="item-40">
+                <view class="line-orange bg-white cu-tag radius">级别</view>
+              </view>
+              <view class="item-60">{{rank}}</view>
+            </view>
+          </view>
+          <view class="item">{{content}}</view>
         </view>
       </view>
     </scroll-view>

@@ -2,6 +2,7 @@ const app = getApp();
 Page({
   data:{
     CustomBar: app.globalData.CustomBar,
+    islike: 0,
     cur: 0, 
     teamList:[],
     image:"",
@@ -56,6 +57,14 @@ Page({
   toTeamrls(e) {
     wx.navigateTo({
       url: '../events/team_rls/team_rls',
+    })
+  },
+
+  // 收藏
+  collect: function(e) {
+    let like = 1-this.data.islike;
+    this.setData({
+      islike: like
     })
   },
 

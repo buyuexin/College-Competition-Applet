@@ -136,6 +136,7 @@
 
 .title{
   padding: 5% 10%;
+  padding-bottom: 3%;
   text-align: center;
   font-weight: 500;
   font-size: 24px;
@@ -186,4 +187,21 @@
 .height{
   height: 80rpx;
   line-height: 80rpx;
+}
+.collect{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5rpx;
+  width: 100%;
+}
+.collect>view{
+  padding-right: 10rpx;
+  width: 125rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15rpx;
+  border: 1px solid #c04851;
+  color: #c04851;
 }

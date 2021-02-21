@@ -8,8 +8,8 @@
     "pages/my/myrls/myrls",
     "pages/events/comp_rls/comp_rls",
     "pages/my/home/home",
-    "pages/my/follow/follow",
     "pages/events/home/home",
+    "pages/my/follow/follow",
     "pages/events/comp_list/comp_list",
     "pages/events/team_list/team_list"
   ],
