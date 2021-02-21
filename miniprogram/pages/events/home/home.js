@@ -9,55 +9,24 @@ Page({
     levelList: app.globalData.levelList,
     collegeList: app.globalData.collegeList,
     screenShow:"none",  // 筛选框显示
-    competitionList:[
-      {
-        url: "",
-        image:"../../../images/comp_pic.png",
-        name:"2021年第十一届MathorCup高校数学建模挑战赛",
-        level:"国家级",
-        college:"软件学院",
-        registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-        startTime:"2021.04.15-2021.04.19",  // 参赛时间
-        statecolor:"green",  // gray/green/yellow
-        state:"正在报名",  // 已结束/正在报名/正在进行
-        isShow: true,
-      },
-      {
-        url: "",
-        image:"../../../images/comp_pic.png",
-        name:"2020-2021年度第二届全国大学生算法设计与编程挑战赛（冬季赛）",
-        level:"校级",
-        college:"国际商学院",
-        registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-        startTime:"2021.04.15-2021.04.19",  // 参赛时间
-        statecolor:"gray",  
-        state:"已结束",
-        isShow: true, 
-      },
-      {
-        url: "",
-        image:"../../../images/comp_pic.png",
-        name:"2021年“远见者杯”全国大学生创新促进就业（简历设计）大赛",
-        level:"院级",
-        college:"城市文化学院",
-        registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-        startTime:"2021.04.15-2021.04.19",  // 参赛时间
-        statecolor:"yellow",  
-        state:"正在进行",  
-        isShow: true,
-      },
-    ],
+    competitionList:[],
     keyword:[],  // 选中的关键词
+    levelstand:["院级","校级","市级","省级","国家级","国际级"],
+    collegestand:["软件学院","国际商学院","城市文化学院","职业教育学院","经济管理学院"],
+    levelnum:[],
+    collegenum:[]
   },
 
   // 搜索
   searchItem(e) {
-    let key = e.detail.value.toLowerCase();
-    let list = this.data.competitionList;
+    let key = e.detail.value.toLowerCase();//获取输入框内的值
+    let list = this.data.competitionList;//获取当前的列表数据
+    console.log(key)
+    console.log(list)
     for (let i = 0; i < list.length; i++) {
       let a = key;
-      let b = list[i].name.toLowerCase();
-      if (b.search(a) != -1) {
+      let b = list[i].compname.toLowerCase();
+      if (b.search(a) != -1) {//在b中搜索有无a字段。
         list[i].isShow = true
       } else {
         list[i].isShow = false
@@ -116,24 +85,47 @@ Page({
 
   // 确定
   confirm(e) {
-    let word = this.data.keyword;
-    let list = this.data.competitionList;
-
-    if(word.length != 0) {
-      for(let i = 0; i < list.length; i++) {
-        let a = list[i].level;
-        let b = list[i].college;
-        console.log('a = ',a,', b = ',b);
-        if(word.indexOf(a)!=-1 || word.indexOf(b)!=-1) {
-          list[i].isShow = true;
-        } else {
-          list[i].isShow = false;
+    this.setData({//筛选前先将列表数组清空
+      competitionList:[]
+    })
+    var that=this
+    let word = this.data.keyword;//两个筛选框中选中的选项（文字呈现、数组）
+    for (let i = 0; i < word.length; i++) {//获取选中级别的对应的数字，作为筛选条件
+      for(let j=0;j<that.data.levelstand.length;j++){
+        if(word[i]==that.data.levelstand[j]){
+          that.data.levelnum=that.data.levelnum.concat(j)
         }
       }
-      this.setData({
-        competitionList: list
-      })
     }
+    for (let i = 0; i < word.length; i++) {//获取选中学院的对应的数字，作为筛选条件
+      for(let j=0;j<that.data.collegestand.length;j++){
+        if(word[i]==that.data.collegestand[j]){
+          that.data.collegenum=that.data.collegenum.concat(j)
+        }
+      }
+    }
+    //注意：接下来每次筛选完毕后需将levelnum和collegenum数组置空
+    // console.log(that.data.levelnum)  
+    // console.log(that.data.collegenum)
+    for(let i=0;i<that.data.levelnum.length;i++){//获取competitionList
+      for(let j=0;j<that.data.collegenum.length;j++){
+        wx.cloud.callFunction({
+          name:"screencomp",
+          data:{
+            levelnum:i,
+            collegenum:j
+          },
+          success(res){
+            that.setData({
+              competitionList:that.data.competitionList.concat(res.result.data),
+              levelnum:[],//清空
+              collegenum:[]//清空
+            })
+          }
+        })
+      }
+    }
+    // console.log(that.data.competitionList)     获取成功
     this.setData({
       screenShow: 'none',
     })
@@ -141,6 +133,7 @@ Page({
 
   // 重置
   reset(e) {
+    //重置筛选栏
     let levelList = this.data.levelList;
     let collegeList = this.data.collegeList;
     let competitionList = this.data.competitionList;
@@ -156,8 +149,23 @@ Page({
     this.setData({
       collegeList: collegeList,
       levelList: levelList,
-      competitionList: competitionList,
       keyword: [],
+    })
+    //重置后重新获取全部数据
+    var that=this
+    wx.cloud.callFunction({
+      name:"Bcomplist",
+      data:{
+        school:1
+      },
+      success(res){
+        that.setData({
+          competitionList:res.result.data
+        })
+      }
+    })
+    this.setData({
+      screenShow: 'none',
     })
   },
 
@@ -177,8 +185,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    var that=this
+    wx.cloud.callFunction({
+      name:"Bcomplist",
+      data:{
+        school:1
+      },
+      success(res){
+        that.setData({
+          competitionList:res.result.data
+        })
+      }
+    })
   },
 
   /**
@@ -192,7 +211,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad()
   },
 
   /**
