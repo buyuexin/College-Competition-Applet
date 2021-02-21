@@ -1,0 +1,33 @@
+<cu-custom bgColor="bg-gradual-orange" bgImage="../../../images/bg-bar.jpg" isBack="{{true}}">
+  <view slot="backText">返回</view>
+	<view slot="content">资讯</view>
+</cu-custom>
+
+<view class="container">
+  <view class="cu-card case">
+    <view class="cu-item shadow">
+      <view class="title-image" wx:if="{{isTitleImage==1}}">
+        <image class="radius" src="{{src}}" mode="widthFix"></image>
+      </view>
+        <view class="title solid-bottom">{{title}}</view>
+        <view class="outline" wx:if="{{outline!=''}}">
+          {{outline}}
+        </view>
+        <view wx:for="{{content}}">
+          <view class="image" wx:if="{{item.type=='image'}}">
+            <image class="radius" src="{{item.value}}" mode="widthFix"></image>
+          </view>
+          <view class="subtitle" wx:if="{{item.type=='subtitle'}}">
+            {{item.value}}
+          </view>
+          <view class="content" wx:if="{{item.type=='content'}}">
+            {{item.value}}
+          </view>
+          <view class="source" wx:if="{{item.type=='source'}}">
+            {{item.value}}
+          </view>
+        </view>
+        <view class="source" wx:if="{{source!=''}}">{{source}}</view>
+    </view>
+  </view>
+</view>

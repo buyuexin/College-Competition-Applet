@@ -15,11 +15,14 @@
   </swiper-item>
 </swiper>
 
-<view class="bg-white padding">
+<view class="bg-white padding-sm">
   <view class="grid col-5 grid-square">
-    <view class="bg-img bg-gray" wx:for="{{5}}" wx:key="{{index}}" >
+    <view wx:for="{{nav}}" wx:key="{{index}}" style="background:{{item.color}};">
       <navigator url="../../events/comp_list/comp_list?title={{index}}">
-        <image src=""></image>
+        <view class="nav-item">
+          <image class="" src="../../../images/{{index}}.png"></image>
+          <view class="">{{item.title}}</view>
+        </view>
       </navigator>
     </view>
   </view>
@@ -59,7 +62,7 @@
     <view class="cuIcon-homefill"></view> 首页
   </view>
   <view class="action text-gray add-action" bindtap="pageChange" data-cur="events">
-    <button class="cu-btn cuIcon-order bg-orange shadow"></button>
+    <button class="cu-btn cuIcon-order bg-gray shadow text-orange"></button>
     赛事
   </view>
   <view class="action text-gray" bindtap="pageChange" data-cur="my">
