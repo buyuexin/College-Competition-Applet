@@ -4,7 +4,7 @@
 </cu-custom>
 
 <view class="cu-card" wx:if="{{type==0}}" wx:for="{{competitionList}}" wx:key="*this">
-  <navigator url="../../comp_info/comp_info?title=0&which=0">
+  <navigator url="../../comp_info/comp_info?class={{item.class}}&id={{item.id}}">
     <view class="cu-item shadow">
       <view class="desc margin-top-sm justify-start">
         <view class="pic radius">

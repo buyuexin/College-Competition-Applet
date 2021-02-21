@@ -12,18 +12,18 @@
 <swiper current="{{cur}}" class="flex align-center margin-top-xs" style="height: {{height_sys}}px" bindchange="bindChange">
   <!-- 队伍招募 -->
   <swiper-item>
-    <scroll-view class="padding-sm flex align-center" style="height: {{height_sys}}px">
+    <scroll-view scroll-y class="padding-sm flex align-center" style="height: {{height_sys}}px">
       <view class="radius padding-top-xs padding-sm bg-white margin-bottom-xs relative" wx:for="{{teamList}}">
         <image src="../../../images/triangle.png" class="tri"></image>
         <view class="item-border-bottom time">
           <text class="cuIcon-time"></text>
-          {{item.time}}</view>
+          {{item.startday}}</view>
         <view class="" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
-          队伍名称：{{item.name}}</view>
+          队伍名称：{{item.teamname}}</view>
         <view class="desc" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
-          关联赛事：{{item.comp}}</view>
+          关联赛事：{{item.compname}}</view>
         <view class="tag-list">
-          <view class="tag" wx:for="{{item.tag}}" wx:for-item="tagCon">
+          <view class="tag" wx:for="{{item.tags}}" wx:for-item="tagCon">
             <text class="tag-con">{{tagCon}}</text>
           </view>
         </view>

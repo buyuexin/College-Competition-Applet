@@ -5,48 +5,49 @@
 
 <view class="cu-form-group margin-top">
   <view class="title">头像</view>
-  <image src="{{info[0]}}" class="cu-avatar radius"></image>
+  <image src="{{avatarUrl}}" class="cu-avatar radius"></image>
 </view>
 <form bindsubmit="formSubmit">
   <view class="border-bottom cu-form-group">
     <view class="title">昵称</view>
-    <input class="text-right" value="{{info[1]}}" name="nickname" bindblur="inputChange" bindconfirm="inputChange" data-type="1"></input>
+    <view class="text-right">{{nickname}}</view>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>姓名</view>
-    <input class="text-right" value="{{info[2]}}" name="name" placeholder="请填写姓名" bindblur="inputChange" bindconfirm="inputChange" data-type="2"></input>
+    <input class="text-right" value="{{name}}" bindinput="getname" bindtap="actbutton"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">性别</view>
-    <picker bindchange="pickerChange" data-type="3" name="gender" value="{{info[3]}}" range="{{genderList}}">
-      <view class="picker">{{genderList[info[3]]}}</view>
+    <!-- 单选选择性别 -->
+    <picker bindtap="actbutton" bindchange="getchange" range="{{genderList}}">
+      <view class="picker">{{gender}}</view>
     </picker>
   </view>
   <view class="border-bottom cu-form-group">
-    <view class="title">手机号/邮箱</view>
-    <input class="text-right" value="{{info[4]}}" name="contact" bindblur="inputChange" bindconfirm="inputChange" data-type="4"></input>
+    <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>手机号/邮箱</view>
+    <input class="text-right" value="{{contact}}" bindinput="getcontact" bindtap="actbutton"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>学校</view>
-    <input class="text-right" name="university" value="{{info[5]}}" placeholder="请填写学校" bindblur="inputChange" bindconfirm="inputChange" data-type="5"></input>
+    <input class="text-right" value="{{school}}" bindinput="getschool" bindtap="actbutton"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>院系</view>
-    <input class="text-right" name="college" value="{{info[6]}}" placeholder="请填写院系" bindblur="inputChange" bindconfirm="inputChange" data-type="6"></input>
+    <input class="text-right" value="{{college}}" bindinput="getcollege" bindtap="actbutton"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">专业</view>
-    <input class="text-right" name="major" value="{{info[7]}}" placeholder="请填写专业" bindblur="inputChange" bindconfirm="inputChange" data-type="7"></input>
+    <input class="text-right" value="{{major}}" bindinput="getmajor" bindtap="actbutton"></input>
   </view>
   
   <view class="cu-form-group">
     <view class="title">年级</view>
-    <picker bindchange="pickerChange" data-type="8" name="grade" value="{{info[7]}}" range="{{gradeList}}">
-      <view class="picker">{{gradeList[info[8]]}}</view>
+    <picker bindtap="actbutton" bindchange="getchange2" range="{{gradeList}}">
+      <view class="picker">{{grade}}</view>
     </picker>
   </view>
   
   <view class="margin-top ">
-    <button class="block lg" type="primary" disabled="{{disabled}}" formType="submit">保存</button>
+    <button class="block lg" type="primary" disabled="{{disabled}}" bindtap="submitform">保存</button>
   </view>
 </form>

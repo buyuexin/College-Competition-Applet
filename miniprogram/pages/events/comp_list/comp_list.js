@@ -8,7 +8,7 @@ Page({
   data: {
     type: 0,  // 有两种形式，0或1，赛氪上的列表用0，自己创建的赛事列表用1
     title:"",
-    end:3,//用于实现触底加载更多
+    end:10,//用于实现触底加载更多
     competitionList:[],//赛事列表
     compListnum:0//某类赛事列表名代号
   },
@@ -131,7 +131,7 @@ Page({
    */
   onReachBottom: function () {
     var that=this
-    this.data.end+=2
+    this.data.end+=10
     wx.cloud.callFunction({
       name:"Bcomplist",
       data:{

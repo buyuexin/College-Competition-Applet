@@ -10,19 +10,34 @@ Page({
     levelList: app.globalData.levelList,
     collegeList: app.globalData.collegeList,
     typeList: app.globalData.typeList,
-    level: 0,  // 赛事级别序号
-    college: 0,  // 发布学院序号
-    type: 0, // 赛事类型序号
-    contentCount: 0,
-    content: "",
-    regStart: '',  // 报名开始时间
-    regEnd: '',  // 报名结束时间
-    compStart: '',  // 比赛开始时间
-    compEnd: '',  // 比赛结束时间
-    images:[],  // 上传的图片数组
+    content:"",
+    contentCount:0,
+    images:[],
+    compname:"",
+    sponsor:"",
+    college:0,
+    level:0,
+    type:0,
+    regStart:"",
+    regEnd:"",
+    compStart:"",
+    compEnd:"",
+    state:"",
+    statecolor:"",
+    isShow:true
+    // level: 0,  // 赛事级别序号
+    // college: 0,  // 发布学院序号
+    // type: 0, // 赛事类型序号
+    // contentCount: 0,
+    // content: "",
+    // regStart: '',  // 报名开始时间
+    // regEnd: '',  // 报名结束时间
+    // compStart: '',  // 比赛开始时间
+    // compEnd: '',  // 比赛结束时间
+    // images:[],  // 上传的图片数组
   },
 
-  // 获取输入文本框的字数
+  // 获取输入文本框的内容及字数
   getContentInput(e){
     const value = e.detail.value;
     this.data.content = value;
@@ -32,10 +47,26 @@ Page({
     })
   },
 
+  //获取赛事名称
+  getcompname(e){
+    this.setData({
+      compname:e.detail.value
+    })
+  },
+
+  //获取主办方
+  getsponsor(e){
+    this.setData({
+      sponsor:e.detail.value
+    })
+  },
+
+
+
 
   // 选择图片
   chooseImage(e) {
-    if(this.data.images.length >= 6) {
+    if(this.data.images.length >= 1) {
       wx.showToast({
         title: '上传图片数量已达上限！',
         icon: 'none',
@@ -94,14 +125,14 @@ Page({
   // 赛事级别选择
   levelChange(e) {
     this.setData({
-      level: e.detail.value
+      level: parseInt(e.detail.value) 
     })
   },
 
   // 发布学院选择
   collegeChange(e) {
     this.setData({
-      college: e.detail.value
+      college:parseInt(e.detail.value) 
     })
   },
 
@@ -151,6 +182,46 @@ Page({
       compEnd: date,
     });
 
+  },
+
+  submitform(){
+    var that=this
+    var timestamp = Date.parse(new Date());//获取当前时间戳
+    var regStarttimestamp=new Date(this.data.regStart).getTime();//将报名开始时间转为时间戳
+    var regEndtimestamp=new Date(this.data.regEnd).getTime()+86486399;//报名结束时间当天的23:59:59
+    if(regStarttimestamp<=timestamp&&timestamp<=regEndtimestamp){
+      that.setData({
+        state:"正在报名",
+        statecolor:"green"
+      })
+    }else{
+      that.setData({
+        state:"报名结束",
+        statecolor:"yellow"
+      })
+    }
+    wx.cloud.database().collection("school_comp").add({
+      data:{
+        content:that.data.content,
+        contentCount:that.data.contentCount,
+        images:that.data.images,
+        compname:that.data.compname,
+        sponsor:that.data.sponsor,
+        college:that.data.college,
+        level:that.data.level,
+        type:that.data.type,
+        regStart:that.data.regStart,
+        regEnd:that.data.regEnd,
+        compStart:that.data.compStart,
+        compEnd:that.data.compEnd,
+        state:that.data.state,
+        statecolor:that.data.statecolor,
+        isShow:that.data.isShow
+      }
+    })
+    wx.navigateBack({
+      delta: 0,
+    })
   },
 
   /**

@@ -7,42 +7,106 @@ Page({
   data: {
     genderList:["男","女"],
     gradeList:["大一","大二","大三","大四","研一","研二","研三"],
-    info:[
-      "../../../images/icon.png",  // 头像url
-      "Nicole",  // 昵称
-      "王老二",  // 姓名
-      0,  // 性别 genderList的序号
-      "123456789@qq.com",
-      "华南师范大学",  // 学校 
-      "软件学院",  // 院系
-      "软件工程",  // 专业
-      1  // 年级 gradeList的序号
-    ],
-    disabled: true,  // 保存按钮是否禁用，有修改才启用
+    useropenid:"",
+    avatarUrl:"",
+    nickname:"",
+    name:"请输入",
+    gender:"男",
+    contact:"请输入",
+    school:"请输入",
+    college:"请输入",
+    major:"请输入",
+    grade:"大一",
+    disabled: true  // 保存按钮是否禁用，有修改才启用
   },
 
-  // input框内容修改
-  inputChange(e) {
-    console.log(e);
-    let type = parseInt(e.currentTarget.dataset.type);
-    if(e.detail.value != this.data.info[type]) {
+  //当用户点击input组件修改数据后激活按钮。欠缺：如果用户点击后不修改数据呢？
+  actbutton(e){
+    this.setData({
+      disabled:false
+    })
+  },
+  
+  //当用户使用picker组件后，获取选中的值(性别)
+  getchange(e){
+    if(e.detail.value==0){
       this.setData({
-        disabled: false
+        gender:"男"
+      })
+    }else{
+      this.setData({
+        gender:"女"
       })
     }
   },
 
-  pickerChange(e) {
-    let type = parseInt(e.currentTarget.dataset.type);
-    if(e.detail.value != this.data.info[type]) {
-      let key = "info["+type+"]";
-      let param = {};
-      param[key] = e.detail.value;
-      param['disabled'] = false;
-      this.setData(param);
-    }
+    //当用户使用picker组件后，获取选中的值(年级)
+    getchange2(e){
+      if(e.detail.value==0){
+        this.setData({
+          grade:"大一"
+        })
+      }else if(e.detail.value==1){
+        this.setData({
+          grade:"大二"
+        })
+      }else if(e.detail.value==2){
+        this.setData({
+          grade:"大三"
+        })
+      }else if(e.detail.value==3){
+        this.setData({
+          grade:"大四"
+        })
+      }else if(e.detail.value==4){
+        this.setData({
+          grade:"研一"
+        })
+      }else if(e.detail.value==5){
+        this.setData({
+          grade:"研二"
+        })
+      }else if(e.detail.value==6){
+        this.setData({
+          grade:"研三"
+        })
+      }
+    },
 
-  } ,
+  //获取姓名
+  getname(e){
+    this.setData({
+      name:e.detail.value
+    })
+  },
+
+  //获取手机号/邮箱
+  getcontact(e){
+    this.setData({
+      contact:e.detail.value
+    })
+  },
+
+  //获取学校
+  getschool(e){
+    this.setData({
+      school:e.detail.value
+    })
+  },
+
+  //获取院系
+  getcollege(e){
+    this.setData({
+      college:e.detail.value
+    })
+  },
+
+  //获取专业
+  getmajor(e){
+    this.setData({
+      major:e.detail.value
+    })
+  },
 
   // 性别选择
   genderChange(e) {
@@ -69,15 +133,33 @@ Page({
   },
 
   // 表单提交
-  formSubmit(e) {
-    console.log(e.detail)
+  submitform() {
+    var that=this
+    const stropenid=wx.getStorageSync("openid")
+    wx.cloud.database().collection("users").where({openid:stropenid}).update({
+      data:{
+        useropenid:stropenid,
+        avatarUrl:that.data.avatarUrl,
+        nickname:that.data.nickname,
+        name:that.data.name,
+        gender:that.data.gender,
+        contact:that.data.contact,
+        school:that.data.school,
+        college:that.data.college,
+        major:that.data.major,
+        grade:that.data.grade,
+      }
+    })
+    that.setData({//每次提交后将按钮置灰
+      disabled:true
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
   },
 
   /**
@@ -91,7 +173,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that=this;
+    const openid=wx.getStorageSync("openid");
+    let user=Promise.resolve(wx.cloud.database().collection("users").where({useropenid:openid}).get())
+    user.then(res=>{
+    that.setData({
+      avatarUrl:res.data[0].avatarUrl,
+      nickname:res.data[0].nickname,
+      name:res.data[0].name,
+      gender:res.data[0].gender,
+      contact:res.data[0].contact,
+      school:res.data[0].school,
+      college:res.data[0].college,
+      major:res.data[0].major,
+      grade:res.data[0].grade,
+    })
+  })
   },
 
   /**

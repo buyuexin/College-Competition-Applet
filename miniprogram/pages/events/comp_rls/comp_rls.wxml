@@ -29,11 +29,11 @@
 <view class="info text">
   <view class="border-bottom cu-form-group">
     <view class="title">赛事名称</view>
-    <input placeholder="请输入赛事名称"></input>
+    <input placeholder="请输入赛事名称" bindinput="getcompname"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">主办方</view>
-    <input placeholder="请输入主办方"></input>
+    <input placeholder="请输入主办方" bindinput="getsponsor"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">发布学院</view>
@@ -76,6 +76,6 @@
 </view>
 
 <view class="margin-top ">
-  <button class="block lg" type="primary">
+  <button class="block lg" type="primary" bindtap="submitform">
   <text class="cuIcon-upload"></text>发布</button>
 </view>
