@@ -20,9 +20,9 @@
           <view class="subtitle" wx:if="{{item.type=='subtitle'}}">
             {{item.value}}
           </view>
-          <view class="content" wx:if="{{item.type=='content'}}">
+          <text class="content" space="emsp" wx:if="{{item.type=='content'}}">
             {{item.value}}
-          </view>
+          </text>
           <view class="source" wx:if="{{item.type=='source'}}">
             {{item.value}}
           </view>

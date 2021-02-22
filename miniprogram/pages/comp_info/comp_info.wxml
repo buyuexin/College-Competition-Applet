@@ -21,8 +21,8 @@
           </view>
           <view class="solid-bottom">
             <view class="title">{{title}}</view>
-            <view class="collect" bindtap="collect">
-              <view>
+            <view class="collect">
+              <view bindtap="collect">
                 <text class="cuIcon-{{islike==1?'likefill':'like'}}  margin-right-xs" style="font-size: 36rpx;"></text>
                 收藏
               </view>
