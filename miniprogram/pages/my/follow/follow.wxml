@@ -3,6 +3,11 @@
 	<view slot="content">我关注的赛事</view>
 </cu-custom>
 
+<view class="bottomline" wx:if="{{competitionList.length==0}}">
+  <image mode="widthFix" src="../../../images/nomore2.png"></image>
+  还没有关注的赛事哦
+</view>
+
 <view class="list menu-avatar">
     <view class="shadow margin-top-xs cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{competitionList}}" wx:key="{{index}}" data-idx="{{index}}" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
       <view class="cont align-center justify-start">

@@ -42,7 +42,10 @@
   </view>
 </view>
 
-
+<view class="bottomline" wx:if="{{competitionList.length==0}}">
+  <image mode="widthFix" src="../../../images/nomore2.png"></image>
+  暂时没有数据
+</view>
 
 <!-- 赛事列表 -->
 <view class="cu-card" wx:for="{{competitionList}}" wx:key="*this">

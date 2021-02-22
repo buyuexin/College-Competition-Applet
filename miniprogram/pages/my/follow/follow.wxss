@@ -96,3 +96,14 @@
 	justify-content: flex-end;
 	align-items: center
 }
+.bottomline{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200rpx;
+  color: var(--gray);
+}
+.bottomline>image{
+  width: 300rpx;
+}

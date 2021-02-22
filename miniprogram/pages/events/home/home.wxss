@@ -9,16 +9,12 @@
 .border-top{
   border-top: 1px solid #f0f0f0;
 }
-
 .bar{
   min-height: 80rpx;
 }
-
 .srh{
   height: 56rpx;
 }
-
-
 .rls-btn{
   width: 100rpx;
   height: 56rpx;
@@ -27,11 +23,9 @@
   text-align: center;
   border-radius: 15rpx;
 }
-
 .scr-bar{
   position: relative;
 }
-
 .screen{
   width: 100%;
   position: absolute;
@@ -39,7 +33,6 @@
   z-index: 10;
   flex-direction: column;
 }
-
 .scr-btn{
   /* border-radius: 20%; */
   text-align: center;
@@ -118,4 +111,15 @@
 	font-family: Helvetica Neue, Helvetica, sans-serif;
   white-space: nowrap;
   width: min-content;
+}
+.bottomline{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200rpx;
+  color: var(--gray);
+}
+.bottomline>image{
+  width: 300rpx;
 }
