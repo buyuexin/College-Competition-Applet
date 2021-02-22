@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/my/home/home",
     "pages/index/home/home",
     "pages/events/comp_list/comp_list",
     "pages/events/comp_rls/comp_rls",
@@ -8,7 +9,6 @@
     "pages/my/myinfo/myinfo",
     "pages/events/team_rls/team_rls",
     "pages/my/myrls/myrls",
-    "pages/my/home/home",
     "pages/events/home/home",
     "pages/my/follow/follow",
     "pages/events/team_list/team_list"

@@ -37,10 +37,13 @@
     <view class="itemname">使用指南</view>
     <view class="arrow"></view>
   </view>
-  <view class="item">
-    <view class="icon"><image src="../../../images/feedback.png"></image></view>
-    <view class="itemname">我要反馈</view>
-    <view class="arrow"></view>
+  <view class="feedback">
+    <button class="border btn" style="width: 100%;" open-type="feekback"></button>
+    <view class="item">
+      <view class="icon"><image src="../../../images/feedback.png"></image></view>
+      <view class="itemname">意见反馈</view>
+      <view class="arrow-f"></view>
+    </view>
   </view>
   <view class="item">
     <view class="icon"><image src="../../../images/money.png"></image></view>
