@@ -1,4 +1,10 @@
-
+.item{
+  display: block;
+	background-color: var(--white);
+	overflow: hidden;
+	border-radius: 10rpx;
+	margin: 10rpx;
+}
 
 .pic{
   /* background-color: #ccc; */
@@ -8,7 +14,8 @@
 }
 
 .pic image{
-  width: 100%;
+  width: 95%;
+  max-height: 220rpx;
   display: block;
   border-radius: 10px;
 }
