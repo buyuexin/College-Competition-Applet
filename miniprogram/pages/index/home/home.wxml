@@ -8,7 +8,7 @@
 <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
   <swiper-item wx:for="{{swiperList}}" wx:key="id" class="{{cardCur==index?'cur':''}}">
     <view class= "swiper-item">
-      <navigator url="../../comp_info/comp_info?class={{item.class}}&id={{item.id}}" open-type="navigate" class="navigator">
+      <navigator url="../../comp_info/comp_info?class={{item.class}}&id={{item.id}}&schoolcomp=0" open-type="navigate" class="navigator">
         <image src="{{item.image}}" mode="aspectFill"></image>
       </navigator>
     </view>
@@ -17,7 +17,7 @@
 
 <view class="bg-white padding-sm">
   <view class="grid col-5 grid-square">
-    <view wx:for="{{nav}}" wx:key="{{index}}" style="background:{{item.color}};">
+    <view wx:for="{{nav}}" wx:key="index" style="background:{{item.color}};">
       <navigator url="../../events/comp_list/comp_list?title={{index}}">
         <view class="nav-item">
           <image class="" src="../../../images/{{index}}.png"></image>
@@ -36,6 +36,7 @@
 </view>
 
 <view >
+  <navigator url="../article/article">
   <view class="cu-card article" wx:for="{{articleList}}" wx:key="id">
       <view class="cu-item shadow">
         <view class="title">
@@ -53,6 +54,7 @@
         </view>
       </view>
   </view>
+</navigator>
 </view>
 
 

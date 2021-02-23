@@ -40,6 +40,7 @@
   padding: 18rpx;
   font-size: 18px;
   white-space: pre-wrap;
+  
 }
 .source{
   color: var(--darkGray);

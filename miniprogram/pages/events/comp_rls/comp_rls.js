@@ -1,6 +1,8 @@
 // pages/team_rls/team_rls.js
 const app = getApp();
 var util = require('../../../utils/util.js');
+var schoolcomp=""
+var standard=1//用于判断是否所有输入框都有输入（照片除外）
 Page({
 
   /**
@@ -66,7 +68,7 @@ Page({
 
   // 选择图片
   chooseImage(e) {
-    if(this.data.images.length >= 1) {
+    if(this.data.images.length >= 6) {
       wx.showToast({
         title: '上传图片数量已达上限！',
         icon: 'none',
@@ -171,7 +173,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    schoolcomp=wx.getStorageSync("schoolcomp")
     // 调用函数时，传入new Date()参数，返回值是日期和时间
     var date = util.formatDate(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据
@@ -184,8 +186,18 @@ Page({
 
   },
 
+  getstandard(){
+    if(this.data.content==""||this.data.compname==""||this.data.sponsor==""){
+      standard=0
+    }else{
+      standard=1  
+    }
+  },
+
   submitform(){
     var that=this
+    that.getstandard()
+    if(standard==1){      
     var timestamp = Date.parse(new Date());//获取当前时间戳
     var regStarttimestamp=new Date(this.data.regStart).getTime();//将报名开始时间转为时间戳
     var regEndtimestamp=new Date(this.data.regEnd).getTime()+86486399;//报名结束时间当天的23:59:59
@@ -200,28 +212,59 @@ Page({
         statecolor:"yellow"
       })
     }
-    wx.cloud.database().collection("school_comp").add({
-      data:{
-        content:that.data.content,
-        contentCount:that.data.contentCount,
-        images:that.data.images,
-        compname:that.data.compname,
-        sponsor:that.data.sponsor,
-        college:that.data.college,
-        level:that.data.level,
-        type:that.data.type,
-        regStart:that.data.regStart,
-        regEnd:that.data.regEnd,
-        compStart:that.data.compStart,
-        compEnd:that.data.compEnd,
-        state:that.data.state,
-        statecolor:that.data.statecolor,
-        isShow:that.data.isShow
-      }
-    })
+    if(schoolcomp!=0){
+      wx.cloud.database().collection("school_comp").add({
+        data:{
+          schoolcomp:schoolcomp,
+          content:that.data.content,
+          contentCount:that.data.contentCount,
+          images:that.data.images,
+          compname:that.data.compname,
+          sponsor:that.data.sponsor,
+          college:that.data.college,
+          level:that.data.level,
+          type:that.data.type,
+          regStart:that.data.regStart,
+          regEnd:that.data.regEnd,
+          compStart:that.data.compStart,
+          compEnd:that.data.compEnd,
+          state:that.data.state,
+          statecolor:that.data.statecolor,
+          isShow:that.data.isShow
+        }
+      })
+    }else{
+      wx.cloud.database().collection("school_comp").add({
+        data:{
+          content:that.data.content,
+          contentCount:that.data.contentCount,
+          images:that.data.images,
+          compname:that.data.compname,
+          sponsor:that.data.sponsor,
+          college:that.data.college,
+          level:that.data.level,
+          type:that.data.type,
+          regStart:that.data.regStart,
+          regEnd:that.data.regEnd,
+          compStart:that.data.compStart,
+          compEnd:that.data.compEnd,
+          state:that.data.state,
+          statecolor:that.data.statecolor,
+          isShow:that.data.isShow
+        }
+      })
+    }
+    
     wx.navigateBack({
       delta: 0,
     })
+    }else{
+      wx.showToast({
+        title: '请将信息补充完整',
+        icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+        duration: 2000     
+      })  
+    }
   },
 
   /**

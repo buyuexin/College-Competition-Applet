@@ -7,22 +7,38 @@
   <image mode="widthFix" src="../../../images/nomore2.png"></image>
   还没有关注的赛事哦
 </view>
-
 <view class="list menu-avatar">
-    <view class="shadow margin-top-xs cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{competitionList}}" wx:key="{{index}}" data-idx="{{index}}" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
-      <view class="cont align-center justify-start">
+    <view class="shadow margin-top-xs cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{competitionList}}" wx:key="index" data-idx="index" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" wx:key="*this">
+      <navigator url="../../comp_info/comp_info?class={{item.class}}&id={{item.id}}&schoolcomp=0">
+      <view class="cont align-center justify-start" wx:if="{{item.class>=0}}">
         <view class="img">
           <image src="{{item.image}}" mode="aspectFill"></image>
         </view>
         <view class="desc">
           <view class="text-title">
             <text class="align-center tag bg-{{item.statecolor}} radius">{{item.state}}</text>
-            <text class="margin-left-xs align-center hidden">{{item.name}}</text>
+            <text class="margin-left-xs align-center hidden">{{item.compname}}</text>
           </view>
           <view class="text-content">报名时间：{{item.registrationTime}}</view>
           <view class="text-content">比赛时间：{{item.startTime}}</view>
         </view>
       </view>
+    </navigator>
+    <navigator url="../../comp_info/comp_info?schoolcomp={{item.schoolcomp}}">
+      <view class="cont align-center justify-start" wx:if="{{item.schoolcomp}}">
+        <view class="img">
+          <image src="{{item.image}}" mode="aspectFill"></image>
+        </view>
+        <view class="desc">
+          <view class="text-title">
+            <text class="align-center tag bg-{{item.statecolor}} radius">{{item.state}}</text>
+            <text class="margin-left-xs align-center hidden">{{item.compname}}</text>
+          </view>
+          <view class="text-content">报名时间：{{item.regStart}}~{{item.regEnd}}</view>
+          <view class="text-content">比赛时间：{{item.compStart}}~{{item.compEnd}}</view>
+        </view>
+      </view>
+    </navigator>
       <view class="move">
         <view bindtap="delete" data-idx="{{index}}" class="cuIcon-deletefill text-red" style="font-size: 56rpx;"></view>
       </view>

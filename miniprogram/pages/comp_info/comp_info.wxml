@@ -13,14 +13,15 @@
 <swiper current="{{cur}}" class="flex align-center margin-top-xs" style="height: {{height_sys}}px" bindchange="bindChange">
   <!-- 比赛详情 -->
   <swiper-item>
-    <scroll-view class="bg-white padding-xs flex align-center"  scroll-y="true" style="height: {{height_sys}}px">
-      <view class="cu-card case">
+    <scroll-view class="bg-white padding-xs flex align-center"  scroll-y="true" style="height: {{height_sys}}px" >
+      <!-- 赛氪赛事展示 -->
+      <view class="cu-card case" wx:if="{{complist.college!=0}}">
         <view class="cu-item shadow">
           <view class="image">
-            <image class="radius" src="{{image}}" mode="widthFix"></image>
+            <image class="radius" src="{{complist.image}}" mode="widthFix"></image>
           </view>
           <view class="solid-bottom">
-            <view class="title">{{title}}</view>
+            <view class="title">{{complist.name}}</view>
             <view class="collect">
               <view bindtap="collect">
                 <text class="cuIcon-{{islike==1?'likefill':'like'}}  margin-right-xs" style="font-size: 36rpx;"></text>
@@ -32,35 +33,85 @@
             <view class="item-left">
               <view class="line-orange bg-white cu-tag radius">主办方</view>
             </view>
-            <view class="item-right">{{host}}</view>
+            <view class="item-right">{{complist.sponsor}}</view>
           </view>
           <view class="item solid-bottom">
             <view class="item-left">
               <view class="line-orange bg-white cu-tag radius">报名时间</view>
             </view>
-            <view class="item-right">{{registrationTime}}</view>
+            <view class="item-right">{{complist.registrationTime}}</view>
           </view>
           <view class="item solid-bottom">
             <view class="item-left">
               <view class="line-orange bg-white cu-tag radius">比赛时间</view>
             </view>
-            <view class="item-right">{{startTime}}</view>
+            <view class="item-right">{{complist.startTime}}</view>
           </view>
           <view class="item solid-bottom">
             <view class="item item-50 solid-right">
               <view class="item-40">
                 <view class="line-orange bg-white cu-tag radius">类型</view>
               </view>
-              <view class="item-60">{{type}}</view>
+              <view class="item-60">{{complist.type}}</view>
             </view>
             <view class="item item-50">
               <view class="item-40">
                 <view class="line-orange bg-white cu-tag radius">级别</view>
               </view>
-              <view class="item-60">{{rank}}</view>
+              <view class="item-60">{{complist.level}}</view>
             </view>
           </view>
-          <view class="item">{{content}}</view>
+          <view class="item">了解更多：{{complist.link}}</view>
+        </view>
+      </view>
+      <!-- 校内赛事展示 -->
+      <view class="cu-card case" wx:if="{{complist.college>=0}}">
+        <view class="cu-item shadow">
+          <view class="image">
+            <image class="radius" src="{{complist.images[0]}}" mode="widthFix"></image>
+          </view>
+          <view class="solid-bottom">
+            <view class="title">{{complist.compname}}</view>
+            <view class="collect">
+              <view bindtap="collect">
+                <text class="cuIcon-{{islike==1?'likefill':'like'}}  margin-right-xs" style="font-size: 36rpx;"></text>
+                收藏
+              </view>
+            </view>
+          </view>
+          <view class="item solid-bottom">
+            <view class="item-left">
+              <view class="line-orange bg-white cu-tag radius">主办方</view>
+            </view>
+            <view class="item-right">{{complist.sponsor}}</view>
+          </view>
+          <view class="item solid-bottom">
+            <view class="item-left">
+              <view class="line-orange bg-white cu-tag radius">报名时间</view>
+            </view>
+            <view class="item-right">{{complist.regStart}}~{{complist.regEnd}}</view>
+          </view>
+          <view class="item solid-bottom">
+            <view class="item-left">
+              <view class="line-orange bg-white cu-tag radius">比赛时间</view>
+            </view>
+            <view class="item-right">{{complist.compStart}}~{{complist.compEnd}}</view>
+          </view>
+          <view class="item solid-bottom">
+            <view class="item item-50 solid-right">
+              <view class="item-40">
+                <view class="line-orange bg-white cu-tag radius">类型</view>
+              </view>
+              <view class="item-60">{{complist.type}}</view>
+            </view>
+            <view class="item item-50">
+              <view class="item-40">
+                <view class="line-orange bg-white cu-tag radius">级别</view>
+              </view>
+              <view class="item-60">{{complist.level}}</view>
+            </view>
+          </view>
+          <view class="item">{{complist.content}}</view>
         </view>
       </view>
     </scroll-view>
@@ -70,6 +121,7 @@
   <swiper-item>
     <scroll-view class="bg-white flex align-center"  scroll-y="true"  style="height: {{height_sys}}px">
       <view class="one-team" wx:for="{{teamList}}" wx:for-item="Item" wx:key="*this">
+        <navigator url="../events/team_info/team_info?id={{Item._id}}">
         <!--icon  name time-->
         <view class="self-info">
           <view class="img radius">
@@ -97,6 +149,7 @@
           <text class="cuIcon-right text-orange"></text>
           <text class="team-desc">队伍简介：{{Item.content}}</text>
         </view>
+      </navigator>
       </view>
       <view class='cu-tabbar-height'></view>
     </scroll-view>

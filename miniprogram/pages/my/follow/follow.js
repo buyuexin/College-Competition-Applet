@@ -5,7 +5,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    competitionList:[],
+    competitionList:[]
+    // competitionList:[
+    //   {
+    //     url: "",
+    //     image:"../../../images/comp_pic.png",
+    //     name:"2021年第十一届MathorCup高校数学建模挑战赛",
+    //     level:"国家级",
+    //     college:"软件学院",
+    //     registrationTime:"2021.01.01-2021.04.14",  // 报名时间
+    //     startTime:"2021.04.15-2021.04.19",  // 参赛时间
+    //     statecolor:"green",  // gray/green/yellow
+    //     state:"正在报名",  // 已结束/正在报名/正在进行
+    //     isShow: true,
+    //   },
+    //   {
+    //     url: "",
+    //     image:"../../../images/comp_pic.png",
+    //     name:"2020-2021年度第二届全国大学生算法设计与编程挑战赛（冬季赛）",
+    //     level:"校级",
+    //     college:"国际商学院",
+    //     registrationTime:"2021.01.01-2021.04.14",  // 报名时间
+    //     startTime:"2021.04.15-2021.04.19",  // 参赛时间
+    //     statecolor:"gray",  
+    //     state:"已结束",
+    //     isShow: true, 
+    //   },
+    //   {
+    //     url: "",
+    //     image:"../../../images/comp_pic.png",
+    //     name:"2021年“远见者杯”全国大学生创新促进就业（简历设计）大赛",
+    //     level:"院级",
+    //     college:"城市文化学院",
+    //     registrationTime:"2021.01.01-2021.04.14",  // 报名时间
+    //     startTime:"2021.04.15-2021.04.19",  // 参赛时间
+    //     statecolor:"yellow",  
+    //     state:"正在进行",  
+    //     isShow: true,
+    //   },
+    // ],
   },
 
   // ListTouch触摸开始
@@ -41,22 +79,46 @@ Page({
 
   // 删除
   delete(e) {
-    let list = this.data.competitionList;
-    let idx = e.currentTarget.dataset.idx;
+    var that=this
+    const openid=wx.getStorageSync("openid");
+    let list = that.data.competitionList;
+    let idx = e.currentTarget.dataset.idx;//找到所删除的比赛在列表中的索引
+    var whichcomp=that.data.competitionList[idx]
     if(idx>=0) {
       list.splice(idx,1);
     }
-    this.setData({
+    that.setData({
       competitionList: list
     })
+    wx.cloud.database().collection("followcomp").where({
+      _openid:openid,
+      class:whichcomp.class,
+      id:whichcomp.id
+    }).remove()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    const openid=wx.getStorageSync("openid");
+    wx.cloud.callFunction({
+      name:"Bcomplist",
+      data:{
+        follow:1,
+        openid:openid
+      },
+      success(res){
+        that.setData({
+          competitionList:res.result.data
+        })
+      }
+    })
   },
+
+  //点击跳转至相应赛事页面
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -9,36 +9,34 @@
       <view class="item-left">
         <view class="line-orange bg-white cu-tag radius">队伍名称</view>
       </view>
-      <view>{{title}}</view>
+      <view>{{teaminfo.teamname}}</view>
     </view>
     <view class="item solid-bottom">
       <view class="item-left">
         <view class="line-orange bg-white cu-tag radius">发起人姓名</view>
       </view>
-      <view>{{name}}</view>
+      <view>{{teaminfo.name}}</view>
     </view>
     <view class="item solid-bottom">
       <view class="item-left">
         <view class="line-orange bg-white cu-tag radius">所在院系/专业</view>
       </view>
-      <view>{{college}}</view>
+      <view>{{teaminfo.college}}</view>
     </view>
     <view class="item solid-bottom">
       <view class="item-left">
         <view class="line-orange bg-white cu-tag radius">联系方式</view>
       </view>
-      <view>{{contact}}</view>
+      <view>{{teaminfo.contact}}</view>
     </view>
     <view class="item">
       <view class="item-left">
         <view class="line-orange bg-white cu-tag radius">队伍简介</view>
       </view>
     </view>
-    <text class="detail"  space="emsp">  {{content}}</text>
+    <text class="detail"  space="emsp">  {{teaminfo.content}}</text>
     <view class="image">
-      <image class="radius" wx:for="{{images}}" src="{{item}}" mode="widthFix"></image>
+      <image class="radius" wx:for="{{teaminfo.images}}" src="{{item}}" mode="widthFix"></image>
     </view>
   </view>
 </view>
-
-

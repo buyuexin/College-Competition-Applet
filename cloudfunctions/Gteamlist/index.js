@@ -14,6 +14,10 @@ exports.main = async (event, context) => {
     return cloud.database().collection("comp_team_rls").where({
       _openid:event.openid
     }).get()
+  }else if(event.type==2){
+    return cloud.database().collection("comp_team_rls").where({
+      schoolcomp:event.schoolcomp
+    }).get()
   }
   
 }

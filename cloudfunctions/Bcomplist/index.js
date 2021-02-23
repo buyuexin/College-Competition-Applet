@@ -17,5 +17,11 @@ exports.main = async (event, context) => {
     return cloud.database().collection("comprehensive").get()
   }else if(event.school==1){
     return cloud.database().collection("school_comp").get()
+  }else if(event.follow==1){
+    return cloud.database().collection("followcomp").where({_openid:event.openid}).get()
+  }else if(event.like==1){
+    return cloud.database().collection("userlike").where({_openid:event.openid,class:event.class,id:event.id}).get()
+  }else if(event.like==2){
+    return cloud.database().collection("userlike").where({id:event.schoolcomp}).get()
   }
 }

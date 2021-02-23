@@ -15,5 +15,9 @@ exports.main = async (event, context) => {
     return cloud.database().collection("Literature_and_Sports").where({id:event.id}).get()
   }else if(event.class==4){
     return cloud.database().collection("comprehensive").where({id:event.id}).get()
+  }else if(event.myrls==1){
+    return cloud.database().collection("school_comp").where({_openid:event.openid}).get()
+  }else{
+    return cloud.database().collection("school_comp").where({_id:event.id}).get()
   }
 }

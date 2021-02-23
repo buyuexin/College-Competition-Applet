@@ -1,5 +1,6 @@
 // pages/my/myrls/myrls.js
 const app = getApp();
+let openid=wx.getStorageSync("openid");
 Page({
 
   /**
@@ -8,6 +9,7 @@ Page({
   data: {
     cur: 0,
     teamList:[],
+    compList:[]
     // teamList: [
     //   {
     //    time: "2021-02-19 15:15", // 发布时间
@@ -78,6 +80,19 @@ Page({
       success(res){
         that.setData({
           teamList:res.result.data
+        })
+      }
+    })
+    wx.cloud.callFunction({
+      name:"Getcompinfo",
+      data:{
+        myrls:1,
+        openid:openid
+      },
+      success(res){
+        console.log(res.result.data)
+        that.setData({
+          compList:res.result.data
         })
       }
     })

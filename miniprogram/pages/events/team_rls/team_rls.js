@@ -1,6 +1,7 @@
 // pages/team_rls/team_rls.js
-
+var schoolcomp=wx.getStorageSync("schoolcomp")
 var util = require('../../../utils/util.js');
+let standard=1
 Page({
 
   /**
@@ -116,6 +117,18 @@ Page({
     })
   },
 
+  getname(e){
+    this.setData({
+      name:e.detail.value
+    })
+  },
+
+  getcollege(e){
+    this.setData({
+      college:e.detail.value
+    })
+  },
+
   getcontact(e){
     this.setData({
       contact:e.detail.value
@@ -216,20 +229,51 @@ Page({
     })
   },
 
+  getstandard(){
+    if(this.data.content==""||this.data.teamname==""||this.data.name==""||this.data.college==""||this.data.contact==""){
+      standard=0
+    }else{
+      standard=1  
+    }
+  },
+
   formsubmit(){
-      var that=this
+    var that=this
+    that.getstandard()
+    if(standard==1){
       //获取当前时间戳  
-      var timestamp = Date.parse(new Date());
-      timestamp = timestamp / 1000;
-      //console.log("当前时间戳为：" + timestamp); 
-      //获取当前时间  
-      var n = timestamp * 1000;
-      var date = new Date(n);
-      //转换为时间格式字符串  
-      // console.log(date.toLocaleDateString());
-      that.setData({
-        startday:date.toLocaleDateString()
+    var timestamp = Date.parse(new Date());
+    timestamp = timestamp / 1000;
+    //console.log("当前时间戳为：" + timestamp); 
+    //获取当前时间  
+    var n = timestamp * 1000;
+    var date = new Date(n);
+    //转换为时间格式字符串  
+    // console.log(date.toLocaleDateString());
+    that.setData({
+      startday:date.toLocaleDateString()
+    })
+    if(schoolcomp!=0){
+      wx.cloud.database().collection("comp_team_rls").add({
+        data:{
+          schoolcomp:schoolcomp,
+          compname:that.data.compname,
+          class:that.data.class,
+          id:that.data.id,
+          icon:that.data.icon,
+          name:that.data.name,
+          college: that.data.college,  // 所在学校及院系(可以是该用户填的university+college)
+          teamname:that.data.teamname,  
+          contact: that.data.contact,  // 联系方式
+          startday: that.data.startday,
+          endday:that.data.endday,
+          contentCount: that.data.contentCount,
+          content: that.data.content,
+          tags: that.data.tags,
+          images:that.data.images
+        }
       })
+    }else{
       wx.cloud.database().collection("comp_team_rls").add({
         data:{
           compname:that.data.compname,
@@ -248,9 +292,20 @@ Page({
           images:that.data.images
         }
       })
+      }
+      
       wx.navigateBack({
         delta: 0,
       })
+    }else{
+      wx.showToast({
+        title: '请将信息补充完整',
+        icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+        duration: 2000     
+      })  
+    }
+    
+    
   },
 
     

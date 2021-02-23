@@ -5,19 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: "", // 队伍名称
-    name: "", // 发起人姓名
-    college: "", // 所在学校和院系
-    contact: "", // 联系方式
-    content: "", // 队伍简介
-    images:[],
+    teaminfo:[]
+    // title: "", // 队伍名称
+    // name: "", // 发起人姓名
+    // college: "", // 所在学校和院系
+    // contact: "", // 联系方式
+    // content: "", // 队伍简介
+    // images:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    wx.cloud.callFunction({
+      name:"Getteaminfo",
+      data:{
+        id:options.id
+      },
+      success(res){
+        that.setData({
+          teaminfo:res.result.data[0]
+        })
+      }
+    })
   },
 
   /**
@@ -68,4 +80,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+}) 

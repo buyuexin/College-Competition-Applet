@@ -1,4 +1,5 @@
 let DB=wx.cloud.database()
+let openid=""
 Page({
   data: {
     title: null,
@@ -30,27 +31,30 @@ Page({
     wx.cloud.callFunction({//获取用户openID
       name:"Gusermess",
       success(res){
-        let bigopenid=res.result.event.userInfo.openId
-        const openid=bigopenid;//将openid存入缓存
+        // console.log(res)变量过多会导致功能缺陷？
+        openid=res.result.openid;//将openid存入缓存
         wx.setStorageSync('openid',openid)
-          wx.cloud.callFunction({//判断用户存在users中
+        // console.log(openid)
+          wx.cloud.callFunction({//判断用户是否存在users中
             name:"IfopenID",
             data:{
-              Iopenid:res.result.event.userInfo.openId//Iopenid为参数
+              Iopenid:openid//Iopenid为参数
             },
             success(res){
+              // console.log(res)
               if(res.result.data.length==0){//用户不存在
                 wx.cloud.database().collection("users").add({
                   data:{
-                    useropenid:bigopenid,
-                    avatarUrl:"miniprogram\images\icon.png",
+                    useropenid:openid,
+                    avatarUrl:"../../../images/icon.png",
                     nickname:"小明",
-                    name:"王小明",
-                    gender:"男",
-                    contact:"******@qq.com/139*****383",
+                    name:"",
+                    gender:"请选择",
+                    phonenum:"",
+                    email:"",
                     school:"华南师范大学",
-                    college:"软件学院",
-                    major:"软件工程",
+                    college:"",
+                    major:"",
                     grade:"大一",
                   }
                 })
@@ -59,7 +63,7 @@ Page({
                   content: "前往授权",
                   success: function(res){
                   if (res.confirm) {//点击确定，前往授权
-                    wx.redirectTo({
+                    wx.navigateTo({
                       url: '../../my/home/home',
                     })
                   } else if (res.cancel) {}
@@ -80,13 +84,13 @@ Page({
       }
     })
     //初始化articleList
-    DB.collection("articleList").get({
-      success(res){
-        that.setData({//此处用setData让数据从逻辑层传到渲染层，实现动态渲染
-          articleList:res.data.slice(0,that.data.end)
-        })
-      }
-    })
+    // DB.collection("articleList").get({
+    //   success(res){
+    //     that.setData({//此处用setData让数据从逻辑层传到渲染层，实现动态渲染
+    //       articleList:res.data.slice(0,that.data.end)
+    //     })
+    //   }
+    // })
   },
 
   onLaunch(){

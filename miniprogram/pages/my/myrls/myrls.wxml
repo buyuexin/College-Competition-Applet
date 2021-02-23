@@ -13,7 +13,7 @@
   <!-- 队伍招募 -->
   <swiper-item>
     <scroll-view scroll-y class="padding-sm flex align-center" style="height: {{height_sys}}px">
-      <view class="radius padding-top-xs padding-sm bg-white margin-bottom-xs relative" wx:for="{{teamList}}">
+      <view class="radius padding-top-xs padding-sm bg-white margin-bottom-xs relative" wx:for="{{teamList}}" wx:key="*this">
         <image src="../../../images/triangle.png" class="tri"></image>
         <view class="item-border-bottom time">
           <text class="cuIcon-time"></text>
@@ -23,7 +23,7 @@
         <view class="desc" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
           关联赛事：{{item.compname}}</view>
         <view class="tag-list">
-          <view class="tag" wx:for="{{item.tags}}" wx:for-item="tagCon">
+          <view class="tag" wx:for="{{item.tags}}" wx:for-item="tagCon" wx:key="*this">
             <text class="tag-con">{{tagCon}}</text>
           </view>
         </view>
@@ -33,14 +33,14 @@
 
   <!-- 赛事发布 -->
   <swiper-item>
-    <scroll-view class="padding-sm flex align-center" style="height: {{height_sys}}px">
-      <view class="radius padding-sm bg-white margin-bottom-xs relative" wx:for="{{compList}}">
+    <scroll-view scroll-y class="padding-sm flex align-center" style="height: {{height_sys}}px">
+      <view class="radius padding-sm bg-white margin-bottom-xs relative" wx:for="{{compList}}" wx:key="*this">
         <image src="../../../images/triangle.png" class="tri"></image>
         <view class="" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
-          赛事名称：{{item.name}}</view>
+          赛事名称：{{item.compname}}</view>
         <view class="desc" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>
-          主办方：{{item.host}}</view>
-      </view>
+          主办方：{{item.sponsor}}</view>
+        </view>
     </scroll-view>
   </swiper-item>
 </swiper>

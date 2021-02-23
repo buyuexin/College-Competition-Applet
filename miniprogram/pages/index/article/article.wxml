@@ -6,14 +6,13 @@
 <view class="container">
   <view class="cu-card case">
     <view class="cu-item shadow">
-      <view class="title-image" wx:if="{{isTitleImage==1}}">
-        <image class="radius" src="{{src}}" mode="widthFix"></image>
+      <view class="title-image" wx:if="{{mess.isTitleImage==1}}">
       </view>
-        <view class="title solid-bottom">{{title}}</view>
-        <view class="outline" wx:if="{{outline!=''}}">
-          {{outline}}
+        <view class="title solid-bottom">{{mess.title}}</view>
+        <view class="outline" wx:if="{{mess.outline!=''}}">
+          {{mess.outline}}
         </view>
-        <view wx:for="{{content}}">
+        <view wx:for="{{mess.content}}" wx:key="*this">
           <view class="image" wx:if="{{item.type=='image'}}">
             <image class="radius" src="{{item.value}}" mode="widthFix"></image>
           </view>
@@ -27,7 +26,7 @@
             {{item.value}}
           </view>
         </view>
-        <view class="source" wx:if="{{source!=''}}">{{source}}</view>
+        <view class="source" wx:if="{{mess.source!=''}}">{{mess.source}}</view>
     </view>
   </view>
 </view>

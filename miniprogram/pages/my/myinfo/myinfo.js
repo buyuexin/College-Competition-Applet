@@ -11,8 +11,8 @@ Page({
     avatarUrl:"",
     nickname:"",
     name:"请输入",
-    gender:"请选择",
-    phonenumber:"",
+    gender:"男",
+    phonenum:"",
     email:"",
     school:"请输入",
     college:"请输入",
@@ -30,11 +30,11 @@ Page({
   
   //当用户使用picker组件后，获取选中的值(性别)
   getchange(e){
-    if(e.detail.value==0){
+    if(e.detail.value==1){
       this.setData({
         gender:"男"
       })
-    }else{
+    }else if(e.detail.value==2){
       this.setData({
         gender:"女"
       })
@@ -81,10 +81,17 @@ Page({
     })
   },
 
-  //获取手机号/邮箱
-  getcontact(e){
+  //获取手机号
+  getphonenum(e){
     this.setData({
-      contact:e.detail.value
+      phonenum:e.detail.value
+    })
+  },
+
+   //获取邮箱
+   getemail(e){
+    this.setData({
+      email:e.detail.value
     })
   },
 
@@ -137,14 +144,15 @@ Page({
   submitform() {
     var that=this
     const stropenid=wx.getStorageSync("openid")
-    wx.cloud.database().collection("users").where({openid:stropenid}).update({
+    wx.cloud.database().collection("users").where({_openid:stropenid}).update({
       data:{
         useropenid:stropenid,
         avatarUrl:that.data.avatarUrl,
         nickname:that.data.nickname,
         name:that.data.name,
         gender:that.data.gender,
-        contact:that.data.contact,
+        phonenum:that.data.phonenum,
+        email:that.data.email,
         school:that.data.school,
         college:that.data.college,
         major:that.data.major,
@@ -153,6 +161,12 @@ Page({
     })
     that.setData({//每次提交后将按钮置灰
       disabled:true
+    })
+  },
+
+  back(){
+    wx.navigateBack({
+      delta:1
     })
   },
 
@@ -183,7 +197,8 @@ Page({
       nickname:res.data[0].nickname,
       name:res.data[0].name,
       gender:res.data[0].gender,
-      contact:res.data[0].contact,
+      phonenum:res.data[0].phonenum,
+      email:res.data[0].email,
       school:res.data[0].school,
       college:res.data[0].college,
       major:res.data[0].major,

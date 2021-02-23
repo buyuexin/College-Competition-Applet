@@ -32,12 +32,12 @@
     <input placeholder="请输入队伍名称" bindinput="getteamname"></input>
   </view>
   <view class="border-bottom cu-form-group">
-    <view class="title">发起人姓名</view>
-    <input value="{{name}}" disabled="disabled"></input>
+    <view class="title" >发起人姓名</view>
+    <input value="{{name}}" bindinput="getname"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">所在学校及院系</view>
-    <input value="{{college}}" disabled="disabled"></input>
+    <input value="{{college}}" bindinput="getcollege"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">联系方式</view>

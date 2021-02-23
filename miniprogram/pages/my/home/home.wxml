@@ -1,6 +1,6 @@
 <view class="bg" style="padding-top: {{pageTopHeight}}px;">
   <image src="{{useravatar}}" class="usericon" mode="widthFix"></image>
-  <button class="text-xl margin-top-xs" open-type="getUserInfo" bindgetuserinfo="getuserinfo">{{username}}</button>
+  <button class="text-xl margin-top-xs" open-type="getUserInfo" bindgetuserinfo="getuserinfo" hover-class="{{hover}}">{{username}}</button>
   <!-- <view class="text-sm">xxx(个性签名)</view> -->
   <image class="bg-image" src="../../../images/background.jpg"></image>
 </view>
@@ -21,7 +21,7 @@
       <view class="arrow"></view>
     </view>
   </navigator>
-  <navigator url="../myinfo/myinfo" open-type="navigate" hidden="{{hidden}}">
+  <navigator url="../myinfo/myinfo" open-type="navigate">
     <view class="item">
       <view class="icon"><image src="../../../images/icon_set.png"></image></view>
       <view class="itemname">信息设置</view>
