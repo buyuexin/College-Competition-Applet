@@ -3,6 +3,7 @@
     "pages/index/home/home",
     "pages/events/home/home",
     "pages/my/home/home",
+    "pages/events/team_info/team_info",
     "pages/events/comp_list/comp_list",
     "pages/events/comp_rls/comp_rls",
     "pages/comp_info/comp_info",

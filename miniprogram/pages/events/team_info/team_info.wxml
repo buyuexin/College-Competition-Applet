@@ -1,0 +1,44 @@
+<cu-custom bgColor="bg-gradual-orange" bgImage="https://amzimg.com/2021/02/22/f9d8435befa0f.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">队伍信息</view>
+</cu-custom>
+
+<view class="cu-card case">
+  <view class="cu-item shadow">
+    <view class="item solid-bottom">
+      <view class="item-left">
+        <view class="line-orange bg-white cu-tag radius">队伍名称</view>
+      </view>
+      <view>{{title}}</view>
+    </view>
+    <view class="item solid-bottom">
+      <view class="item-left">
+        <view class="line-orange bg-white cu-tag radius">发起人姓名</view>
+      </view>
+      <view>{{name}}</view>
+    </view>
+    <view class="item solid-bottom">
+      <view class="item-left">
+        <view class="line-orange bg-white cu-tag radius">所在院系/专业</view>
+      </view>
+      <view>{{college}}</view>
+    </view>
+    <view class="item solid-bottom">
+      <view class="item-left">
+        <view class="line-orange bg-white cu-tag radius">联系方式</view>
+      </view>
+      <view>{{contact}}</view>
+    </view>
+    <view class="item">
+      <view class="item-left">
+        <view class="line-orange bg-white cu-tag radius">队伍简介</view>
+      </view>
+    </view>
+    <text class="detail"  space="emsp">  {{content}}</text>
+    <view class="image">
+      <image class="radius" wx:for="{{images}}" src="{{item}}" mode="widthFix"></image>
+    </view>
+  </view>
+</view>
+
+
