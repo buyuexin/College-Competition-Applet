@@ -78,6 +78,7 @@ Page({
         openid:useropenid
       },
       success(res){
+        console.log(res)
         that.setData({
           teamList:res.result.data
         })
