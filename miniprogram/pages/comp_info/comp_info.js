@@ -3,7 +3,6 @@ let classvalue=0;
 let idvalue=0;
 let schoolcomp=""//用于唯一标识某个校内赛事
 let openid=""
-let otherimages=[]
 Page({
   data:{
     CustomBar: app.globalData.CustomBar,
@@ -11,7 +10,6 @@ Page({
     cur: 0, 
     teamList:[],
     complist:[],
-    otherimage:[]
   },
   //点击“招募消息”
   clickrls(e) {
@@ -197,7 +195,7 @@ Page({
           id:schoolcomp
         },
         success(res){
-          // console.log(res)
+          console.log(res)
           var comp=res.result.data[0]
           if(comp.type==0){comp.type="个人赛"}else{comp.type="团体赛"}
           if(comp.level==0){comp.level="院级"}else if(comp.level==1){comp.level="校级"}else if(comp.level==2){comp.level="市级"}else if(comp.level==3){comp.level="省级"}else if(comp.level==4){comp.level="国家级"}else if(comp.level==5){comp.level="国际级"}
@@ -207,6 +205,8 @@ Page({
         }
       })
     }else{
+      classvalue=parseInt(classvalue)
+      idvalue=parseInt(idvalue)
       wx.cloud.callFunction({
         name:"Getcompinfo",
         data:{
@@ -214,6 +214,7 @@ Page({
           id:idvalue
         },
         success(res){
+          console.log(res)
           that.setData({
             complist:res.result.data[0]
           })   

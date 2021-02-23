@@ -13,11 +13,11 @@
   <!-- 队伍招募 -->
   <swiper-item>
     <scroll-view scroll-y class="padding-sm flex align-center" style="height: {{height_sys}}px">
-      <view class="bottomline" wx:if="{{teamList.length==0}}">
+      <view class="radius padding-top-xs padding-sm bg-white margin-bottom-xs relative" wx:for="{{teamList}}" wx:key="*this">
+        <view class="bottomline" wx:if="{{teamList.length==0}}">
         <image mode="widthFix" src="../../../images/nomore2.png"></image>
         还没有发布的队伍哦
       </view>
-      <view class="radius padding-top-xs padding-sm bg-white margin-bottom-xs relative" wx:for="{{teamList}}" wx:key="*this">
         <image src="../../../images/triangle.png" class="tri"></image>
         <view class="item-border-bottom time">
           <text class="cuIcon-time"></text>

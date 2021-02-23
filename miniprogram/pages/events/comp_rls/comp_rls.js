@@ -3,6 +3,7 @@ const app = getApp();
 var util = require('../../../utils/util.js');
 var schoolcomp=""
 var standard=1//用于判断是否所有输入框都有输入（照片除外）
+const image=""
 Page({
 
   /**
@@ -68,7 +69,8 @@ Page({
 
   // 选择图片
   chooseImage(e) {
-    if(this.data.images.length >= 6) {
+    var that=this
+    if(that.data.images.length >= 6) {
       wx.showToast({
         title: '上传图片数量已达上限！',
         icon: 'none',
@@ -80,11 +82,24 @@ Page({
         sourceType: ['album','camera'], // 开放相册/相机
         success: res => {
           const tempFilePaths = res.tempFilePaths
-          //console.log(tempFilePaths)
-          const images = this.data.images.concat(tempFilePaths)
-          this.setData({
-            images: images.length <=6 ? images : images.slice(0, 6)
+          // console.log(tempFilePaths)
+          wx.cloud.uploadFile({
+            cloudPath:new Date().getTime()+'.png',
+            filePath:tempFilePaths[0],
+            success:res=>{
+              // console.log(res)
+              that.data.images=that.data.images.concat(res.fileID)
+              // console.log(that.data.images)
+              that.setData({
+                images: that.data.images.length <=6 ? that.data.images : that.data.images.slice(0, 6)
+              })
+            },
+            fail:console.error
           })
+          // const images = this.data.images.concat(tempFilePaths)
+          // this.setData({
+          //   images: images.length <=6 ? images : images.slice(0, 6)
+          // })
         }
       })
     }

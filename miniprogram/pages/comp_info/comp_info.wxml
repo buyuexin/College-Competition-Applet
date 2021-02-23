@@ -15,7 +15,7 @@
   <swiper-item>
     <scroll-view class="bg-white padding-xs flex align-center"  scroll-y="true" style="height: {{height_sys}}px" >
       <!-- 赛氪赛事展示 -->
-      <view class="cu-card case" wx:if="{{complist.college!=0}}">
+      <view class="cu-card case" wx:if="{{complist.class>=0}}">
         <view class="cu-item shadow">
           <view class="image">
             <image class="radius" src="{{complist.image}}" mode="widthFix"></image>
@@ -64,11 +64,11 @@
           <view class="image">
             <image class="radius" wx:for="{{complist.images}}" src="{{item}}" mode="widthFix"></image>
           </view>
-          <view class="item">了解更多：{{complist.link}}</view>
+          <text class="item">{{complist.message}}</text>
         </view>
       </view>
       <!-- 校内赛事展示 -->
-      <!-- <view class="cu-card case" wx:if="{{complist.college>=0}}">
+      <view class="cu-card case" wx:if="{{complist.college>=0}}">
         <view class="cu-item shadow">
           <view class="image">
             <image class="radius" src="{{complist.images[0]}}" mode="widthFix"></image>
@@ -116,7 +116,7 @@
           </view>
           <view class="item">{{complist.content}}</view>
         </view>
-      </view> -->
+      </view>
     </scroll-view>
   </swiper-item>
 

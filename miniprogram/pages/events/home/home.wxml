@@ -66,7 +66,6 @@
   </view>
 </navigator>
 </view>
-
 <!-- tabbar -->
 <view class='cu-tabbar-height'></view>
 <view class="cu-bar tabbar bg-white shadow foot">
