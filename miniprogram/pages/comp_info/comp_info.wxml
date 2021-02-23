@@ -47,8 +47,8 @@
             </view>
             <view class="item-right">{{complist.startTime}}</view>
           </view>
-          <view class="item solid-bottom">
-            <view class="item item-50 solid-right">
+          <view class="flex solid-bottom">
+            <view class="item-50 solid-right">
               <view class="item-40">
                 <view class="line-orange bg-white cu-tag radius">类型</view>
               </view>

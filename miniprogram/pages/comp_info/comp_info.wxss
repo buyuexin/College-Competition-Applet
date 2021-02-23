@@ -153,7 +153,7 @@
 
 .item-left{
   width: 20%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .item-right{
@@ -163,7 +163,7 @@
 
 .item-40{
   width: 30%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .item-60{
@@ -173,6 +173,12 @@
 
 .item-50{
   flex: 1;
+  background-color: var(--white);
+	padding: 1rpx 10rpx;
+  display: flex;
+  flex-direction: row;
+	align-items: center;
+	min-height: 100rpx;
 }
 
 .border-right{

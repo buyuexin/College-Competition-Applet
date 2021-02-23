@@ -13,6 +13,10 @@
   <!-- 队伍招募 -->
   <swiper-item>
     <scroll-view scroll-y class="padding-sm flex align-center" style="height: {{height_sys}}px">
+      <view class="bottomline" wx:if="{{teamList.length==0}}">
+        <image mode="widthFix" src="../../../images/nomore2.png"></image>
+        还没有发布的队伍哦
+      </view>
       <view class="radius padding-top-xs padding-sm bg-white margin-bottom-xs relative" wx:for="{{teamList}}" wx:key="*this">
         <image src="../../../images/triangle.png" class="tri"></image>
         <view class="item-border-bottom time">
@@ -34,6 +38,10 @@
   <!-- 赛事发布 -->
   <swiper-item>
     <scroll-view scroll-y class="padding-sm flex align-center" style="height: {{height_sys}}px">
+      <view class="bottomline" wx:if="{{compList.length==0}}">
+        <image mode="widthFix" src="../../../images/nomore2.png"></image>
+        还没有发布的赛事哦
+      </view>
       <view class="radius padding-sm bg-white margin-bottom-xs relative" wx:for="{{compList}}" wx:key="*this">
         <image src="../../../images/triangle.png" class="tri"></image>
         <view class="" style="min-height: 30rpx;"><text class="cuIcon-title text-orange"></text>

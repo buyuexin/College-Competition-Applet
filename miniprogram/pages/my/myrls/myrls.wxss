@@ -70,3 +70,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.bottomline{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200rpx;
+  color: var(--gray);
+}
+.bottomline>image{
+  width: 300rpx;
+} 
