@@ -5,14 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    genderList:["男","女"],
+    genderList:["请选择","男","女"],
     gradeList:["大一","大二","大三","大四","研一","研二","研三"],
     useropenid:"",
     avatarUrl:"",
     nickname:"",
     name:"请输入",
-    gender:"男",
-    contact:"请输入",
+    gender:"请选择",
+    phonenumber:"",
+    email:"",
     school:"请输入",
     college:"请输入",
     major:"请输入",

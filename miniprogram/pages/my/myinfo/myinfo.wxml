@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-gradual-orange"  bgImage="../../../images/bg-bar.jpg" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-orange"  bgImage="https://amzimg.com/2021/02/22/f9d8435befa0f.jpg" isBack="{{true}}">
 	<view slot="backText">返回</view>
 	<view slot="content">信息设置</view>
 </cu-custom>
@@ -13,8 +13,11 @@
     <view class="text-right">{{nickname}}</view>
   </view>
   <view class="border-bottom cu-form-group">
-    <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>姓名</view>
-    <input class="text-right" value="{{name}}" bindinput="getname" bindtap="actbutton"></input>
+    <view class="title">
+      <!-- <text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text> -->
+      姓名
+    </view>
+    <input class="text-right" value="{{name}}" placeholder="请输入姓名" bindinput="getname" bindtap="actbutton"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">性别</view>
@@ -24,15 +27,19 @@
     </picker>
   </view>
   <view class="border-bottom cu-form-group">
-    <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>手机号/邮箱</view>
-    <input class="text-right" value="{{contact}}" bindinput="getcontact" bindtap="actbutton"></input>
+    <view class="title">手机号</view>
+    <input class="text-right" value="{{phonenumber}}" placeholder="请输入手机号" bindinput="gephone" bindtap="actbutton"></input>
   </view>
   <view class="border-bottom cu-form-group">
-    <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>学校</view>
+    <view class="title">邮箱</view>
+    <input class="text-right" value="{{email}}" placeholder="请输入邮箱" bindinput="getemail" bindtap="actbutton"></input>
+  </view>
+  <view class="border-bottom cu-form-group">
+    <view class="title">学校</view>
     <input class="text-right" value="{{school}}" bindinput="getschool" bindtap="actbutton"></input>
   </view>
   <view class="border-bottom cu-form-group">
-    <view class="title"><text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text>院系</view>
+    <view class="title">院系</view>
     <input class="text-right" value="{{college}}" bindinput="getcollege" bindtap="actbutton"></input>
   </view>
   <view class="border-bottom cu-form-group">

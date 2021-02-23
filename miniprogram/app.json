@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/home/home",
     "pages/events/home/home",
     "pages/my/home/home",
-    "pages/index/home/home",
     "pages/events/comp_list/comp_list",
     "pages/events/comp_rls/comp_rls",
     "pages/comp_info/comp_info",
