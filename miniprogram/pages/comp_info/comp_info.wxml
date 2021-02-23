@@ -61,6 +61,9 @@
               <view class="item-60">{{complist.level}}</view>
             </view>
           </view>
+          <view class="image">
+            <image class="radius" wx:for="{{complist.images}}" src="{{item}}" mode="widthFix"></image>
+          </view>
           <view class="item">了解更多：{{complist.link}}</view>
         </view>
       </view>
