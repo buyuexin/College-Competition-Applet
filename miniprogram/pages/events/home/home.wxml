@@ -53,7 +53,7 @@
   <view class="cu-item shadow" wx:if="{{item.isShow}}">
     <view class="desc margin-top-sm justify-start">
       <view class="pic radius" wx:if="{{item.images.length>0}}">
-        <image mode="widthFix" src="{{item.images[0]}}"></image>
+        <image mode="widthFix" mode="aspectFill" src="{{item.images[0]}}"></image>
       </view>
       <view class="margin-left-xs">
         <view class="text-title0  margin-top-xs">
@@ -66,6 +66,7 @@
   </view>
 </navigator>
 </view>
+
 <!-- tabbar -->
 <view class='cu-tabbar-height'></view>
 <view class="cu-bar tabbar bg-white shadow foot">

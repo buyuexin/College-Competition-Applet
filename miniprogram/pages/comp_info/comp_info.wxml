@@ -65,7 +65,7 @@
         </view>
       </view>
       <!-- 校内赛事展示 -->
-      <view class="cu-card case" wx:if="{{complist.college>=0}}">
+      <!-- <view class="cu-card case" wx:if="{{complist.college>=0}}">
         <view class="cu-item shadow">
           <view class="image">
             <image class="radius" src="{{complist.images[0]}}" mode="widthFix"></image>
@@ -113,7 +113,7 @@
           </view>
           <view class="item">{{complist.content}}</view>
         </view>
-      </view>
+      </view> -->
     </scroll-view>
   </swiper-item>
 

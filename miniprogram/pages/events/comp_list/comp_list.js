@@ -9,7 +9,8 @@ Page({
     title:"",
     end:10,//用于实现触底加载更多
     competitionList:[],//赛事列表
-    compListnum:0//某类赛事列表名代号
+    compListnum:0,//某类赛事列表名代号
+    isLoadMore: false
   },
 
   /**
@@ -131,6 +132,9 @@ Page({
   onReachBottom: function () {
     var that=this
     this.data.end+=10
+    this.setData({
+      isHideLoadMore: true
+    })
     wx.cloud.callFunction({
       name:"Bcomplist",
       data:{

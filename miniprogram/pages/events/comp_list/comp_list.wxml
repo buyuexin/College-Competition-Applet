@@ -22,19 +22,7 @@
   </navigator>
 </view>
 
-<view class="cu-card" wx:if="{{type==1}}" wx:for="{{competitionList}}" wx:key="*this">
-  <view class="cu-item shadow">
-    <view class="cont align-center margin-top justify-start">
-      <view class="img">
-        <image src="{{item.image}}" mode="aspectFill"></image>
-      </view>
-      <view class="desc">
-        <view class="text-title">
-          <text class="align-center tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs align-center">{{item.name}}</text>
-        </view>
-        <view class="text-content">报名时间：{{item.registrationTime}}</view>
-        <view class="text-content">比赛时间：{{item.startTime}}</view>
-      </view>
-    </view>
-  </view>
+<view class="loadmore" wx:if="{{isHideLoadMore}}">
+  <view class="loading"></view>
+  <view class="loadmore__tips">正在加载</view>
 </view>
