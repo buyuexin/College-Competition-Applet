@@ -1,5 +1,8 @@
 const app = getApp(); console
 Page({
+  /**
+   * 页面的初始数据
+   */
   data: {
     CustomBar: app.globalData.CustomBar,
     levelList: app.globalData.levelList,
@@ -38,13 +41,6 @@ Page({
     levelnum:[],
     collegenum:[]
   },
-  onLoad: function () {
-    this.getalllist()
-  },
-  onShow: function () {
-    this.onLoad()
-  },
-
   navigate(e) {
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -199,6 +195,7 @@ Page({
       screenShow: 'none',
     })
   },
+
   // 重置
   reset(e) {
     //重置筛选栏
@@ -225,6 +222,7 @@ Page({
       screenShow: 'none',
     })
   },
+
   // tab页面跳转
   pageChange(e){
     var page_name = e.currentTarget.dataset.cur;
@@ -251,6 +249,42 @@ Page({
       }
     })
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function () {
+    var that=this
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          that.getalllist()
+        }else{
+          wx.showModal({
+                  openid:"提示",
+                  content: "请先完成授权",
+                  success: function(res){
+                  if (res.confirm) {//点击确定后跳转至信息完善界面
+                    wx.redirectTo({
+                      url: '../../my/home/home',
+                    })
+                  } else if (res.cancel) {
+                    wx.redirectTo({
+                      url: '../../index/home/home',
+                    })
+                  }
+                  }
+                })
+        }
+      }
+    })
+    
+  },
+
+  onShow: function () {
+    this.onLoad()
+  },
+
 
   /**
    * 页面上拉触底事件的处理函数

@@ -11,8 +11,8 @@ Page({
     isShowModel: null,  // 是否弹出标签输入框
     inputValue: "",  // 标签输入框的值
     //发布时需获取的值
-    class:"",
-    id:"",
+    class:0,
+    id:0,
     compname:"",
     icon:"",
     name:"",
@@ -52,7 +52,7 @@ Page({
         sourceType: ['album','camera'], // 开放相册/相机
         success: res => {
           const tempFilePaths = res.tempFilePaths
-          console.log(tempFilePaths)
+          //console.log(tempFilePaths)
           const images = this.data.images.concat(tempFilePaths)
           this.setData({
             images: images.length <=6 ? images : images.slice(0, 6)
@@ -61,7 +61,7 @@ Page({
         }
       })
     }
-    console.log(this.data.images)
+   // console.log(this.data.images)
   },
 
   // 预览图片
@@ -214,19 +214,36 @@ Page({
         id:idvalue
       })
     })
-    wx.cloud.callFunction({
-      name:"Getcompinfo",
-      data:{
-        class:classvalue,
-        id:idvalue
-      },
-      success(res){
-        that.setData({
-          compname:res.result.data[0].name
-        })
-      }
-      
-    })
+    //获取赛事名字
+    if(schoolcomp!=0){
+      wx.cloud.callFunction({
+        name:"Getcompinfo",
+        data:{
+          type:0,
+          schoolcomp:schoolcomp
+        },
+        success(res){
+          //console.log(res)
+          that.setData({
+            compname:res.result.data[0].compname
+          })
+        }
+      })
+    }else{
+      wx.cloud.callFunction({
+        name:"Getcompinfo",
+        data:{
+          class:classvalue,
+          id:idvalue
+        },
+        success(res){
+          that.setData({
+            compname:res.result.data[0].name
+          })
+        }
+      })
+    }
+    
   },
 
   getstandard(){

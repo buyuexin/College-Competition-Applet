@@ -17,7 +17,9 @@ exports.main = async (event, context) => {
     return cloud.database().collection("comprehensive").where({id:event.id}).get()
   }else if(event.myrls==1){
     return cloud.database().collection("school_comp").where({_openid:event.openid}).get()
-  }else{
+  }else if(event.type==0){//在校内赛事队伍发布页面获取赛事信息
+    return cloud.database().collection("school_comp").where({id:event.schoolcomp}).get()
+  } else{
     return cloud.database().collection("school_comp").where({_id:event.id}).get()
   }
 }

@@ -24,7 +24,7 @@ Page({
         that.setData({
           mess:res.data[0]
         })
-        console.log(that.data.mess)
+        //console.log(that.data.mess)
       }
     })
   },

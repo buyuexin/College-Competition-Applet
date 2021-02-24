@@ -78,7 +78,6 @@ Page({
         openid:useropenid
       },
       success(res){
-        console.log(res)
         that.setData({
           teamList:res.result.data
         })
@@ -91,7 +90,6 @@ Page({
         openid:openid
       },
       success(res){
-        console.log(res.result.data)
         that.setData({
           compList:res.result.data
         })

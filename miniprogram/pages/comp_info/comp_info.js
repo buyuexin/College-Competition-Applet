@@ -24,6 +24,7 @@ Page({
     //  classvalue=wx.getStorageSync("class");
     //  idvalue=wx.getStorageSync("id");
     if(schoolcomp!=0){
+      //console.log(1)
       wx.cloud.callFunction({
         name:"Gteamlist",
         data:{
@@ -31,6 +32,7 @@ Page({
           schoolcomp:schoolcomp
         },
         success(res){
+          //console.log(res)
           var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
           if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
@@ -48,6 +50,7 @@ Page({
           id:idvalue
         },
         success(res){
+          // console.log(res)
           var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
           if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
@@ -67,7 +70,7 @@ Page({
   },
 
   bindChange: function(e) {
-    console.log(e.detail.current)
+    //console.log(e.detail.current)
     this.setData({
       cur: e.detail.current
     });
@@ -167,8 +170,8 @@ Page({
 
   onLoad: function (options) {
     var that = this;
-    classvalue=options.class
-    idvalue=options.id
+    classvalue=parseInt(options.class)
+    idvalue=parseInt(options.id)
     schoolcomp=options.schoolcomp
     wx.setStorageSync('class',classvalue)
     wx.setStorageSync('id',idvalue)
@@ -189,13 +192,14 @@ Page({
   getcompinfo(){
     var that=this
     if(schoolcomp!=0){//schoolcomp如果是从外部赛事点击进来的话结果为0，否则其初始值为null（在onLoad内体现）
+      // console.log(1)
       wx.cloud.callFunction({
         name:"Getcompinfo",
         data:{
           id:schoolcomp
         },
         success(res){
-          console.log(res)
+          //console.log(res)
           var comp=res.result.data[0]
           if(comp.type==0){comp.type="个人赛"}else{comp.type="团体赛"}
           if(comp.level==0){comp.level="院级"}else if(comp.level==1){comp.level="校级"}else if(comp.level==2){comp.level="市级"}else if(comp.level==3){comp.level="省级"}else if(comp.level==4){comp.level="国家级"}else if(comp.level==5){comp.level="国际级"}
@@ -214,7 +218,7 @@ Page({
           id:idvalue
         },
         success(res){
-          console.log(res)
+          //console.log(res)
           that.setData({
             complist:res.result.data[0]
           })   

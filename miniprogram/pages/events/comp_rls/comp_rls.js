@@ -2,7 +2,7 @@
 const app = getApp();
 var util = require('../../../utils/util.js');
 var schoolcomp=""
-var standard=1//用于判断是否所有输入框都有输入（照片除外）
+var standard=1//用于判断是否所有输入框都有输入（照片除外）及判断时间设置逻辑是否真确
 const image=""
 Page({
 

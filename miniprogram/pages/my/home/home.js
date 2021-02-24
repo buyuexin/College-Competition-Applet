@@ -3,38 +3,16 @@ let openid
 let type=0//用于记录用户是否已经授权，已授权则禁用授权键的功能。0为未授权
 let hover="button-hover"
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
     pageTopHeight: wx.getSystemInfoSync().statusBarHeight+30+7,
     useravatar:"../../../images/icon.png",
     username:"点击授权登录",
   },
-  onLoad: function (options) {
-    var that=this
-    wx.getSetting({//检测用户是否已经授权
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {// 已授权过    
-          wx.getUserInfo({
-            success(res) {
-              that.setData({//设置头像和昵称
-                useravatar:res.userInfo.avatarUrl,
-                username:res.userInfo.nickName,
-                type:1,
-                hover:"none"
-              })
-              //更新数据库内用户头像及昵称数据
-              openid=wx.getStorageSync("openid");//获取缓存内的用户openID
-              wx.cloud.database().collection("users").where({useropenid:openid}).update({
-                data:{
-                  avatarUrl:that.data.useravatar,
-                  nickname:that.data.username
-                }
-              })
-            }
-          })
-        }else{}//未授权
-      }
-    })
-  },
+
   //点击授权获取用户信息
   getuserinfo(e){
     if(this.data.type==0){
@@ -67,6 +45,7 @@ Page({
     })
     }
   },
+  
   // tab页面跳转
   pageChange(e){
     var page_name = e.currentTarget.dataset.cur;
@@ -78,4 +57,84 @@ Page({
       })
     }
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that=this
+    wx.getSetting({//检测用户是否已经授权
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {// 已授权过    
+          wx.getUserInfo({
+            success(res) {
+              that.setData({//设置头像和昵称
+                useravatar:res.userInfo.avatarUrl,
+                username:res.userInfo.nickName,
+                type:1,
+                hover:"none"
+              })
+              //更新数据库内用户头像及昵称数据
+              openid=wx.getStorageSync("openid");//获取缓存内的用户openID
+              wx.cloud.database().collection("users").where({useropenid:openid}).update({
+                data:{
+                  avatarUrl:that.data.useravatar,
+                  nickname:that.data.username
+                }
+              })
+            }
+          })
+        }else{}//未授权
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

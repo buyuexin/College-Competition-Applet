@@ -95,6 +95,15 @@ Page({
       class:whichcomp.class,
       id:whichcomp.id
     }).remove()
+    wx.cloud.database().collection("userlike").where({
+      _openid:openid,
+      class:whichcomp.class,
+      id:whichcomp.id
+    }).update({
+      data:{
+        islike:0
+      }
+    })
   },
 
   /**

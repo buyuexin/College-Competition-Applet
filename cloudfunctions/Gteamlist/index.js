@@ -5,7 +5,7 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  if(event.type==0){//comp_info页面获取
+  if(event.type==0){//comp_info页面发布队伍信息获取
     return cloud.database().collection("comp_team_rls").where({
       class:event.class,
       id:event.id

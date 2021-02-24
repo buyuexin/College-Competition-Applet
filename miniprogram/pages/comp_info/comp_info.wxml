@@ -24,7 +24,7 @@
             <view class="title">{{complist.name}}</view>
             <view class="collect">
               <view bindtap="collect">
-                <text class="cuIcon-{{islike==1?'favorfill':'favor'}}  margin-right-xs" style="font-size: 36rpx;"></text>
+                <text class="cuIcon-{{islike==1?'likefill':'like'}}  margin-right-xs" style="font-size: 36rpx;"></text>
                 关注
               </view>
             </view>
@@ -62,7 +62,7 @@
             </view>
           </view>
           <view class="image">
-            <image class="radius" wx:for="{{complist.images}}" src="{{item}}" mode="widthFix"></image>
+            <image class="radius" wx:for="{{complist.images}}" src="{{item}}" mode="widthFix" wx:key="*this"></image>
           </view>
           <text class="item">{{complist.message}}</text>
         </view>
@@ -77,7 +77,7 @@
             <view class="title">{{complist.compname}}</view>
             <view class="collect">
               <view bindtap="collect">
-                <text class="cuIcon-{{islike==1?'favorfill':'favor'}}  margin-right-xs" style="font-size: 36rpx;"></text>
+                <text class="cuIcon-{{islike==1?'likefill':'like'}}  margin-right-xs" style="font-size: 36rpx;"></text>
                 关注
               </view>
             </view>
@@ -157,7 +157,7 @@
       <view class='cu-tabbar-height'></view>
     </scroll-view>
     <view class="cu-bar foot-bar bg-white shadow">
-        <button class="mybtn bg-orange" bindtap="toTeamrls">发布队伍招募信息</button>
+      <button class="mybtn bg-orange" bindtap="toTeamrls">发布队伍招募信息</button>
     </view>
   </swiper-item>
 </swiper>
