@@ -50,14 +50,14 @@
 
 .pic{
   width: 100%;
-  max-height: 200rpx;
+  max-height: 220rpx;
   display: flex;
   justify-content: center;
 }
 
 .pic image{
   width: 95%;
-  max-height: 220rpx;
+  max-height: 210rpx;
   display: block;
   border-radius: 10rpx;
 }

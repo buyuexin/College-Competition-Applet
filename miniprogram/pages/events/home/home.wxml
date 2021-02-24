@@ -49,11 +49,10 @@
 
 <!-- 赛事列表 -->
 <view class="cu-card" wx:for="{{competitionList}}" wx:key="*this">
-<navigator url="../../comp_info/comp_info?schoolcomp={{item._id}}">
-  <view class="cu-item shadow" wx:if="{{item.isShow}}">
+  <view class="cu-item shadow" wx:if="{{item.isShow}}" bindtap="navigate" data-id="{{item._id}}">
     <view class="desc margin-top-sm justify-start">
       <view class="pic radius" wx:if="{{item.images.length>0}}">
-        <image mode="widthFix" mode="aspectFill" src="{{item.images[0]}}"></image>
+        <image mode="aspectFill" src="{{item.images[0]}}"></image>
       </view>
       <view class="margin-left-xs">
         <view class="text-title0  margin-top-xs">
@@ -64,7 +63,6 @@
       </view>
     </view>
   </view>
-</navigator>
 </view>
 <!-- tabbar -->
 <view class='cu-tabbar-height'></view>

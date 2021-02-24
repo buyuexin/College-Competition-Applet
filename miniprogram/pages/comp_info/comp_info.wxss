@@ -208,6 +208,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 15rpx;
-  border: 1px solid #c04851;
-  color: #c04851;
+  border: 1px solid var(--orange);
+  color: var(--orange);
 }

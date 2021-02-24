@@ -1,8 +1,5 @@
 const app = getApp(); console
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     CustomBar: app.globalData.CustomBar,
     levelList: app.globalData.levelList,
@@ -41,7 +38,19 @@ Page({
     levelnum:[],
     collegenum:[]
   },
+  onLoad: function () {
+    this.getalllist()
+  },
+  onShow: function () {
+    this.onLoad()
+  },
 
+  navigate(e) {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../../comp_info/comp_info?schoolcomp='+id,
+    })
+  },
   // 搜索
   searchItem(e) {
     let key = e.detail.value.toLowerCase();//获取输入框内的值
@@ -190,7 +199,6 @@ Page({
       screenShow: 'none',
     })
   },
-
   // 重置
   reset(e) {
     //重置筛选栏
@@ -217,7 +225,6 @@ Page({
       screenShow: 'none',
     })
   },
-
   // tab页面跳转
   pageChange(e){
     var page_name = e.currentTarget.dataset.cur;
@@ -244,18 +251,6 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function () {
-    this.getalllist()
-  },
-
-  onShow: function () {
-    this.onLoad()
-  },
-
 
   /**
    * 页面上拉触底事件的处理函数

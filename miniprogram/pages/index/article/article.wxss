@@ -13,7 +13,7 @@
   padding: 18rpx;
   font-size: 16px;
   color: var(--darkGray);
-  white-space: pre-wrap;
+  /* white-space: pre-wrap; */
 }
 .border-bottom{
   border-bottom: 2px solid var(--yellow);
@@ -39,6 +39,7 @@
 .content{
   padding: 18rpx;
   font-size: 18px;
+  padding-left: 26rpx;
 }
 .source{
   color: var(--darkGray);

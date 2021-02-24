@@ -65,11 +65,11 @@
   </view>
   <view class="date-form-group">
     <view class="title">比赛时间</view>
-    <picker class="pick" mode="date" value="{{compStart}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange" data-time="compStart">
+    <picker class="pick" mode="date" value="{{compStart}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange" data-time="compStart">
 			<view class="picker">{{compStart}}</view>
     </picker>
     --
-    <picker class="pick" mode="date" value="{{compEnd}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange" data-time="compEnd">
+    <picker class="pick" mode="date" value="{{compEnd}}" start="2015-09-01" end="2030-09-01" bindchange="DateChange" data-time="compEnd">
 			<view class="picker">{{compEnd}}</view>
 		</picker>
   </view>

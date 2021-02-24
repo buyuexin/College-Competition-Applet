@@ -9,7 +9,7 @@
       <view class="title-image" wx:if="{{mess.isTitleImage==1}}">
       </view>
         <view class="title solid-bottom">{{mess.title}}</view>
-        <view class="outline" wx:if="{{mess.outline!=''}}">
+        <view class="outline" space="emsp" wx:if="{{mess.outline!=''}}">
           {{mess.outline}}
         </view>
         <view wx:for="{{mess.content}}" wx:key="*this">
@@ -19,7 +19,7 @@
           <view class="subtitle" wx:if="{{item.type=='subtitle'}}">
             {{item.value}}
           </view>
-          <text class="content" space="emsp" wx:if="{{item.type=='content'}}">
+          <text class="content" wx:if="{{item.type=='content'}}">
             {{item.value}}
           </text>
           <view class="source" wx:if="{{item.type=='source'}}">

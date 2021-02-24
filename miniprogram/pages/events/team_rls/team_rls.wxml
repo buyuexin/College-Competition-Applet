@@ -45,7 +45,7 @@
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">结束日期</view>
-    <picker mode="date" value="{{endday}}" start="2020-09-01" end="2030-09-01" bindchange="DateChange" bindchange="getchange">
+    <picker mode="date" value="{{endday}}" start="{{endday}}" end="2030-09-01" bindchange="DateChange" bindchange="getchange">
 			<view class="picker">{{endday}}</view>
 		</picker>
   </view>

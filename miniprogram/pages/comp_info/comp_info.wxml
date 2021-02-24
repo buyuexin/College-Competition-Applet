@@ -24,8 +24,8 @@
             <view class="title">{{complist.name}}</view>
             <view class="collect">
               <view bindtap="collect">
-                <text class="cuIcon-{{islike==1?'likefill':'like'}}  margin-right-xs" style="font-size: 36rpx;"></text>
-                收藏
+                <text class="cuIcon-{{islike==1?'favorfill':'favor'}}  margin-right-xs" style="font-size: 36rpx;"></text>
+                关注
               </view>
             </view>
           </view>
@@ -77,8 +77,8 @@
             <view class="title">{{complist.compname}}</view>
             <view class="collect">
               <view bindtap="collect">
-                <text class="cuIcon-{{islike==1?'likefill':'like'}}  margin-right-xs" style="font-size: 36rpx;"></text>
-                收藏
+                <text class="cuIcon-{{islike==1?'favorfill':'favor'}}  margin-right-xs" style="font-size: 36rpx;"></text>
+                关注
               </view>
             </view>
           </view>
@@ -157,7 +157,7 @@
       <view class='cu-tabbar-height'></view>
     </scroll-view>
     <view class="cu-bar foot-bar bg-white shadow">
-        <button class="mybtn bg-orange margin-tb-sm" bindtap="toTeamrls">发布队伍招募信息</button>
+        <button class="mybtn bg-orange" bindtap="toTeamrls">发布队伍招募信息</button>
     </view>
   </swiper-item>
 </swiper>
