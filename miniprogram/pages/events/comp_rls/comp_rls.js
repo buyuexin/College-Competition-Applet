@@ -21,6 +21,7 @@ Page({
     college:0,
     level:0,
     type:0,
+    today:"",
     regStart:"",
     regEnd:"",
     compStart:"",
@@ -63,9 +64,6 @@ Page({
       sponsor:e.detail.value
     })
   },
-
-
-
 
   // 选择图片
   chooseImage(e) {
@@ -193,6 +191,7 @@ Page({
     var date = util.formatDate(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据
     this.setData({
+      today: date,
       regStart: date,
       regEnd: date,
       compStart: date,

@@ -8,9 +8,11 @@
     <text class="cuIcon-search"></text>
     <input type="text" placeholder="搜索" confirm-type="search" bindinput="searchItem"></input>
   </view>
-  <navigator url="../comp_rls/comp_rls">
-    <view class="bg-orange rls-btn">发布</view>
-  </navigator>
+  <view class="navi">
+    <navigator url="../comp_rls/comp_rls">
+      <view class="bg-orange rls-btn">发布</view>
+    </navigator>
+  </view>
 </view>
 <view style="height: 80rpx;">></view>
 
