@@ -29,6 +29,7 @@ App({
       {status: "line-gray",name: "国际级",},
     ],
     collegeList:[
+      {status: "line-gray",name: "校方",},
       {status: "line-gray",name: "地理科学学院",},
       {status: "line-gray",name: "计算机学院",},
       {status: "line-gray",name: "教育科学学院",},

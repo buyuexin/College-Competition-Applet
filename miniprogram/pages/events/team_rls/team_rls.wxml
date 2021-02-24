@@ -81,7 +81,7 @@
   </view>
 </form>
 
-  <view class="margin-top ">
-    <button class="block lg" type="primary" bindtap="formsubmit">
-    <text class="cuIcon-upload"></text>发布</button>
-  </view>
+<view class="margin-top ">
+  <button class="block lg" type="primary" bindtap="formsubmit">
+  <text class="cuIcon-upload"></text>发布</button>
+</view>

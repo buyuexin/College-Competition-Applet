@@ -11,7 +11,9 @@ Page({
     competitionList:[],
     keyword:[],  // 选中的关键词
     levelstand:["院级","校级","市级","省级","国家级","国际级"],
-    collegestand:[ "地理科学学院",
+    collegestand:[
+           "校方",
+           "地理科学学院",
            "计算机学院",
            "教育科学学院",
            "教育信息技术学院",

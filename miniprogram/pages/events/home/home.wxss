@@ -18,12 +18,15 @@
   height: 56rpx;
 }
 
-
+.navi{
+  width: 100rpx;
+  height: 56rpx;
+  margin-right: 20rpx;
+}
 .rls-btn{
   width: 100rpx;
   height: 56rpx;
   line-height: 56rpx;
-  margin-right: 20rpx;
   text-align: center;
   border-radius: 15rpx;
 }
