@@ -38,18 +38,20 @@
     <view class="arrow"></view>
   </view>
   <view class="feedback">
-    <button class="border btn" style="width: 100%;" open-type="feekback"></button>
+    <button class="btn" style="width: 100%;" open-type='feedback'></button>
     <view class="item">
       <view class="icon"><image src="../../../images/feedback.png"></image></view>
       <view class="itemname">意见反馈</view>
       <view class="arrow-f"></view>
     </view>
   </view>
-  <view class="item">
-    <view class="icon"><image src="../../../images/money.png"></image></view>
-    <view class="itemname">赞赏开发者</view>
-    <view class="arrow"></view>
-  </view>
+  <navigator url="../money/money" open-type="navigate">
+    <view class="item">
+      <view class="icon"><image src="../../../images/money.png"></image></view>
+      <view class="itemname">赞赏开发者</view>
+      <view class="arrow"></view>
+    </view>
+  </navigator>
 </view>
 
 <view class='cu-tabbar-height'></view>

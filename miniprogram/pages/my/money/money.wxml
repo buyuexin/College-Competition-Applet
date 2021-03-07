@@ -1,0 +1,11 @@
+<cu-custom bgColor="bg-gradual-orange"  bgImage="https://amzimg.com/2021/02/22/f9d8435befa0f.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">赞赏支持</view>
+</cu-custom>
+
+<view class="container">
+  <view bindtap="previewImage">
+    <image src="{{image}}" show-menu-by-longpress="true"></image>
+  </view>
+  <view class="text">您的支持就是我们的动力ヾ(๑╹◡╹)ﾉ"</view>
+</view>
