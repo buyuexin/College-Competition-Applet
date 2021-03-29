@@ -10,36 +10,6 @@ Page({
     cur: 0,
     teamList:[],
     compList:[]
-    // teamList: [
-    //   {
-    //    time: "2021-02-19 15:15", // 发布时间
-    //    name: "nb队", // 队伍名称
-    //    comp: "MathorCup数学建模大赛",
-    //    tag: ["挑战杯", "校级"], // 标签
-    //   },
-    //   {
-    //    time: "2021-02-19 15:15", // 发布时间
-    //    name: "nb队", // 队伍名称
-    //    comp: "MathorCup数学建模大赛",
-    //    tag: ["挑战杯", "校级"], // 标签
-    //   },
-    //   {
-    //    time: "2021-02-19 15:15", // 发布时间
-    //    name: "nb队", // 队伍名称
-    //    comp: "MathorCup数学建模大赛",
-    //    tag: ["挑战杯", "校级"], // 标签
-    //   },
-    // ],
-    // compList: [
-    //   {
-    //     name: "2021年第十一届MathorCup高校数学建模挑战赛",  // 比赛名称
-    //     host: "中国优选法统筹法与经济数学研究会",  // 主办方
-    //   },
-    //   {
-    //     name: "2021年第十一届MathorCup高校数学建模挑战赛",
-    //     host: "中国优选法统筹法与经济数学研究会",
-    //   },
-    // ],
   },
 
   click(e) {
@@ -90,6 +60,7 @@ Page({
         openid:openid
       },
       success(res){
+        //console.log(res)
         that.setData({
           compList:res.result.data
         })

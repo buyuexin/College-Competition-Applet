@@ -9,6 +9,10 @@
     <textarea class="weui-textarea" placeholder="赛事内容，最多可输入300字" maxlength='300' placeholder-class="weui-input__placeholder" bindinput="getContentInput" />
   </view>
   <view class="down-info bg-white align-center">
+    <!-- <view class="img-btn" bindtap="chooseImage">
+        <image src="../../../images/img.png" class="img-icon"></image>
+        <view class="text-sm text-gray">照片</view>
+    </view> -->
     <view class="choose">
       <view class="img-btn margin-right-sm" bindtap="chooseImage">
           <image src="../../../images/img.png" class="img-icon"></image>
@@ -71,7 +75,7 @@
   </view>
   <view class="date-form-group">
     <view class="title">比赛时间</view>
-    <picker class="pick" mode="date" value="{{compStart}}" start="{{today}}" end="2030-09-01" bindchange="DateChange" data-time="compStart"> 
+    <picker class="pick" mode="date" value="{{compStart}}" start="{{today}}" end="2030-09-01" bindchange="DateChange" data-time="compStart">
 			<view class="picker">{{compStart}}</view>
     </picker>
     --
@@ -81,6 +85,7 @@
   </view>
 </view>
 
+<!-- <view class="margin-top "> -->
 <view class="margin-top margin-bottom">
   <button class="block lg" type="primary" bindtap="submitform">
   <text class="cuIcon-upload"></text>发布</button>

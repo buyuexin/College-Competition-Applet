@@ -37,7 +37,7 @@
     "minifyWXSS": true
   },
   "appid": "wx174be210d92fefbe",
-  "projectname": "first-project",
+  "projectname": "College-Competition-Applet",
   "libVersion": "2.15.0",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
@@ -109,6 +109,11 @@
         {
           "name": "pages/my/guide/detail/detail",
           "pathName": "pages/my/guide/detail/detail",
+          "scene": null
+        },
+        {
+          "name": "SComp——index",
+          "pathName": "pages/events/home/home",
           "scene": null
         }
       ]

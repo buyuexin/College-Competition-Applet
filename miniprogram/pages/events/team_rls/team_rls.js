@@ -257,7 +257,7 @@ Page({
   formsubmit(){
     var that=this
     that.getstandard()
-    if(standard==1){
+    if(standard==1){//信息填写完整
       //获取当前时间戳  
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
@@ -298,9 +298,9 @@ Page({
           id:that.data.id,
           icon:that.data.icon,
           name:that.data.name,
-          college: that.data.college,  // 所在学校及院系(可以是该用户填的university+college)
+          college: that.data.college,  
           teamname:that.data.teamname,  
-          contact: that.data.contact,  // 联系方式
+          contact: that.data.contact,  
           startday: that.data.startday,
           endday:that.data.endday,
           contentCount: that.data.contentCount,

@@ -1,21 +1,21 @@
 {
   "pages": [
     "pages/index/home/home",
-    "pages/my/guide/detail/detail",
-    "pages/my/guide/guide",
-    "pages/my/home/home",
-    "pages/my/money/money",
     "pages/comp_info/comp_info",
     "pages/index/article/article",
+    "pages/my/money/money",
     "pages/my/myinfo/myinfo",
     "pages/events/team_rls/team_rls",
     "pages/my/myrls/myrls",
     "pages/events/comp_rls/comp_rls",
     "pages/events/team_info/team_info",
+    "pages/my/home/home",
     "pages/events/home/home",
     "pages/my/follow/follow",
     "pages/events/comp_list/comp_list",
-    "pages/events/team_list/team_list"
+    "pages/events/team_list/team_list",
+    "pages/my/guide/detail/detail",
+    "pages/my/guide/guide"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

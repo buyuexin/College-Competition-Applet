@@ -73,6 +73,7 @@
       <!-- 校内赛事展示 -->
       <view class="cu-card case" wx:if="{{complist.college>=0}}">
         <view class="cu-item shadow">
+          <!-- <view class="image"> -->
           <view class="image" wx:if="{{complist.images.length>0}}">
             <image class="radius" src="{{complist.images[0]}}" mode="widthFix"></image>
           </view>

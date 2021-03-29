@@ -65,7 +65,7 @@
   </view>
   <view class="action text-gray add-action" bindtap="pageChange" data-cur="events">
     <button class="cu-btn cuIcon-order bg-gray shadow text-orange"></button>
-    赛事
+    校内赛事
   </view>
   <view class="action text-gray" bindtap="pageChange" data-cur="my">
     <view class="cuIcon-my"></view>我的

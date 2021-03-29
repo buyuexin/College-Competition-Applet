@@ -59,12 +59,12 @@ App({
       {status: "line-gray",name: "职业教育学院",},
       ],
     typeList:['个人赛','团队赛'],
-    teamlist:[//用于展示招募页面时进行追加
-      {icon:"../../images/icon.png",
-      name:"我是开发者",
-      startday:"2020/1/1",
-      teamname:"冰琳霖杰",
-      content:"未有人发起招募"}
-    ]
+    // teamlist:[//用于展示招募页面时进行追加
+    //   {icon:"../../images/icon.png",
+    //   name:"我是开发者",
+    //   startday:"2020/1/1",
+    //   teamname:"冰琳霖杰",
+    //   content:"未有人发起招募"}
+    // ]
   }
 })

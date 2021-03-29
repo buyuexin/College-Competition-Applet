@@ -65,6 +65,9 @@ Page({
     })
   },
 
+
+
+
   // 选择图片
   chooseImage(e) {
     var that=this
@@ -139,6 +142,7 @@ Page({
 
   // 赛事级别选择
   levelChange(e) {
+    // console.log(e)
     this.setData({
       level: parseInt(e.detail.value) 
     })

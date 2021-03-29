@@ -16,7 +16,7 @@ Page({
     this.setData({
       cur: parseInt(e.currentTarget.dataset.idx),
     })
-    // this.upteamlist()
+    this.upteamlist()
   },
   //更新“招募消息”列表
   upteamlist(){
@@ -51,8 +51,9 @@ Page({
         },
         success(res){
           // console.log(res)
-          var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
-          if(changeteamList.length>1){changeteamList.splice(0,1)}
+          // var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
+          var changeteamList=res.result.data.reverse()
+          // if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
             teamList:changeteamList,
           })
@@ -82,21 +83,19 @@ Page({
     })
   },
 
-  // 收藏
+  //关注
   collect: function(e) {
     var that=this
-    let like = 1-that.data.islike;
+    let like = 1-that.data.islike;//记录点击关注键后的关注状态
     that.setData({
       islike: like
     })
-    // console.log(classvalue)
-    // console.log(idvalue)
-    //将收藏比赛进行收藏
-    if(that.data.islike==1)
+    if(that.data.islike==1)//为关注状态
     {
-      if(schoolcomp!=0){
-        wx.cloud.database().collection("followcomp").add({
+      if(schoolcomp!=0){//所关注的赛事为校内赛事
+        wx.cloud.database().collection("followcomp").add({//添加收藏
           data:{
+            //默认存入用户的openid到_openid
             schoolcomp:schoolcomp,
             compname:that.data.complist.compname,
             regStart:that.data.complist.regStart,
@@ -108,8 +107,8 @@ Page({
             image:that.data.complist.images[0]
           }
         })
-      }else{
-          wx.cloud.database().collection("followcomp").add({
+      }else{//所关注的赛事为普通赛事
+          wx.cloud.database().collection("followcomp").add({//添加收藏
             data:{
               class:classvalue,
               id:idvalue,
@@ -122,9 +121,9 @@ Page({
             }
           })
       }
-    }else{
+    }else{//为非关注状态
       if(schoolcomp!=0){
-        wx.cloud.database().collection("followcomp").where({
+        wx.cloud.database().collection("followcomp").where({//删除收藏
           schoolcomp:schoolcomp,
           _openid:openid
         }).remove()
@@ -136,7 +135,7 @@ Page({
         }).remove()
       }
     }
-    //将收藏键状态改变进行记录
+    //将关注键状态改变在userlike内进行记录进行记录
     if(schoolcomp!=0){
       wx.cloud.database().collection("userlike").where({
         _openid:openid,
@@ -176,6 +175,7 @@ Page({
     wx.setStorageSync('class',classvalue)
     wx.setStorageSync('id',idvalue)
     wx.setStorageSync('schoolcomp',schoolcomp)
+    openid=wx.getStorageSync("openid");
     wx.getSystemInfo({
       success: function(res) {
         var Client = wx.getMenuButtonBoundingClientRect();
@@ -188,12 +188,12 @@ Page({
     });
     that.getcompinfo()
   },
-  //获取比赛具体信息
+  //获取比赛详情
   getcompinfo(){
     var that=this
-    if(schoolcomp!=0){//schoolcomp如果是从外部赛事点击进来的话结果为0，否则其初始值为null（在onLoad内体现）
+    if(schoolcomp!=0){
       // console.log(1)
-      wx.cloud.callFunction({
+      wx.cloud.callFunction({//获取校内赛事具体信息
         name:"Getcompinfo",
         data:{
           id:schoolcomp
@@ -208,9 +208,7 @@ Page({
           })
         }
       })
-    }else{
-      classvalue=parseInt(classvalue)
-      idvalue=parseInt(idvalue)
+    }else{//获取普通赛事具体信息
       wx.cloud.callFunction({
         name:"Getcompinfo",
         data:{
@@ -228,7 +226,7 @@ Page({
     
     
   },
-  //获取收藏信息
+  //获取用户对赛事的关注信息
   getuserlike(){
     var that=this
     if(schoolcomp!=0){
@@ -236,11 +234,12 @@ Page({
         name:"Bcomplist",
         data:{
           like:2,
-          schoolcomp:schoolcomp
+          schoolcomp:schoolcomp,
+          openid:openid
         },
-        success(res){
-          if(res.result.data.length==0){
-            wx.cloud.database().collection("userlike").add({
+        success(res){//判断用户是否点开过此赛事
+          if(res.result.data.length==0){//否
+            wx.cloud.database().collection("userlike").add({//添加用户对此赛事的关注信息到userlike集合
               data:{
                 id:schoolcomp,
                 islike:0
@@ -249,15 +248,14 @@ Page({
             that.setData({
               islike:0
             })
-          }else{
+          }else{//是
             that.setData({
-              islike:res.result.data[0].islike
+              islike:res.result.data[0].islike//更新islike的值
             })
           }
         }
       })
     }else{
-      openid=wx.getStorageSync("openid");
     wx.cloud.callFunction({
       name:"Bcomplist",
       data:{
@@ -287,7 +285,7 @@ Page({
   },
 
   onShow:function(){
-  //  this.upteamlist()
+   this.upteamlist()
    this.getuserlike()
   }
 })

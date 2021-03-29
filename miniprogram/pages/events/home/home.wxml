@@ -23,7 +23,7 @@
   </view>
   <view class="border-right flex justify-center"></view>
   <view class="flex flex-sub justify-center margin-xs" bindtap="screenChange" data-cur="collegeList">
-    按学院筛选<text class="margin-left-xs cuIcon-unfold"></text>
+    按发布单位筛选<text class="margin-left-xs cuIcon-unfold"></text>
   </view>
   <!-- 筛选item -->
   <view class="screen bg-white border-top flex" wx:if="{{screenShow!='none'}}">
@@ -59,6 +59,7 @@
         <image mode="aspectFill" src="{{item.images[0]}}"></image>
       </view>
       <view class="margin-left-xs">
+        <!-- <view class="text-title0  margin-top-xs"> -->
         <view class="text-title0 ">
           <text class="tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs">{{item.compname}}</text>
         </view>
@@ -77,7 +78,7 @@
   </view>
   <view class="action text-orange add-action" bindtap="pageChange" data-cur="events">
     <button class="cu-btn cuIcon-order bg-orange shadow"></button>
-    赛事
+    校内赛事
   </view>
   <view class="action text-gray" bindtap="pageChange" data-cur="my">
     <view class="cuIcon-my"></view>我的

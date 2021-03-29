@@ -10,38 +10,6 @@ Page({
     screenShow:"none",  // 筛选框显示
     competitionList:[],
     keyword:[],  // 选中的关键词
-    levelstand:["院级","校级","市级","省级","国家级","国际级"],
-    collegestand:[
-           "校方",
-           "地理科学学院",
-           "计算机学院",
-           "教育科学学院",
-           "教育信息技术学院",
-           "历史文化学院",
-           "马克思主义学院",
-           "美术学院",
-           "生命科学学院",
-           "数学科学学院",
-           "外国语言文化学院",
-           "心理学院",
-           "哲学与社会发展学院",
-           "法学院",
-           "化学学院",
-           "环境学院",
-           "经济与管理学院",
-           "旅游管理学院",
-           "体育科学学院",
-           "文学院",
-           "物理与电信工程学院",
-           "信息光电子科技学院",
-           "音乐学院",
-           "政治与公共管理学院",
-           "城市文化学院",
-           "国际商学院",
-           "软件学院",
-           "职业教育学院"],
-    levelnum:[],
-    collegenum:[]
   },
   navigate(e) {
     let id = e.currentTarget.dataset.id;
@@ -83,19 +51,19 @@ Page({
   screenClick(e) {
     let listname = e.currentTarget.dataset.type;
     let list;
-    if(listname == "levelList") {
+    if(listname == "levelList") {//判断用户正在使用哪个筛选框
       list = this.data.levelList;
     } else {
       list = this.data.collegeList;
     }
     let index = e.currentTarget.dataset.idx;
-    let status = list[index].status;
-    let name = list[index].name;
+    let status = list[index].status;//选中项的status
+    let name = list[index].name;//选中项的name
     let word = this.data.keyword;
-    if(status == 'line-gray') {
+    if(status == 'line-gray') {//选中前为灰色，则点击后置为橘色
       status = 'line-orange';
-      word.push(name);
-    } else {
+      word.push(name);//将name推到word中
+    } else {//选中前为橘色，则点击后置为灰色
       status = 'line-gray';
       let i = word.indexOf(name);
       if(i>-1) {
@@ -105,95 +73,33 @@ Page({
     var key = listname+"["+index+"].status";
     var param={};
     param[key]=status;
-    this.setData(param);
-    this.setData({
+    this.setData(param);//更新状态
+    this.setData({//更新word
       keyword: word,
     })
   },
-  // 确定
-  confirm(e) {
-    this.setData({//筛选前先将列表数组清空
-      competitionList:[],
-      levelnum:[],
-      collegenum:[]
-    })
-    var that=this
-    let word = this.data.keyword;//两个筛选框中选中的选项（文字呈现、数组）
-    for (let i = 0; i < word.length; i++) {//获取选中级别的对应的数字，作为筛选条件
-      for(let j=0;j<that.data.levelstand.length;j++){
-        if(word[i]==that.data.levelstand[j]){
-          that.data.levelnum=that.data.levelnum.concat(j)
+   //确定 用大数据去匹配标准，而不是用标准去大数据内搜索满足标准的数据
+  confirm(e){
+    let that=this;
+    let word = that.data.keyword;
+    let list = that.data.competitionList;
+    console.log(word);
+    if(word.length != 0) {
+      for(let i = 0; i < list.length; i++) {
+        let a = that.data.levelList[list[i].level].name;
+        let b = that.data.collegeList[list[i].college].name;
+        console.log('a = ',a,', b = ',b);
+        if(word.indexOf(a)!=-1 || word.indexOf(b)!=-1) {
+          list[i].isShow = true;
+        } else {
+          list[i].isShow = false;
         }
       }
+      that.setData({
+        competitionList: list
+      })
     }
-    for (let i = 0; i < word.length; i++) {//获取选中学院的对应的数字，作为筛选条件
-      for(let j=0;j<that.data.collegestand.length;j++){
-        if(word[i]==that.data.collegestand[j]){
-          that.data.collegenum=that.data.collegenum.concat(j)
-        }
-      }
-    }
-    //注意：接下来每次筛选完毕后需将levelnum和collegenum数组置空
-    // console.log(that.data.levelnum.length)  
-    // console.log(that.data.collegenum.length)
-    if((that.data.levelnum.length==0)&&(that.data.collegenum.length!=0)){  
-      console.log(1)
-        for(let i=0;i<that.data.collegenum.length;i++){//获取competitionList
-          wx.cloud.callFunction({
-            name:"screencomp",
-            data:{
-              levelnum:-1,
-              collegenum:that.data.collegenum[i]
-            },
-            success(res){             
-              that.setData({
-                competitionList:that.data.competitionList.concat(res.result.data),
-              })                         
-            }
-          })
-        }
-    }else if((that.data.levelnum.length!=0)&&(that.data.collegenum.length==0)){
-      console.log(that.data.levelnum)
-      for(let i=0;i<that.data.levelnum.length;i++){//获取competitionList
-        wx.cloud.callFunction({
-          name:"screencomp",
-          data:{
-            levelnum:that.data.levelnum[i],
-            collegenum:-1
-          },
-          success(res){
-            console.log(res)
-            that.setData({
-              competitionList:that.data.competitionList.concat(res.result.data),
-            })
-          }
-        })
-      }
-    }else if((that.data.collegenum.length==0)&&(that.data.levelnum.length==0)){
-      console.log(1)
-      that.getalllist()
-    }else{
-      for(let i=0;i<that.data.levelnum.length;i++){//获取competitionList
-        for(let j=0;j<that.data.collegenum.length;j++){
-          wx.cloud.callFunction({
-            name:"screencomp",
-            data:{
-              levelnum:that.data.levelnum[i],
-              collegenum:that.data.collegenum[j]
-            },
-            success(res){     
-              that.setData({
-                competitionList:that.data.competitionList.concat(res.result.data),
-              })
-            }
-          })
-        }
-      }
-    }
-
-    
-    // console.log(that.data.competitionList)     获取成功
-    this.setData({
+    that.setData({
       screenShow: 'none',
     })
   },
