@@ -211,3 +211,14 @@
   border: 1px solid var(--orange);
   color: var(--orange);
 }
+.bottomline{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200rpx;
+  color: var(--gray);
+}
+.bottomline>image{
+  width: 300rpx;
+}

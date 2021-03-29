@@ -45,7 +45,7 @@
 </view>
 <view class="bottomline" wx:if="{{competitionList.length==0}}">
   <image mode="widthFix" src="../../../images/nomore2.png"></image>
-  暂时没有数据
+  暂时没有相关赛事
 </view>
 
 
@@ -59,7 +59,7 @@
         <image mode="aspectFill" src="{{item.images[0]}}"></image>
       </view>
       <view class="margin-left-xs">
-        <view class="text-title0  margin-top-xs">
+        <view class="text-title0 ">
           <text class="tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs">{{item.compname}}</text>
         </view>
         <view class="text-content">报名时间：{{item.regStart}}~{{item.regEnd}}</view>

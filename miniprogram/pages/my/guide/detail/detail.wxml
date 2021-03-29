@@ -1,0 +1,28 @@
+<wxs src="../../../../utils/filter.wxs" module="util"></wxs>
+<cu-custom bgColor="bg-gradual-orange"  bgImage="https://amzimg.com/2021/02/22/f9d8435befa0f.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">使用指南</view>
+</cu-custom>
+
+<view class="container">
+  <view class="cu-card case">
+    <view class="cu-item shadow">
+      <view class="title border-bottom">{{mess.title}}</view>
+      <view wx:for="{{mess.content}}">
+        <view class="image" wx:if="{{item.type=='image'}}">
+          <image class="radius margin-xs" src="{{item.value}}" mode="widthFix"></image>
+        </view>
+        <view class="subtitle" wx:if="{{item.type=='subtitle'}}">
+          <image mode="heightFix" src="{{item.value[0]}}" class="subimg"></image>
+          <view>{{item.value[1]}}</view> 
+        </view>
+        <view class="con" wx:if="{{item.type=='content'}}">
+          <text decode="{{true}}" user-select="true" >{{util.format(item.value)}}</text>
+        </view>
+        <view class="source border" wx:if="{{item.type=='sourse'}}">
+          {{item.value}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

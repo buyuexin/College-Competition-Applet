@@ -1,32 +1,18 @@
-// pages/index/article/article.js
+// pages/my/guide/guide.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    mess:[],
-    // title: "",
-    isTitleImage: 0
-    // src: "",
-    // outline: "",
-    // source:"",
-    // content: [],
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
-    wx.cloud.database().collection("article").get({
-      success(res){
-        that.setData({
-          mess:res.data[0]
-        })
-        console.log(that.data.mess)
-      }
-    })
+
   },
 
   /**

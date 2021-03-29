@@ -68,6 +68,11 @@
   border-bottom: 1rpx solid #c9c9c9;
 }
 
+.choose{
+  display: flex;
+  flex-direction: row;
+}
+
 .img-btn{
   display: flex;
   flex-direction: column;

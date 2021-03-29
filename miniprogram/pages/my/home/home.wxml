@@ -32,11 +32,13 @@
 
 <view class="block">
   <view class="block_title">关于我们</view>
-  <view class="item">
-    <view class="icon"><image src="../../../images/instruction.png"></image></view>
-    <view class="itemname">使用指南</view>
-    <view class="arrow"></view>
-  </view>
+  <navigator url="../guide/detail/detail" open-type="navigate">
+    <view class="item">
+      <view class="icon"><image src="../../../images/instruction.png"></image></view>
+      <view class="itemname">使用指南</view>
+      <view class="arrow"></view>
+    </view>
+  </navigator>
   <view class="feedback">
     <button class="btn" style="width: 100%;" open-type='feedback'></button>
     <view class="item">

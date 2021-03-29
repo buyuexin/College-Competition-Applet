@@ -16,7 +16,7 @@ Page({
     this.setData({
       cur: parseInt(e.currentTarget.dataset.idx),
     })
-    this.upteamlist()
+    // this.upteamlist()
   },
   //更新“招募消息”列表
   upteamlist(){
@@ -287,7 +287,7 @@ Page({
   },
 
   onShow:function(){
-   this.upteamlist()
+  //  this.upteamlist()
    this.getuserlike()
   }
 })

@@ -11,7 +11,7 @@
   <view class="down-info bg-white align-center">
     <view class="img-btn" bindtap="chooseImage">
         <image src="../../../images/img.png" class="img-icon"></image>
-        <view class="text-sm text-gray">照片</view>
+        <view class="text-sm text-gray">图片</view>
     </view>
     <view class="text-count">{{contentCount}}/300</view>
   </view>

@@ -4,11 +4,11 @@
   "setting": {
     "urlCheck": true,
     "es6": true,
-    "enhance": true,
+    "enhance": false,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
-    "newFeature": true,
+    "newFeature": false,
     "coverView": true,
     "nodeModules": false,
     "autoAudits": false,
@@ -27,7 +27,6 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
     "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
@@ -105,6 +104,11 @@
           "name": "pages/events/home/home",
           "pathName": "pages/events/home/home",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/guide/detail/detail",
+          "pathName": "pages/my/guide/detail/detail",
           "scene": null
         }
       ]

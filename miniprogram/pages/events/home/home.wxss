@@ -52,6 +52,7 @@
 }
 
 .pic{
+  margin-bottom: 10rpx;
   width: 100%;
   max-height: 220rpx;
   display: flex;
@@ -84,7 +85,8 @@
 
 .desc{
   flex: 1;
-	display: flex;
+  display: flex;
+  padding-bottom: 10rpx;
 	flex-direction: column;
   justify-content: space-between;
 }
@@ -99,12 +101,12 @@
 .text-title0{
   /* display: flex; */
   min-height: 48rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: var(--black);
 }
 
 .text-content{
-  font-size: 24rpx;
+  font-size: 26rpx;
 	color: var(--black);
   overflow: hidden;
 }

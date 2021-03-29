@@ -1,0 +1,21 @@
+<cu-custom bgColor="bg-gradual-orange"  bgImage="https://amzimg.com/2021/02/22/f9d8435befa0f.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">使用指南</view>
+</cu-custom>
+
+<view class="item">
+  <view class="itemname">基本功能介绍</view>
+  <view class="arrow"></view>
+</view>
+<view class="item">
+  <view class="itemname">发布赛事指南</view>
+  <view class="arrow"></view>
+</view>
+<view class="item">
+  <view class="itemname">发布招募指南</view>
+  <view class="arrow"></view>
+</view>
+<view class="item">
+  <view class="itemname">查看招募信息指南</view>
+  <view class="arrow"></view>
+</view>

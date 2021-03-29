@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/home/home",
+    "pages/my/guide/detail/detail",
+    "pages/my/guide/guide",
     "pages/my/home/home",
     "pages/my/money/money",
     "pages/comp_info/comp_info",
