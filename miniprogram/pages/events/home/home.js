@@ -1,4 +1,4 @@
-const app = getApp(); console
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -10,6 +10,7 @@ Page({
     screenShow:"none",  // 筛选框显示
     competitionList:[],
     keyword:[],  // 选中的关键词
+    States:[],
   },
   navigate(e) {
     let id = e.currentTarget.dataset.id;
@@ -126,6 +127,7 @@ Page({
     })
     //重置后重新获取全部数据
     this.getalllist()
+    // console.log(this.data.States)
     this.setData({
       screenShow: 'none',
     })
@@ -142,9 +144,13 @@ Page({
       })
     }
   },
-  //获取所有赛事信息
+  //获取所有赛事信息并初始化States
   getalllist(){
+    this.setData({
+      States:[]
+    })
     var that=this
+    //获取所有赛事信息
     wx.cloud.callFunction({
       name:"Bcomplist",
       data:{
@@ -154,15 +160,72 @@ Page({
         that.setData({
           competitionList:res.result.data.reverse()
         })
+        //初始化States
+        var state=""
+        var statecolor=""
+        var newcompetitionList=res.result.data
+        var timestamp = Date.parse(new Date());//获取当前时间戳
+        var regStarttimestamp=0
+        var regEndtimestamp=0
+        var compStarttimestamp=0
+        var compEndtimestamp=0
+        for(var index in newcompetitionList){
+          regStarttimestamp=new Date(newcompetitionList[index].regStart).getTime();//将报名开始时间转为时间戳
+          regEndtimestamp=new Date(newcompetitionList[index].regEnd).getTime()+86486399;//报名结束时间当天的23:59:59
+          compStarttimestamp=new Date(newcompetitionList[index].compStart).getTime();//将比赛开始时间转为时间戳
+          compEndtimestamp=new Date(newcompetitionList[index].compEnd).getTime()+86486399;//比赛结束时间当天的23:59:59
+          if(regStarttimestamp<=timestamp&&timestamp<=regEndtimestamp){
+              state="正在报名",
+              statecolor="green",
+              that.data.States.push(
+                {
+                  state:state,
+                  statecolor:statecolor
+                }
+              )
+          }else if(timestamp<=regStarttimestamp){
+              state="即将报名",
+              statecolor="green"
+              that.data.States.push(
+                {
+                  state:state,
+                  statecolor:statecolor
+                }
+              )
+          }else if(compStarttimestamp<=timestamp&&timestamp<=compEndtimestamp){
+              state="正在进行",
+              statecolor="yellow"
+              that.data.States.push(
+                {
+                  state:state,
+                  statecolor:statecolor
+                }
+              )
+          }else{
+              state="报名结束",
+              statecolor="gray"
+              that.data.States.push(
+                {
+                  state:state,
+                  statecolor:statecolor
+                }
+              )
+          }
+        }
+        //不知道哪来的bug，for循环了两次
+        console.log(that.data.States.slice(0,newcompetitionList.length))
+        that.setData({
+          States:that.data.States.slice(0,newcompetitionList.length)
+        })
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
     var that=this
+    //判断用户是否已经授权
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
@@ -186,7 +249,6 @@ Page({
         }
       }
     })
-    
   },
 
   onShow: function () {
