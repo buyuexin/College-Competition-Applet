@@ -151,9 +151,9 @@ Page({
         icon: 'none',
       })
       that.hideModal();
-    } else if(tag.length>=7) {
+    } else if(tag.length>10) {
       wx.showToast({
-        title: '最多只能输入7个字符！',
+        title: '最多只能输入10个字符！',
         icon: 'none',
       })
     } else if(tag.length==0) {
@@ -209,7 +209,7 @@ Page({
       that.setData({
         icon:res.data[0].avatarUrl,
         name:res.data[0].name,
-        college:res.data[0].college+res.data[0].major+"专业", 
+        college:res.data[0].college+res.data[0].major, 
         class:classvalue,
         id:idvalue
       })
@@ -223,7 +223,7 @@ Page({
           schoolcomp:schoolcomp
         },
         success(res){
-          //console.log(res)
+          console.log(res)
           that.setData({
             compname:res.result.data[0].compname
           })

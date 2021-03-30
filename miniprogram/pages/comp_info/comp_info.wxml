@@ -63,7 +63,7 @@
             </view>
           </view>
           <view class="item">
-            <text decode="{{true}}" user-select="true">{{complist.message}}</text>
+            <text class="con" decode="{{true}}" user-select="true">{{util.format(complist.message)}}</text>
           </view>
           <view class="image">
             <image class="radius" wx:for="{{complist.images}}" src="{{item}}" mode="widthFix" wx:key="*this"></image>
@@ -118,7 +118,9 @@
               <view class="item-60">{{complist.level}}</view>
             </view>
           </view>
-          <view class="item">{{complist.content}}</view>
+          <view class="item">
+            <text class="con" decode="{{true}}" user-select="true">{{util.format(complist.content)}}</text>
+          </view>
         </view>
       </view>
     </scroll-view>
@@ -126,7 +128,7 @@
 
   <!-- 招募消息 -->
   <swiper-item>
-    <scroll-view class="bg-white flex align-center"  scroll-y="true"  style="height: {{height_sys}}px">
+    <scroll-view class="bg-white flex align-center"  scroll-y="{{teamList.length==0?false:true}}"  style="height: {{height_sys}}px">
       <view class="bottomline" wx:if="{{teamList.length==0}}">
         <image mode="widthFix" src="../../images/nomore2.png"></image>
         暂时没有招募消息
@@ -157,8 +159,11 @@
         </view>
         <!--team desc-->
         <view class="self-info">
-          <text class="cuIcon-right text-orange"></text>
-          <text class="team-desc">队伍简介：{{Item.content}}</text>
+          <text class="team-desc">
+            <text class="cuIcon-right text-orange"></text>
+            <text class="text-black padding-left-xs">队伍简介：</text>
+            <text class="team-desc-con">{{Item.content}}</text>
+          </text>
         </view>
       </navigator>
       </view>

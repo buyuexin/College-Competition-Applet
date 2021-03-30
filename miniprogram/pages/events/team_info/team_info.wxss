@@ -25,5 +25,7 @@
   display: block;
   padding: 0 20rpx;
   margin-bottom: 30rpx;
-	min-height: 100rpx;
+  min-height: 100rpx;
+  word-wrap: break-word;
+  word-break: normal;
 } 

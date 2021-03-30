@@ -24,7 +24,7 @@ Page({
     //  classvalue=wx.getStorageSync("class");
     //  idvalue=wx.getStorageSync("id");
     if(schoolcomp!=0){
-      //console.log(1)
+      console.log(1)
       wx.cloud.callFunction({
         name:"Gteamlist",
         data:{
@@ -32,16 +32,16 @@ Page({
           schoolcomp:schoolcomp
         },
         success(res){
-          //console.log(res)
-          var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
+          // console.log(res)
+          var changeteamList=res.result.data
           if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
             teamList:changeteamList,
           })
-          // console.log(that.data.teamList)
         }
       })
     }else{
+      // console.log(2)
       wx.cloud.callFunction({
         name:"Gteamlist",
         data:{
@@ -159,14 +159,6 @@ Page({
     
   },
 
-  changeTab(e) {
-    console.log(e.currentTarget.dataset.id);
-    this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
-    })
-  },
-
   onLoad: function (options) {
     var that = this;
     classvalue=parseInt(options.class)
@@ -186,6 +178,7 @@ Page({
         });
       }
     });
+    console.log(that.data.height_sys)
     that.getcompinfo()
   },
   //获取比赛详情
