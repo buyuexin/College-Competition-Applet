@@ -27,6 +27,11 @@ Page({
     images:[],  // 上传的图片列表
   },
 
+  //获取赛事名
+  getcompname(){
+    this.data.compname=wx.getStorageSync('compname')
+  },
+
   // 获取输入文本框的字数
   getContentInput(e){
     const value = e.detail.value;
@@ -36,7 +41,6 @@ Page({
       contentCount: len
     })
   },
-
 
   // 选择图片
   chooseImage(e) {
@@ -151,9 +155,9 @@ Page({
         icon: 'none',
       })
       that.hideModal();
-    } else if(tag.length>=7) {
+    } else if(tag.length>=10) {
       wx.showToast({
-        title: '最多只能输入7个字符！',
+        title: '最多只能输入10个字符！',
         icon: 'none',
       })
     } else if(tag.length==0) {
@@ -209,41 +213,11 @@ Page({
       that.setData({
         icon:res.data[0].avatarUrl,
         name:res.data[0].name,
-        college:res.data[0].college+res.data[0].major+"专业", 
+        college:res.data[0].college+res.data[0].major, 
         class:classvalue,
         id:idvalue
       })
     })
-    //获取赛事名字
-    if(schoolcomp!=0){
-      wx.cloud.callFunction({
-        name:"Getcompinfo",
-        data:{
-          type:0,
-          schoolcomp:schoolcomp
-        },
-        success(res){
-          //console.log(res)
-          that.setData({
-            compname:res.result.data[0].compname
-          })
-        }
-      })
-    }else{
-      wx.cloud.callFunction({
-        name:"Getcompinfo",
-        data:{
-          class:classvalue,
-          id:idvalue
-        },
-        success(res){
-          that.setData({
-            compname:res.result.data[0].name
-          })
-        }
-      })
-    }
-    
   },
 
   getstandard(){
@@ -256,6 +230,7 @@ Page({
 
   formsubmit(){
     var that=this
+    that.getcompname()
     that.getstandard()
     if(standard==1){//信息填写完整
       //获取当前时间戳  

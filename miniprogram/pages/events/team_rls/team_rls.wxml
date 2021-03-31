@@ -6,14 +6,15 @@
 <!--文本框-->
 <view class="text">
   <view class="text-content">
-    <textarea class="weui-textarea" placeholder="队伍简介，最多可输入300字" maxlength='300' placeholder-class="weui-input__placeholder" bindinput="getContentInput" />
+    <!-- <textarea class="weui-textarea" placeholder="队伍简介，最多可输入300字" maxlength='300' placeholder-class="weui-input__placeholder" bindinput="getContentInput" /> -->
+    <textarea class="weui-textarea" placeholder="队伍简介，最多可输入500字" maxlength='500' placeholder-class="weui-input__placeholder" bindinput="getContentInput" />
   </view>
   <view class="down-info bg-white align-center">
     <view class="img-btn" bindtap="chooseImage">
         <image src="../../../images/img.png" class="img-icon"></image>
         <view class="text-sm text-gray">图片</view>
     </view>
-    <view class="text-count">{{contentCount}}/300</view>
+    <view class="text-count">{{contentCount}}/500</view>
   </view>
 </view>
 
@@ -36,7 +37,8 @@
     <input value="{{name}}" bindinput="getname"></input>
   </view>
   <view class="border-bottom cu-form-group">
-    <view class="title">所在学校及院系</view>
+    <!-- <view class="title">所在学校及院系</view> -->
+    <view class="title">所在院系/专业</view>
     <input value="{{college}}" bindinput="getcollege"></input>
   </view>
   <view class="border-bottom cu-form-group">

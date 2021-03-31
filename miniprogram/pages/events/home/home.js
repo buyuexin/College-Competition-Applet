@@ -10,7 +10,7 @@ Page({
     screenShow:"none",  // 筛选框显示
     competitionList:[],
     keyword:[],  // 选中的关键词
-    States:[],
+    states:[],
   },
   navigate(e) {
     let id = e.currentTarget.dataset.id;
@@ -127,7 +127,7 @@ Page({
     })
     //重置后重新获取全部数据
     this.getalllist()
-    // console.log(this.data.States)
+    // console.log(this.data.states)
     this.setData({
       screenShow: 'none',
     })
@@ -144,10 +144,10 @@ Page({
       })
     }
   },
-  //获取所有赛事信息并初始化States
+  //获取所有赛事信息并初始化states
   getalllist(){
     this.setData({
-      States:[]
+      states:[]
     })
     var that=this
     //获取所有赛事信息
@@ -160,7 +160,7 @@ Page({
         that.setData({
           competitionList:res.result.data.reverse()
         })
-        //初始化States
+        //初始化states
         var state=""
         var statecolor=""
         var newcompetitionList=res.result.data
@@ -177,7 +177,7 @@ Page({
           if(regStarttimestamp<=timestamp&&timestamp<=regEndtimestamp){
               state="正在报名",
               statecolor="green",
-              that.data.States.push(
+              that.data.states.push(
                 {
                   state:state,
                   statecolor:statecolor
@@ -186,7 +186,7 @@ Page({
           }else if(timestamp<=regStarttimestamp){
               state="即将报名",
               statecolor="green"
-              that.data.States.push(
+              that.data.states.push(
                 {
                   state:state,
                   statecolor:statecolor
@@ -195,7 +195,7 @@ Page({
           }else if(compStarttimestamp<=timestamp&&timestamp<=compEndtimestamp){
               state="正在进行",
               statecolor="yellow"
-              that.data.States.push(
+              that.data.states.push(
                 {
                   state:state,
                   statecolor:statecolor
@@ -204,7 +204,7 @@ Page({
           }else{
               state="报名结束",
               statecolor="gray"
-              that.data.States.push(
+              that.data.states.push(
                 {
                   state:state,
                   statecolor:statecolor
@@ -213,9 +213,9 @@ Page({
           }
         }
         //不知道哪来的bug，for循环了两次
-        console.log(that.data.States.slice(0,newcompetitionList.length))
+        console.log(that.data.states.slice(0,newcompetitionList.length))
         that.setData({
-          States:that.data.States.slice(0,newcompetitionList.length)
+          states:that.data.states.slice(0,newcompetitionList.length)
         })
       }
     })
@@ -252,7 +252,7 @@ Page({
   },
 
   onShow: function () {
-    this.onLoad()
+    // this.onLoad()
   },
 
 

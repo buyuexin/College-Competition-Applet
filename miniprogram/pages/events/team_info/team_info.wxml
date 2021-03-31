@@ -27,14 +27,16 @@
       <view class="item-left">
         <view class="line-orange bg-white cu-tag radius">联系方式</view>
       </view>
-      <view>{{teaminfo.contact}}</view>
+      <!-- <view>{{teaminfo.contact}}</view> -->
+      <view><text user-select="true">{{teaminfo.contact}}</text></view>
     </view>
     <view class="item">
       <view class="item-left">
         <view class="line-orange bg-white cu-tag radius">队伍简介</view>
       </view>
     </view>
-    <text class="detail"  space="emsp">  {{teaminfo.content}}</text>
+    <!-- <text class="detail"  space="emsp">  {{teaminfo.content}}</text> -->
+    <text class="detail" space="emsp" user-select="true">{{teaminfo.content}}</text>
     <view class="image">
       <image class="radius" wx:for="{{teaminfo.images}}" src="{{item}}" mode="widthFix"></image>
     </view>

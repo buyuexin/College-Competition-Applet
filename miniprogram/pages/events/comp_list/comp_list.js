@@ -10,7 +10,7 @@ Page({
     end:10,//用于实现触底加载更多
     competitionList:[],//赛事列表
     compListnum:0,//某类赛事列表名代号
-    isLoadMore: false
+    isLoadMore: false,
   },
 
   /**

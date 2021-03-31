@@ -10,6 +10,7 @@ Page({
     cur: 0, 
     teamList:[],
     complist:[],
+    title:"赛事详情",
   },
   //点击“招募消息”
   clickrls(e) {
@@ -33,7 +34,8 @@ Page({
         },
         success(res){
           //console.log(res)
-          var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
+          // var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
+          var changeteamList=res.result.data
           if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
             teamList:changeteamList,
@@ -159,13 +161,13 @@ Page({
     
   },
 
-  changeTab(e) {
-    console.log(e.currentTarget.dataset.id);
-    this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
-    })
-  },
+  // changeTab(e) {
+  //   console.log(e.currentTarget.dataset.id);
+  //   this.setData({
+  //     TabCur: e.currentTarget.dataset.id,
+  //     scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+  //   })
+  // },
 
   onLoad: function (options) {
     var that = this;
@@ -186,6 +188,7 @@ Page({
         });
       }
     });
+    // console.log(that.data.height_sys)
     that.getcompinfo()
   },
   //获取比赛详情
@@ -206,6 +209,8 @@ Page({
           that.setData({
             complist:res.result.data[0]
           })
+          //将比赛名存入缓存
+          wx.setStorageSync('compname', comp.compname)
         }
       })
     }else{//获取普通赛事具体信息
@@ -219,7 +224,9 @@ Page({
           //console.log(res)
           that.setData({
             complist:res.result.data[0]
-          })   
+          })
+          //将比赛名存入缓存
+          wx.setStorageSync('compname', res.result.data[0].name)   
         }
       })
     }
