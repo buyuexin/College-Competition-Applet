@@ -25,7 +25,7 @@ Page({
     //  classvalue=wx.getStorageSync("class");
     //  idvalue=wx.getStorageSync("id");
     if(schoolcomp!=0){
-      //console.log(1)
+      console.log(schoolcomp)
       wx.cloud.callFunction({
         name:"Gteamlist",
         data:{
@@ -33,14 +33,15 @@ Page({
           schoolcomp:schoolcomp
         },
         success(res){
-          //console.log(res)
+          console.log(res)
           // var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
           var changeteamList=res.result.data
+          console.log(changeteamList)
           if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
             teamList:changeteamList,
           })
-          // console.log(that.data.teamList)
+          console.log(that.data.teamList)
         }
       })
     }else{
@@ -178,13 +179,14 @@ Page({
     wx.setStorageSync('id',idvalue)
     wx.setStorageSync('schoolcomp',schoolcomp)
     openid=wx.getStorageSync("openid");
+
     wx.getSystemInfo({
       success: function(res) {
         var Client = wx.getMenuButtonBoundingClientRect();
         var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
         that.setData({
           clientHeight: res.windowHeight,
-          height_sys: height - 58,
+          height_sys: height-44,
         });
       }
     });
@@ -291,7 +293,7 @@ Page({
     
   },
 
-  onShow:function(){
+  onShow: function(){
    this.upteamlist()
    this.getuserlike()
   }

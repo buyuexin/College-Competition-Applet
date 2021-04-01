@@ -203,8 +203,8 @@
 }
 
 .height{
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 44px;
+  line-height: 44px;
 }
 .collect{
   display: flex;

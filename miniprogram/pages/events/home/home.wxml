@@ -59,7 +59,6 @@
         <image mode="aspectFill" src="{{item.images[0]}}"></image>
       </view>
       <view class="margin-left-xs">
-        <!-- <view class="text-title0  margin-top-xs"> -->
         <view class="text-title0 ">
           <text class="tag bg-{{states[index].statecolor}} radius">{{states[index].state}}</text><text class="margin-left-xs">{{item.compname}}</text>
         </view>

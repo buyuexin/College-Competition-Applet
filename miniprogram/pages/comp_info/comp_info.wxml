@@ -1,7 +1,7 @@
 <wxs src="../../utils/filter.wxs" module="util"></wxs>
 <cu-custom bgColor="bg-gradual-orange" bgImage="https://amzimg.com/2021/02/22/f9d8435befa0f.jpg" isBack="{{true}}">
 	<view slot="backText">返回</view>
-	<view slot="content">{{title}}</view>
+	<view slot="content">比赛详情</view>
 </cu-custom>
 
 <!--上导航栏-->
@@ -11,7 +11,7 @@
   <view class="flex flex-sub height justify-center {{cur==1?'border-bottom':''}}" bindtap="clickrls" data-idx="1">招募消息</view>
 </view>
 
-<swiper current="{{cur}}" class="flex align-center margin-top-xs" style="height: {{height_sys}}px" bindchange="bindChange">
+<swiper current="{{cur}}" class="flex align-center " style="height: {{height_sys}}px;" bindchange="bindChange">
   <!-- 比赛详情 -->
   <swiper-item>
     <scroll-view class="bg-white padding-xs flex align-center"  scroll-y="true" style="height: {{height_sys}}px" >
