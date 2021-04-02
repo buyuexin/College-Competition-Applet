@@ -12,10 +12,11 @@
         </view>
         <view class="margin-left-xs">
           <view class="text-title0  margin-top-xs">
-            <text class="tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs">{{item.name}}</text>
+            <!-- <text class="tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs">{{item.name}}</text> -->
+            <text class="tag bg-{{statecolor[states[index].statecolor]}} radius">{{state[states[index].state]}}</text><text class="margin-left-xs">{{item.name}}</text>
           </view>
-          <view class="text-content">报名时间：{{item.registrationTime}}</view>
-          <view class="text-content">比赛时间：{{item.startTime}}</view>
+          <view class="text-content">报名时间：{{item.regTime}}</view>
+          <view class="text-content">比赛时间：{{item.compTime}}</view>
         </view>
       </view>
     </view>

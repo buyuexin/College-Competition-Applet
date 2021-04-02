@@ -1,49 +1,15 @@
 // pages/my/follow/follow.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    competitionList:[]
-    // competitionList:[
-    //   {
-    //     url: "",
-    //     image:"../../../images/comp_pic.png",
-    //     name:"2021年第十一届MathorCup高校数学建模挑战赛",
-    //     level:"国家级",
-    //     college:"软件学院",
-    //     registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-    //     startTime:"2021.04.15-2021.04.19",  // 参赛时间
-    //     statecolor:"green",  // gray/green/yellow
-    //     state:"正在报名",  // 已结束/正在报名/正在进行
-    //     isShow: true,
-    //   },
-    //   {
-    //     url: "",
-    //     image:"../../../images/comp_pic.png",
-    //     name:"2020-2021年度第二届全国大学生算法设计与编程挑战赛（冬季赛）",
-    //     level:"校级",
-    //     college:"国际商学院",
-    //     registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-    //     startTime:"2021.04.15-2021.04.19",  // 参赛时间
-    //     statecolor:"gray",  
-    //     state:"已结束",
-    //     isShow: true, 
-    //   },
-    //   {
-    //     url: "",
-    //     image:"../../../images/comp_pic.png",
-    //     name:"2021年“远见者杯”全国大学生创新促进就业（简历设计）大赛",
-    //     level:"院级",
-    //     college:"城市文化学院",
-    //     registrationTime:"2021.01.01-2021.04.14",  // 报名时间
-    //     startTime:"2021.04.15-2021.04.19",  // 参赛时间
-    //     statecolor:"yellow",  
-    //     state:"正在进行",  
-    //     isShow: true,
-    //   },
-    // ],
+    competitionList:[],
+    states:[],
+    state:app.globalData.state,
+    statecolor:app.globalData.statecolor
   },
 
   // ListTouch触摸开始
@@ -122,10 +88,72 @@ Page({
         that.setData({
           competitionList:res.result.data
         })
+        that.creatstates()
       }
     })
   },
 
+  creatstates(){
+    var that=this
+    //初始化states
+    var state=""
+    var statecolor=""
+    console.log(that.data.competitionList)
+    var newcompetitionList=that.data.competitionList
+    var timestamp = Date.parse(new Date());//获取当前时间戳
+    var regStarttimestamp=0
+    var regEndtimestamp=0
+    var compStarttimestamp=0
+    var compEndtimestamp=0
+    for(var index in newcompetitionList){
+      regStarttimestamp=new Date(newcompetitionList[index].regStart).getTime();//将报名开始时间转为时间戳
+      regEndtimestamp=new Date(newcompetitionList[index].regEnd).getTime()+86486399;//报名结束时间当天的23:59:59
+      compStarttimestamp=new Date(newcompetitionList[index].compStart).getTime();//将比赛开始时间转为时间戳
+      compEndtimestamp=new Date(newcompetitionList[index].compEnd).getTime()+86486399;//比赛结束时间当天的23:59:59
+      if(regStarttimestamp<=timestamp&&timestamp<=regEndtimestamp){
+          state=0,
+          statecolor=0,
+          that.data.states.push(
+            {
+              state:state,
+              statecolor:statecolor
+            }
+          )
+      }else if(timestamp<=regStarttimestamp){
+          state=1,
+          statecolor=1
+          that.data.states.push(
+            {
+              state:state,
+              statecolor:statecolor
+            }
+          )
+      }else if(compStarttimestamp<=timestamp&&timestamp<=compEndtimestamp){
+          state=2,
+          statecolor=2
+          that.data.states.push(
+            {
+              state:state,
+              statecolor:statecolor
+            }
+          )
+      }else{
+          state=3,
+          statecolor=3
+          that.data.states.push(
+            {
+              state:state,
+              statecolor:statecolor
+            }
+          )
+      }
+    }
+    //不知道哪来的bug，for循环了两次
+    console.log(that.data.states.slice(0,newcompetitionList.length))
+    that.setData({
+      states:that.data.states.slice(0,newcompetitionList.length)
+    })
+  },
   //点击跳转至相应赛事页面
   
 

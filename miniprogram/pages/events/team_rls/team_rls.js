@@ -246,6 +246,7 @@ Page({
       startday:date.toLocaleDateString()
     })
     if(schoolcomp!=0){
+      console.log(1)
       wx.cloud.database().collection("comp_team_rls").add({
         data:{
           schoolcomp:schoolcomp,
@@ -266,6 +267,7 @@ Page({
         }
       })
     }else{
+      console.log(2)
       wx.cloud.database().collection("comp_team_rls").add({
         data:{
           compname:that.data.compname,

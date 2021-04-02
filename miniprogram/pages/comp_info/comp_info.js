@@ -25,7 +25,7 @@ Page({
     //  classvalue=wx.getStorageSync("class");
     //  idvalue=wx.getStorageSync("id");
     if(schoolcomp!=0){
-      console.log(schoolcomp)
+      //console.log(1)
       wx.cloud.callFunction({
         name:"Gteamlist",
         data:{
@@ -36,12 +36,11 @@ Page({
           console.log(res)
           // var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
           var changeteamList=res.result.data
-          console.log(changeteamList)
           if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
             teamList:changeteamList,
           })
-          console.log(that.data.teamList)
+          // console.log(that.data.teamList)
         }
       })
     }else{
@@ -102,11 +101,9 @@ Page({
             schoolcomp:schoolcomp,
             compname:that.data.complist.compname,
             regStart:that.data.complist.regStart,
-            compStart:that.data.complist.compStart,
             regEnd:that.data.complist.regEnd,
+            compStart:that.data.complist.compStart,
             compEnd:that.data.complist.compEnd,
-            state:that.data.complist.state,
-            statecolor:that.data.complist.statecolor,
             image:that.data.complist.images[0]
           }
         })
@@ -116,10 +113,12 @@ Page({
               class:classvalue,
               id:idvalue,
               compname:that.data.complist.name,
-              registrationTime:that.data.complist.registrationTime,
-              startTime:that.data.complist.startTime,
-              state:that.data.complist.state,
-              statecolor:that.data.complist.statecolor,
+              regTime:that.data.complist.regTime,
+              compTime:that.data.complist.compTime,
+              regStart:that.data.complist.regStart,
+              regEnd:that.data.complist.regEnd,
+              compStart:that.data.complist.compStart,
+              compEnd:that.data.complist.compEnd,
               image:that.data.complist.image
             }
           })
@@ -179,14 +178,13 @@ Page({
     wx.setStorageSync('id',idvalue)
     wx.setStorageSync('schoolcomp',schoolcomp)
     openid=wx.getStorageSync("openid");
-
     wx.getSystemInfo({
       success: function(res) {
         var Client = wx.getMenuButtonBoundingClientRect();
         var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
         that.setData({
           clientHeight: res.windowHeight,
-          height_sys: height-44,
+          height_sys: height -44,
         });
       }
     });
@@ -293,7 +291,7 @@ Page({
     
   },
 
-  onShow: function(){
+  onShow:function(){
    this.upteamlist()
    this.getuserlike()
   }

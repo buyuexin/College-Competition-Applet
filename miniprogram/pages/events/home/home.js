@@ -11,6 +11,8 @@ Page({
     competitionList:[],
     keyword:[],  // 选中的关键词
     states:[],
+    state:app.globalData.state,
+    statecolor:app.globalData.statecolor
   },
   navigate(e) {
     let id = e.currentTarget.dataset.id;
@@ -175,8 +177,8 @@ Page({
           compStarttimestamp=new Date(newcompetitionList[index].compStart).getTime();//将比赛开始时间转为时间戳
           compEndtimestamp=new Date(newcompetitionList[index].compEnd).getTime()+86486399;//比赛结束时间当天的23:59:59
           if(regStarttimestamp<=timestamp&&timestamp<=regEndtimestamp){
-              state="正在报名",
-              statecolor="green",
+              state=0,
+              statecolor=0,
               that.data.states.push(
                 {
                   state:state,
@@ -184,8 +186,8 @@ Page({
                 }
               )
           }else if(timestamp<=regStarttimestamp){
-              state="即将报名",
-              statecolor="green"
+              state=1,
+              statecolor=1
               that.data.states.push(
                 {
                   state:state,
@@ -193,8 +195,8 @@ Page({
                 }
               )
           }else if(compStarttimestamp<=timestamp&&timestamp<=compEndtimestamp){
-              state="正在进行",
-              statecolor="yellow"
+              state=2,
+              statecolor=2
               that.data.states.push(
                 {
                   state:state,
@@ -202,8 +204,8 @@ Page({
                 }
               )
           }else{
-              state="报名结束",
-              statecolor="gray"
+              state=3,
+              statecolor=3
               that.data.states.push(
                 {
                   state:state,

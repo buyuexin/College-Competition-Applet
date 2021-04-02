@@ -6,12 +6,6 @@ Page({
    */
   data: {
     teaminfo:[]
-    // title: "", // 队伍名称
-    // name: "", // 发起人姓名
-    // college: "", // 所在学校和院系
-    // contact: "", // 联系方式
-    // content: "", // 队伍简介
-    // images:[],
   },
 
   /**

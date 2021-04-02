@@ -16,11 +16,11 @@
         </view>
         <view class="desc">
           <view class="text-title">
-            <text class="align-center tag bg-{{item.statecolor}} radius">{{item.state}}</text>
+            <text class="align-center tag bg-{{statecolor[states[index].statecolor]}} radius">{{state[states[index].state]}}</text>
             <text class="margin-left-xs align-center hidden">{{item.compname}}</text>
           </view>
-          <view class="text-content">报名时间：{{item.registrationTime}}</view>
-          <view class="text-content">比赛时间：{{item.startTime}}</view>
+          <view class="text-content">报名时间：{{item.regTime}}</view>
+          <view class="text-content">比赛时间：{{item.compTime}}</view>
         </view>
       </view>
     </navigator>

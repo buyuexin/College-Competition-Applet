@@ -26,8 +26,6 @@ Page({
     regEnd:"",
     compStart:"",
     compEnd:"",
-    state:"",
-    statecolor:"",
     isShow:true
     // level: 0,  // 赛事级别序号
     // college: 0,  // 发布学院序号
@@ -211,33 +209,6 @@ Page({
     var that=this
     that.getstandard()
     if(standard==1){      
-    // //判断当前时间和报名时间的相对位置，以此设置state和statecolor
-    // var timestamp = Date.parse(new Date());//获取当前时间戳
-    // var regStarttimestamp=new Date(this.data.regStart).getTime();//将报名开始时间转为时间戳
-    // var regEndtimestamp=new Date(this.data.regEnd).getTime()+86486399;//报名结束时间当天的23:59:59
-    // var compStarttimestamp=new Date(this.data.compStart).getTime();//将比赛开始时间转为时间戳
-    // var compEndtimestamp=new Date(this.data.compEnd).getTime()+86486399;//比赛结束时间当天的23:59:59
-    // if(regStarttimestamp<=timestamp&&timestamp<=regEndtimestamp){
-    //   that.setData({
-    //     state:"正在报名",
-    //     statecolor:"green"
-    //   })
-    // }else if(timestamp<=regStarttimestamp){
-    //   that.setData({
-    //     state:"即将报名",
-    //     statecolor:"green"
-    //   })
-    // }else if(compStarttimestamp<=timestamp&&timestamp<=compEndtimestamp){
-    //   that.setData({
-    //     state:"正在进行",
-    //     statecolor:"yellow"
-    //   })
-    // }else{
-    //   that.setData({
-    //     state:"报名结束",
-    //     statecolor:"gray"
-    //   })
-    // }
     if(schoolcomp!=0){
       wx.cloud.database().collection("school_comp").add({
         data:{
@@ -254,8 +225,6 @@ Page({
           regEnd:that.data.regEnd,
           compStart:that.data.compStart,
           compEnd:that.data.compEnd,
-          state:that.data.state,
-          statecolor:that.data.statecolor,
           isShow:that.data.isShow
         }
       })
@@ -274,8 +243,6 @@ Page({
           regEnd:that.data.regEnd,
           compStart:that.data.compStart,
           compEnd:that.data.compEnd,
-          state:that.data.state,
-          statecolor:that.data.statecolor,
           isShow:that.data.isShow
         }
       })

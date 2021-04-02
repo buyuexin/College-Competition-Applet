@@ -59,8 +59,9 @@
         <image mode="aspectFill" src="{{item.images[0]}}"></image>
       </view>
       <view class="margin-left-xs">
+        <!-- <view class="text-title0  margin-top-xs"> -->
         <view class="text-title0 ">
-          <text class="tag bg-{{states[index].statecolor}} radius">{{states[index].state}}</text><text class="margin-left-xs">{{item.compname}}</text>
+          <text class="tag bg-{{statecolor[states[index].statecolor]}} radius">{{state[states[index].state]}}</text><text class="margin-left-xs">{{item.compname}}</text>
         </view>
         <view class="text-content">报名时间：{{item.regStart}}~{{item.regEnd}}</view>
         <view class="text-content">比赛时间：{{item.compStart}}~{{item.compEnd}}</view>

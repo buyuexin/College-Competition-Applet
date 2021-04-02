@@ -11,7 +11,7 @@
   <view class="flex flex-sub height justify-center {{cur==1?'border-bottom':''}}" bindtap="clickrls" data-idx="1">招募消息</view>
 </view>
 
-<swiper current="{{cur}}" class="flex align-center " style="height: {{height_sys}}px;" bindchange="bindChange">
+<swiper current="{{cur}}" class="flex align-center" style="height: {{height_sys}}px" bindchange="bindChange">
   <!-- 比赛详情 -->
   <swiper-item>
     <scroll-view class="bg-white padding-xs flex align-center"  scroll-y="true" style="height: {{height_sys}}px" >
@@ -40,13 +40,13 @@
             <view class="item-left">
               <view class="line-orange bg-white cu-tag radius">报名时间</view>
             </view>
-            <view class="item-right">{{complist.registrationTime}}</view>
+            <view class="item-right">{{complist.regTime}}</view>
           </view>
           <view class="item solid-bottom">
             <view class="item-left">
               <view class="line-orange bg-white cu-tag radius">比赛时间</view>
             </view>
-            <view class="item-right">{{complist.startTime}}</view>
+            <view class="item-right">{{complist.compTime}}</view>
           </view>
           <view class="flex solid-bottom">
             <view class="item-50 solid-right">
