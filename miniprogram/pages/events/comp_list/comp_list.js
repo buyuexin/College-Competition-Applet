@@ -120,43 +120,52 @@ Page({
       regEndtimestamp=new Date(newcompetitionList[index].regEnd).getTime()+86486399;//报名结束时间当天的23:59:59
       compStarttimestamp=new Date(newcompetitionList[index].compStart).getTime();//将比赛开始时间转为时间戳
       compEndtimestamp=new Date(newcompetitionList[index].compEnd).getTime()+86486399;//比赛结束时间当天的23:59:59
-      if(regStarttimestamp<=timestamp&&timestamp<=regEndtimestamp){
-          state=0,
-          statecolor=0,
-          that.data.states.push(
-            {
-              state:state,
-              statecolor:statecolor
-            }
-          )
-      }else if(timestamp<=regStarttimestamp){
-          state=1,
-          statecolor=1
-          that.data.states.push(
-            {
-              state:state,
-              statecolor:statecolor
-            }
-          )
-      }else if(compStarttimestamp<=timestamp&&timestamp<=compEndtimestamp){
-          state=2,
-          statecolor=2
-          that.data.states.push(
-            {
-              state:state,
-              statecolor:statecolor
-            }
-          )
-      }else{
-          state=3,
-          statecolor=3
-          that.data.states.push(
-            {
-              state:state,
-              statecolor:statecolor
-            }
-          )
-      }
+      if(timestamp<=regStarttimestamp){
+        state=0,
+        statecolor=0,
+        that.data.states.push(
+          {
+            state:state,
+            statecolor:statecolor
+          }
+        )
+    }else if(regStarttimestamp<=timestamp&&timestamp<=regEndtimestamp){
+        state=1,
+        statecolor=1
+        that.data.states.push(
+          {
+            state:state,
+            statecolor:statecolor
+          }
+        )
+    }else if(regEndtimestamp<=timestamp&&timestamp<=compStarttimestam){
+        state=2,
+        statecolor=2
+        that.data.states.push(
+          {
+            state:state,
+            statecolor:statecolor
+          }
+        )
+    }else if(compStarttimestamp<=timestamp&&timestamp<=compEndtimestamp){
+      state=3,
+      statecolor=3
+      that.data.states.push(
+        {
+          state:state,
+          statecolor:statecolor
+        }
+      )
+    }else{
+        state=4,
+        statecolor=4
+        that.data.states.push(
+          {
+            state:state,
+            statecolor:statecolor
+          }
+        )
+    }
     }
     //不知道哪来的bug，for循环了两次
     console.log(that.data.states.slice(0,newcompetitionList.length))
