@@ -232,6 +232,7 @@ Page({
     var that=this
     that.getcompname()
     that.getstandard()
+    console.log(schoolcomp)
     if(standard==1){//信息填写完整
       //获取当前时间戳  
     var timestamp = Date.parse(new Date());
