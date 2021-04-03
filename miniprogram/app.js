@@ -59,7 +59,7 @@ App({
       {status: "line-gray",name: "职业教育学院",},
       ],
     typeList:['个人赛','团队赛'],
-    state:['即将报名','正在报名','报名结束，即将进行','正在进行','报名结束'],
+    state:['即将报名','正在报名','即将进行','正在进行','报名结束'],
     statecolor:['green','green','yellow','yellow','gray']
     // teamlist:[//用于展示招募页面时进行追加
     //   {icon:"../../images/icon.png",

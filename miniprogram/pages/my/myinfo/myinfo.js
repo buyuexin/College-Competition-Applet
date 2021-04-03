@@ -6,113 +6,66 @@ Page({
    */
   data: {
     genderList:["请选择","男","女"],
-    gradeList:["大一","大二","大三","大四","研一","研二","研三"],
+    gradeList:["请选择","大一","大二","大三","大四","研一","研二","研三"],
     useropenid:"",
     avatarUrl:"",
     nickname:"",
-    name:"请输入",
-    gender:"男",
+    name:"",
+    gender: 0,
     phonenum:"",
     email:"",
-    school:"请输入",
-    college:"请输入",
-    major:"请输入",
-    grade:"大一",
+    school:"",
+    college:"",
+    major:"",
+    grade: 0,
     disabled: true  // 保存按钮是否禁用，有修改才启用
   },
-
-  //当用户点击input组件修改数据后激活按钮。欠缺：如果用户点击后不修改数据呢？
-  actbutton(e){
-    this.setData({
-      disabled:false
-    })
-  },
-  
-  //当用户使用picker组件后，获取选中的值(性别)
-  getchange(e){
-    if(e.detail.value==1){
-      this.setData({
-        gender:"男"
-      })
-    }else if(e.detail.value==2){
-      this.setData({
-        gender:"女"
-      })
-    }
-  },
-
-    //当用户使用picker组件后，获取选中的值(年级)
-    getchange2(e){
-      if(e.detail.value==0){
-        this.setData({
-          grade:"大一"
-        })
-      }else if(e.detail.value==1){
-        this.setData({
-          grade:"大二"
-        })
-      }else if(e.detail.value==2){
-        this.setData({
-          grade:"大三"
-        })
-      }else if(e.detail.value==3){
-        this.setData({
-          grade:"大四"
-        })
-      }else if(e.detail.value==4){
-        this.setData({
-          grade:"研一"
-        })
-      }else if(e.detail.value==5){
-        this.setData({
-          grade:"研二"
-        })
-      }else if(e.detail.value==6){
-        this.setData({
-          grade:"研三"
-        })
-      }
-    },
 
   //获取姓名
   getname(e){
     this.setData({
-      name:e.detail.value
+      name:e.detail.value,
+      disabled: false
     })
   },
 
   //获取手机号
   getphonenum(e){
     this.setData({
-      phonenum:e.detail.value
+      phonenum:e.detail.value,
+      disabled: false
     })
   },
 
    //获取邮箱
    getemail(e){
     this.setData({
-      email:e.detail.value
+      email:e.detail.value,
+      disabled: false
     })
   },
 
   //获取学校
   getschool(e){
     this.setData({
-      school:e.detail.value
+      school:e.detail.value,
+      disabled: false
     })
   },
 
   //获取院系
   getcollege(e){
     this.setData({
-      college:e.detail.value
+      college:e.detail.value,
+      disabled: false
     })
   },
 
   //获取专业
   getmajor(e){
     this.setData({
-      major:e.detail.value
+      major:e.detail.value,
+      disabled: false
     })
   },
 
@@ -225,6 +178,7 @@ Page({
       major:res.data[0].major,
       grade:res.data[0].grade,
     })
+    console.log(res.data[0])
   })
   },
 

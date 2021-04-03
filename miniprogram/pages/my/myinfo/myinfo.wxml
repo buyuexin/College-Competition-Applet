@@ -17,40 +17,40 @@
       <!-- <text style="color: red; font-size: 30rpx; margin-right: 5rpx;">*</text> -->
       姓名
     </view>
-    <input class="text-right" value="{{name}}" placeholder="请输入姓名" bindinput="getname" bindtap="actbutton"></input>
+    <input class="text-right" value="{{name}}" placeholder="请输入姓名" bindinput="getname"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">性别</view>
     <!-- 单选选择性别 -->
-    <picker bindtap="actbutton" bindchange="getchange" range="{{genderList}}">
-      <view class="picker">{{gender}}</view>
+    <picker bindchange="genderChange" range="{{genderList}}">
+      <view class="picker">{{genderList[gender]}}</view>
     </picker>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">手机号</view>
-    <input class="text-right" value="{{phonenum}}" placeholder="请输入手机号" bindinput="getphonenum" bindtap="actbutton"></input>
+    <input class="text-right" value="{{phonenum}}" placeholder="请输入手机号" bindinput="getphonenum"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">邮箱</view>
-    <input class="text-right" value="{{email}}" placeholder="请输入邮箱" bindinput="getemail" bindtap="actbutton"></input>
+    <input class="text-right" value="{{email}}" placeholder="请输入邮箱" bindinput="getemail"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">学校</view>
-    <input class="text-right" value="{{school}}" bindinput="getschool" bindtap="actbutton"></input>
+    <input class="text-right" value="{{school}}" placeholder="请输入学校" bindinput="getschool"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">院系</view>
-    <input class="text-right" value="{{college}}" bindinput="getcollege" bindtap="actbutton"></input>
+    <input class="text-right" value="{{college}}" placeholder="请输入院系" bindinput="getcollege"></input>
   </view>
   <view class="border-bottom cu-form-group">
     <view class="title">专业</view>
-    <input class="text-right" value="{{major}}" bindinput="getmajor" bindtap="actbutton"></input>
+    <input class="text-right" value="{{major}}" placeholder="请输入专业" bindinput="getmajor"></input>
   </view>
   
   <view class="cu-form-group">
     <view class="title">年级</view>
-    <picker bindtap="actbutton" bindchange="getchange2" range="{{gradeList}}">
-      <view class="picker">{{grade}}</view>
+    <picker bindchange="gradeChange" range="{{gradeList}}">
+      <view class="picker">{{gradeList[grade]}}</view>
     </picker>
   </view>
   

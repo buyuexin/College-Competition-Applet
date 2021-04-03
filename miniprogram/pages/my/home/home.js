@@ -38,13 +38,13 @@ Page({
               avatarUrl:that.data.useravatar,
               nickname:that.data.username,
               name:"",
-              gender:"请选择",
+              gender: 0,
               phonenum:"",
               email:"",
               school:"",
               college:"",
               major:"",
-              grade:"",
+              grade: 0,
             }
           })
           this.setData({

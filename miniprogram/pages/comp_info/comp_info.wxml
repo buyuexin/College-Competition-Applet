@@ -5,10 +5,10 @@
 </cu-custom>
 
 <!--上导航栏-->
-<view class="margin-0 bar align-center flex bg-white">
-  <view class="flex flex-sub height justify-center {{cur==0?'border-bottom':''}}" bindtap="clickinfo" data-idx="0">比赛详情</view>
-  <view class="border-right flex justify-center"></view>
-  <view class="flex flex-sub height justify-center {{cur==1?'border-bottom':''}}" bindtap="clickrls" data-idx="1">招募消息</view>
+<view class="margin-0 bar align-center flex">
+  <view class="flex flex-sub height bg-white justify-center {{cur==0?'border-bottom':''}}" bindtap="clickinfo" data-idx="0">比赛详情</view>
+  <view class="border-right flex bg-white justify-center"></view>
+  <view class="flex flex-sub height bg-white justify-center {{cur==1?'border-bottom':''}}" bindtap="clickrls" data-idx="1">招募消息</view>
 </view>
 
 <swiper current="{{cur}}" class="flex align-center" style="height: {{height_sys}}px" bindchange="bindChange">
