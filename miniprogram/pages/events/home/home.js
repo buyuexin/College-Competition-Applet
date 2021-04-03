@@ -257,6 +257,7 @@ Page({
            }
       })
     }
+    that.getalllist()
   },
 
   onShow: function () {
