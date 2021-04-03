@@ -1,6 +1,4 @@
 // pages/me/me.js
-let openid
-let type=0//用于记录用户是否已经授权，已授权则禁用授权键的功能。0为未授权
 let hover="button-hover"
 Page({
 
@@ -8,41 +6,52 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openid:wx.getStorageSync('openid'),
     pageTopHeight: wx.getSystemInfoSync().statusBarHeight+30+7,
     useravatar:"../../../images/icon.png",
-    username:"点击授权登录",
+    type:0,//用于记录用户是否已经授权，已授权则禁用授权键的功能。0为未授权
+    username:"点击授权",
+    use:true
   },
 
-  //点击授权获取用户信息
-  getuserinfo(e){
-    if(this.data.type==0){
-      var that=this
-    that.setData({//设置头像和昵称
-      useravatar:e.detail.userInfo.avatarUrl,
-      username:e.detail.userInfo.nickName,
-      type:1,
-      hover:"none"
-    })
-    //更新数据库内用户头像及昵称数据
-    openid=wx.getStorageSync("openid");//获取缓存内的用户openID
-    wx.cloud.database().collection("users").where({useropenid:openid}).update({
-      data:{
-        avatarUrl:that.data.useravatar,
-        nickname:that.data.username
-      }
-    })
-    //提示是否立刻完善个人信息
-    wx.showModal({
-      title: "提示",
-      content: "请完善个人信息",
-      success: function(res){
-      if (res.confirm) {//确定前往完善个人信息
-        wx.navigateTo({
-          url: '../myinfo/myinfo',
-        })
-      }else if (res.cancel){}
-      }
-    })
+  getUserProfile(e) {
+    var that = this
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    console.log(that.data.use)
+    if(that.data.use){
+      wx.getUserProfile({
+        desc: '获取头像及昵称', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (res) => {
+          console.log(res)
+          that.setData({
+            useravatar:res.userInfo.avatarUrl,
+            username:res.userInfo.nickName,
+          })
+          wx.setStorageSync('useravatarurl', res.userInfo.avatarUrl)
+          wx.setStorageSync('username', res.userInfo.nickName)
+          wx.setStorageSync('NeedUseGetuserprofile', 0)
+          wx.setStorageSync('use', false)
+          wx.cloud.database().collection("users").add({
+            data:{
+              useropenid:that.data.openid,
+              avatarUrl:that.data.useravatar,
+              nickname:that.data.username,
+              name:"",
+              gender:"请选择",
+              phonenum:"",
+              email:"",
+              school:"",
+              college:"",
+              major:"",
+              grade:"",
+            }
+          })
+          this.setData({
+            hover:"none",
+          })
+        }
+      })
     }
   },
   
@@ -63,30 +72,17 @@ Page({
    */
   onLoad: function (options) {
     var that=this
-    wx.getSetting({//检测用户是否已经授权
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {// 已授权过    
-          wx.getUserInfo({
-            success(res) {
-              that.setData({//设置头像和昵称
-                useravatar:res.userInfo.avatarUrl,
-                username:res.userInfo.nickName,
-                type:1,
-                hover:"none"
-              })
-              //更新数据库内用户头像及昵称数据
-              openid=wx.getStorageSync("openid");//获取缓存内的用户openID
-              wx.cloud.database().collection("users").where({useropenid:openid}).update({
-                data:{
-                  avatarUrl:that.data.useravatar,
-                  nickname:that.data.username
-                }
-              })
-            }
-          })
-        }else{}//未授权
-      }
-    })
+    var NeedUseGetuserproifle = wx.getStorageSync('NeedUseGetuserprofile')
+    that.data.use=wx.getStorageSync('use')
+    if(NeedUseGetuserproifle==0){
+      that.setData({
+        useravatar:wx.getStorageSync('useravatarurl'),
+        username:wx.getStorageSync('username'),
+        hover:"none",
+      })
+    }else{
+      
+    }
   },
 
   /**

@@ -174,7 +174,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var NeedUseGetuserproifle = wx.getStorageSync('NeedUseGetuserprofile')
+    // console.log(NeedUseGetuserproifle)
+    var that=this
+    if(NeedUseGetuserproifle==0){
+      console.log('可正常进入event/home页面')
+    }else{
+      wx.showModal({
+           openid:"提示",
+           content: "请先完成授权",
+           success: function(res){
+             if (res.confirm) {//点击确定后跳转至信息完善界面
+                wx.redirectTo({
+                   url: '../../my/home/home',
+                })
+             } else if (res.cancel) {
+                 wx.redirectTo({
+                   url: '../../index/home/home',
+                })
+             }
+           }
+      })
+    }
   },
 
   /**

@@ -198,12 +198,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var NeedUseGetuserproifle = wx.getStorageSync('NeedUseGetuserprofile')
+    // console.log(NeedUseGetuserproifle)
+    var that=this
+    if(NeedUseGetuserproifle==0){
+      console.log('可正常进入event/home页面')
+    }else{
+      wx.showModal({
+           openid:"提示",
+           content: "请先完成授权",
+           success: function(res){
+             if (res.confirm) {//点击确定后跳转至信息完善界面
+                wx.redirectTo({
+                   url: '../../my/home/home',
+                })
+             } else if (res.cancel) {
+                 wx.redirectTo({
+                   url: '../../index/home/home',
+                })
+             }
+           }
+      })
+    }
     //为日期赋值 
     var date = util.formatDate(new Date());// 调用函数时，传入new Date()参数，返回值是日期和时间
     this.setData({// 再通过setData更改Page()里面的data，动态更新页面的数据
       endday: date
     })
-    var that=this
     //获取发布者个人信息,为icon，name，college，class，id赋值
     const openid=wx.getStorageSync("openid");
     const classvalue=wx.getStorageSync("class");

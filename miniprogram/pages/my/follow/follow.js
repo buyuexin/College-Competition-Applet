@@ -86,7 +86,7 @@ Page({
       },
       success(res){
         that.setData({
-          competitionList:res.result.data
+          competitionList:res.result.data.reverse()
         })
         that.creatstates()
       }

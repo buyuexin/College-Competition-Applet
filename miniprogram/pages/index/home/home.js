@@ -27,14 +27,12 @@ Page({
   },
   onLoad(options) {
     var that=this
-    // 初始化towerSwiper 传已有的数组名即可
     wx.cloud.callFunction({//获取用户openID
       name:"Gusermess",
       success(res){
-        // console.log(res)变量过多会导致功能缺陷？
+        //console.log(res)//变量过多会导致功能缺陷？
         openid=res.result.openid;//将openid存入缓存
         wx.setStorageSync('openid',openid)
-        // console.log(openid)
           wx.cloud.callFunction({//判断用户是否存在users中
             name:"IfopenID",
             data:{
@@ -43,33 +41,15 @@ Page({
             success(res){
               // console.log(res)
               if(res.result.data.length==0){//用户不存在
-                wx.cloud.database().collection("users").add({
-                  data:{
-                    useropenid:openid,
-                    avatarUrl:"../../../images/icon.png",
-                    nickname:"小明",
-                    name:"",
-                    gender:"请选择",
-                    phonenum:"",
-                    email:"",
-                    school:"华南师范大学",
-                    college:"",
-                    major:"",
-                    grade:"大一",
-                  }
-                })
-                wx.showModal({//提示是否前往授权
-                  openid:"提示",
-                  content: "前往授权",
-                  success: function(res){
-                  if (res.confirm) {//点击确定，前往授权
-                    wx.navigateTo({
-                      url: '../../my/home/home',
-                    })
-                  } else if (res.cancel) {}
-                  }
-                })                 
-              }else{}//用户存在无需作为
+                wx.setStorageSync('NeedUseGetuserprofile', 1)
+                wx.setStorageSync('use', true)
+              }else{
+                console.log(res.result.data)
+                wx.setStorageSync('useravatarurl', res.result.data[0].avatarUrl)
+                wx.setStorageSync('username', res.result.data[0].nickname)
+                wx.setStorageSync('NeedUseGetuserprofile', 0)
+                wx.setStorageSync('use', false)
+              }
             }
           })
       }
@@ -83,14 +63,6 @@ Page({
         })
       }
     })
-    //初始化articleList
-    // DB.collection("articleList").get({
-    //   success(res){
-    //     that.setData({//此处用setData让数据从逻辑层传到渲染层，实现动态渲染
-    //       articleList:res.data.slice(0,that.data.end)
-    //     })
-    //   }
-    // })
   },
 
   onLaunch(){
