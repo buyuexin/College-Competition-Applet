@@ -138,7 +138,7 @@ Page({
             statecolor:statecolor
           }
         )
-    }else if(regEndtimestamp<=timestamp&&timestamp<=compStarttimestam){
+    }else if(regEndtimestamp<=timestamp&&timestamp<=compStarttimestamp){
         state=2,
         statecolor=2
         that.data.states.push(
