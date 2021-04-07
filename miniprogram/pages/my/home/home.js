@@ -1,10 +1,6 @@
 // pages/me/me.js
 let hover="button-hover"
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     openid:wx.getStorageSync('openid'),
     pageTopHeight: wx.getSystemInfoSync().statusBarHeight+30+7,
@@ -13,6 +9,7 @@ Page({
     username:"点击授权",
     use:true
   },
+
 
   getUserProfile(e) {
     var that = this
@@ -38,13 +35,13 @@ Page({
               avatarUrl:that.data.useravatar,
               nickname:that.data.username,
               name:"",
-              gender: 0,
+              gender:0,
               phonenum:"",
               email:"",
               school:"",
               college:"",
               major:"",
-              grade: 0,
+              grade:0,
             }
           })
           this.setData({
@@ -55,6 +52,7 @@ Page({
     }
   },
   
+
   // tab页面跳转
   pageChange(e){
     var page_name = e.currentTarget.dataset.cur;
@@ -67,9 +65,7 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
     var that=this
     var NeedUseGetuserproifle = wx.getStorageSync('NeedUseGetuserprofile')
@@ -84,53 +80,4 @@ Page({
       
     }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

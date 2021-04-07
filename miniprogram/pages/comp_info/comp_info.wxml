@@ -1,4 +1,5 @@
 <wxs src="../../utils/filter.wxs" module="util"></wxs>
+<!--标签栏-->
 <cu-custom bgColor="bg-gradual-orange" bgImage="https://amzimg.com/2021/02/22/f9d8435befa0f.jpg" isBack="{{true}}">
 	<view slot="backText">返回</view>
 	<view slot="content">比赛详情</view>
@@ -63,7 +64,6 @@
             </view>
           </view>
           <view class="item">
-            <!-- <text decode="{{true}}" user-select="true">{{complist.message}}</text> -->
             <text class="con" decode="{{true}}" user-select="true">{{util.format(complist.message)}}</text>
           </view>
           <view class="image">
@@ -74,7 +74,6 @@
       <!-- 校内赛事展示 -->
       <view class="cu-card case" wx:if="{{complist.college>=0}}">
         <view class="cu-item shadow">
-          <!-- <view class="image"> -->
           <view class="image" wx:if="{{complist.images.length>0}}">
             <image class="radius" src="{{complist.images[0]}}" mode="widthFix"></image>
           </view>
@@ -119,7 +118,6 @@
               <view class="item-60">{{complist.level}}</view>
             </view>
           </view>
-          <!-- <view class="item">{{complist.content}}</view> -->
           <view class="item">
             <text class="con" decode="{{true}}" user-select="true">{{util.format(complist.content)}}</text>
           </view>
@@ -130,7 +128,6 @@
 
   <!-- 招募消息 -->
   <swiper-item>
-    <!-- <scroll-view class="bg-white flex align-center"  scroll-y="true"  style="height: {{height_sys}}px"> -->
       <scroll-view class="bg-white flex align-center"  scroll-y="{{teamList.length==0?false:true}}"  style="height: {{height_sys}}px">
       <view class="bottomline" wx:if="{{teamList.length==0}}">
         <image mode="widthFix" src="../../images/nomore2.png"></image>
@@ -162,8 +159,6 @@
         </view>
         <!--team desc-->
         <view class="self-info">
-          <!-- <text class="cuIcon-right text-orange"></text>
-          <text class="team-desc">队伍简介：{{Item.content}}</text> -->
           <text class="team-desc">
             <text class="cuIcon-right text-orange"></text>
             <text class="text-black padding-left-xs">队伍简介：</text>

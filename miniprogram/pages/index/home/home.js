@@ -25,6 +25,8 @@ Page({
     //用于触底加载更多
     end:2
   },
+
+
   onLoad(options) {
     var that=this
     wx.cloud.callFunction({//获取用户openID
@@ -65,9 +67,6 @@ Page({
     })
   },
 
-  onLaunch(){
-    
-  },
 
   // cardSwiper
   cardSwiper(e) {
@@ -76,6 +75,7 @@ Page({
       cardCur: e.detail.current,
     })
   },
+
 
   // tab页面跳转
   pageChange(e){
@@ -88,6 +88,7 @@ Page({
       })
     }
   },
+
 
   //触底加载更多
   onReachBottom(){
@@ -102,7 +103,6 @@ Page({
             articleList:res.data.slice(0,that.data.end)
           })
         }
-        
       }
     })
   }

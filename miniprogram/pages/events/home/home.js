@@ -1,8 +1,5 @@
 const app = getApp();
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     CustomBar: app.globalData.CustomBar,
     levelList: app.globalData.levelList,
@@ -14,12 +11,16 @@ Page({
     state:app.globalData.state,
     statecolor:app.globalData.statecolor
   },
+
+
   navigate(e) {
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../../comp_info/comp_info?schoolcomp='+id,
     })
   },
+
+
   // 搜索
   searchItem(e) {
     let key = e.detail.value.toLowerCase();//获取输入框内的值
@@ -37,6 +38,8 @@ Page({
       competitionList: list
     })
   },
+
+
   // 筛选列表替换
   screenChange(e) {
     var cur = e.currentTarget.dataset.cur;
@@ -50,6 +53,8 @@ Page({
       screenShow: screenShow,
     })
   },
+
+
   // 点击筛选中的item
   screenClick(e) {
     let listname = e.currentTarget.dataset.type;
@@ -81,6 +86,8 @@ Page({
       keyword: word,
     })
   },
+
+
    //确定 用大数据去匹配标准，而不是用标准去大数据内搜索满足标准的数据
   confirm(e){
     let that=this;
@@ -106,6 +113,7 @@ Page({
       screenShow: 'none',
     })
   },
+
 
   // 重置
   reset(e) {
@@ -135,6 +143,7 @@ Page({
     })
   },
 
+
   // tab页面跳转
   pageChange(e){
     var page_name = e.currentTarget.dataset.cur;
@@ -146,6 +155,8 @@ Page({
       })
     }
   },
+
+
   //获取所有赛事信息并初始化states
   getalllist(){
     this.setData({
@@ -231,9 +242,8 @@ Page({
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
+
   onLoad: function () {
     var NeedUseGetuserproifle = wx.getStorageSync('NeedUseGetuserprofile')
     // console.log(NeedUseGetuserproifle)
@@ -258,17 +268,5 @@ Page({
       })
     }
     that.getalllist()
-  },
-
-  onShow: function () {
-    // this.onLoad()
-  },
-
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
   },
 })

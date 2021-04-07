@@ -6,7 +6,6 @@
   </view>
 </view>
 
-
 <swiper indicator-dots="true" next-margin="20rpx" indicator-active-color="rgb(255, 255, 255)" previous-margin="20rpx" autoplay circular="">
   <swiper-item>
     <view class="swip-con"></view>

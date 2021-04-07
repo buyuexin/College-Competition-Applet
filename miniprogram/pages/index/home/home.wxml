@@ -5,6 +5,7 @@
 <cu-custom bgColor="bg-gradual-orange" bgImage="https://amzimg.com/2021/02/22/f9d8435befa0f.jpg" isBack="{{false}}">
 	<view slot="content">首页</view>
 </cu-custom>
+
 <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
   <swiper-item wx:for="{{swiperList}}" wx:key="id" class="{{cardCur==index?'cur':''}}">
     <view class= "swiper-item">
@@ -56,7 +57,6 @@
   </view>
 </navigator>
 </view>
-
 
 <view class='cu-tabbar-height'></view>
 <view class="cu-bar tabbar bg-white shadow foot">

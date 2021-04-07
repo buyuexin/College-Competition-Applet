@@ -7,14 +7,17 @@
   <view class="itemname">基本功能介绍</view>
   <view class="arrow"></view>
 </view>
+
 <view class="item">
   <view class="itemname">发布赛事指南</view>
   <view class="arrow"></view>
 </view>
+
 <view class="item">
   <view class="itemname">发布招募指南</view>
   <view class="arrow"></view>
 </view>
+
 <view class="item">
   <view class="itemname">查看招募信息指南</view>
   <view class="arrow"></view>
