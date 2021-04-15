@@ -3,10 +3,6 @@ var schoolcomp=wx.getStorageSync("schoolcomp")
 var util = require('../../../utils/util.js');
 let standard=1
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     isShowModel: null,  // 是否弹出标签输入框
     inputValue: "",  // 标签输入框的值
@@ -27,10 +23,12 @@ Page({
     images:[],  // 上传的图片列表
   },
 
+
   //获取赛事名
   getcompname(){
     this.data.compname=wx.getStorageSync('compname')
   },
+
 
   // 获取输入文本框的字数
   getContentInput(e){
@@ -41,6 +39,7 @@ Page({
       contentCount: len
     })
   },
+
 
   // 选择图片
   chooseImage(e) {
@@ -61,12 +60,12 @@ Page({
           this.setData({
             images: images.length <=6 ? images : images.slice(0, 6)
           })
-
         }
       })
     }
    // console.log(this.data.images)
   },
+
 
   // 预览图片
   previewImage(e){
@@ -77,6 +76,7 @@ Page({
       urls: images,
     })
   },
+
 
   // 长按删除图片
   deleteImage: function (e) {//删除图片
@@ -102,11 +102,13 @@ Page({
     })
   },
 
+
   addTag(e) {
     this.setData({
       modalName: 'DialogModal2',
     })
   },
+
 
   hideModal(e) {
     this.setData({
@@ -115,11 +117,13 @@ Page({
     })
   },
 
+
   getteamname(e){
     this.setData({
       teamname:e.detail.value
     })
   },
+
 
   getname(e){
     this.setData({
@@ -127,11 +131,13 @@ Page({
     })
   },
 
+
   getcollege(e){
     this.setData({
       college:e.detail.value
     })
   },
+
 
   getcontact(e){
     this.setData({
@@ -139,11 +145,13 @@ Page({
     })
   },
 
+
   getchange(e){
     this.setData({
       endday:e.detail.value
     })
   },
+
 
   formSubmit(e) {
     let that = this;
@@ -174,6 +182,7 @@ Page({
     }
   },
 
+
   deletetag(e) {
     let that = this;
     wx.showModal({
@@ -194,9 +203,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
     var NeedUseGetuserproifle = wx.getStorageSync('NeedUseGetuserprofile')
     // console.log(NeedUseGetuserproifle)
@@ -241,6 +248,7 @@ Page({
     })
   },
 
+
   getstandard(){
     if(this.data.content==""||this.data.teamname==""||this.data.name==""||this.data.college==""||this.data.contact==""){
       standard=0
@@ -248,6 +256,7 @@ Page({
       standard=1  
     }
   },
+
 
   formsubmit(){
     var that=this
@@ -320,59 +329,5 @@ Page({
         duration: 2000     
       })  
     }
-    
-    
   },
-
-    
-
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

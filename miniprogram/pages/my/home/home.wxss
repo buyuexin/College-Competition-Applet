@@ -25,14 +25,17 @@ Page{
   height:100%;
   z-index:-1;
 }
+
 .UCenter-bg text {
   opacity: 0.8;
 }
+
 .usericon{
   border-radius: 50%;
   width: 200rpx;
   height: 200rpx;
 }
+
 .manage_text{
   font-size: 30rpx;
   color: #ffffff;
@@ -41,6 +44,7 @@ Page{
   border-radius: 40rpx;
   text-align: center;
 }
+
 .center{
   width: 90%;
   height: 240rpx;
@@ -54,6 +58,7 @@ Page{
   justify-content: center;
   box-shadow: 0rpx 8rpx 8rpx 3rpx rgb(221,220,220);
 }
+
 .order_text{
   font-size: 44rpx;
   color: gray;
@@ -62,27 +67,32 @@ Page{
   height: 60rpx;
   margin-left: 30rpx;
 }
+
 .cut{
   height: 140rpx;
   width: 2rpx;
   margin-top: 50rpx;
   border: 1rpx solid #c9c9c9;
 }
+
 .square{
   width: 100%;
   height: 220rpx;
   margin: 10rpx;
 }
+
 .square .text{
   margin-top: 8rpx;
   color: #474747;
   font-size: 30rpx;
 }
+
 .squ_img image{
   margin-top: 30rpx;
   width: 100rpx;
   height: 100rpx;
 }
+
 .block{
   display: flex;
   flex-direction: column;
@@ -93,6 +103,7 @@ Page{
   box-shadow: 0rpx 8rpx 8rpx rgb(221,220,220);
   background-color: #ffffff;
 }
+
 .block_title{
   padding-left: 30rpx;
   height: 80rpx; 
@@ -109,20 +120,24 @@ Page{
   width: 100%;
   border-top: 1rpx solid #c9c9c9;
 }
+
 .icon{
   width: 100rpx;
   text-align: center;
   margin-top: 16rpx;
 }
+
 .icon image{
   width: 57rpx;
   height: 57rpx;
 }
+
 .itemname{
   color: gray;
   width: 40%;
   font-size: 32rpx;
 }
+
 .arrow{
   width: 20rpx;
   height: 20rpx;
@@ -141,6 +156,7 @@ Page{
   left: 0;
   z-index: 2;
 }
+
 .feedback{
   display: flex;
   margin: 0 auto;
@@ -148,6 +164,7 @@ Page{
   width: 100%;
   position: relative;
 }
+
 .arrow-f{
   width: 20rpx;
   height: 20rpx;

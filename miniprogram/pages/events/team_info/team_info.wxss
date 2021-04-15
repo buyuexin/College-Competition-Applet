@@ -5,6 +5,7 @@
   font-weight: 500;
   font-size: 24px;
 }
+
 .item{
   background-color: var(--white);
 	padding: 1rpx 10rpx;
@@ -13,13 +14,16 @@
 	align-items: center;
 	min-height: 100rpx;
 }
+
 .item-left{
   text-align: center;
   margin-right: 20rpx;
 }
+
 .solid-bottom{
   border-bottom: 1rpx solid #eee;
 }
+
 .detail{
   background-color: var(--white);
   display: block;

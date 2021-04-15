@@ -1,16 +1,13 @@
 // pages/my/follow/follow.js
 const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     competitionList:[],
     states:[],
     state:app.globalData.state,
     statecolor:app.globalData.statecolor
   },
+
 
   // ListTouch触摸开始
   ListTouchStart(e) {
@@ -19,12 +16,14 @@ Page({
     })
   },
 
+
   // ListTouch计算方向
   ListTouchMove(e) {
     this.setData({
       ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' : 'left'
     })
   },
+
 
   // ListTouch计算滚动
   ListTouchEnd(e) {
@@ -42,6 +41,7 @@ Page({
       ListTouchDirection: null
     })
   },
+
 
   // 删除
   delete(e) {
@@ -72,9 +72,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
     var that=this
     const openid=wx.getStorageSync("openid");
@@ -92,6 +90,7 @@ Page({
       }
     })
   },
+
 
   creatstates(){
     var that=this
@@ -163,55 +162,4 @@ Page({
       states:that.data.states.slice(0,newcompetitionList.length)
     })
   },
-  //点击跳转至相应赛事页面
-  
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -43,6 +43,7 @@
     </view>
   </view>
 </view>
+
 <view class="bottomline" wx:if="{{competitionList.length==0}}">
   <image mode="widthFix" src="../../../images/nomore2.png"></image>
   暂时没有相关赛事
@@ -51,15 +52,12 @@
 
 <!-- 赛事列表 -->
 <view class="cu-card" wx:for="{{competitionList}}" wx:key="*this">
-<!-- <navigator url="../../comp_info/comp_info?schoolcomp={{item._id}}">
-  <view class="cu-item shadow" wx:if="{{item.isShow}}"> -->
     <view class="cu-item shadow" wx:if="{{item.isShow}}" bindtap="navigate" data-id="{{item._id}}">
     <view class="desc margin-top-sm justify-start">
       <view class="pic radius" wx:if="{{item.images.length>0}}">
         <image mode="aspectFill" src="{{item.images[0]}}"></image>
       </view>
       <view class="margin-left-xs">
-        <!-- <view class="text-title0  margin-top-xs"> -->
         <view class="text-title0 ">
           <text class="tag bg-{{statecolor[states[index].statecolor]}} radius">{{state[states[index].state]}}</text><text class="margin-left-xs">{{item.compname}}</text>
         </view>
@@ -70,6 +68,7 @@
   </view>
 <!-- </navigator> -->
 </view>
+
 <!-- tabbar -->
 <view class='cu-tabbar-height'></view>
 <view class="cu-bar tabbar bg-white shadow foot">

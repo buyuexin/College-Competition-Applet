@@ -7,6 +7,7 @@
   <image mode="widthFix" src="../../../images/nomore2.png"></image>
   还没有关注的赛事哦
 </view>
+
 <view class="list menu-avatar">
     <view class="shadow margin-top-xs cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{competitionList}}" wx:key="index" data-idx="index" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" wx:key="*this">
       <navigator url="../../comp_info/comp_info?class={{item.class}}&id={{item.id}}&schoolcomp=0">

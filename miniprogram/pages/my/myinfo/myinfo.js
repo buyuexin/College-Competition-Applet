@@ -1,9 +1,5 @@
 // pages/myinfo/myinfo.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     genderList:["请选择","男","女"],
     gradeList:["请选择","大一","大二","大三","大四","研一","研二","研三"],
@@ -11,23 +7,25 @@ Page({
     avatarUrl:"",
     nickname:"",
     name:"",
-    gender: 0,
+    gender:0,
     phonenum:"",
     email:"",
     school:"",
     college:"",
     major:"",
-    grade: 0,
+    grade:0,
     disabled: true  // 保存按钮是否禁用，有修改才启用
   },
+
 
   //获取姓名
   getname(e){
     this.setData({
       name:e.detail.value,
-      disabled: false
+      disabled:false
     })
   },
+
 
   //获取手机号
   getphonenum(e){
@@ -37,6 +35,7 @@ Page({
     })
   },
 
+
    //获取邮箱
    getemail(e){
     this.setData({
@@ -44,6 +43,7 @@ Page({
       disabled: false
     })
   },
+
 
   //获取学校
   getschool(e){
@@ -53,6 +53,7 @@ Page({
     })
   },
 
+
   //获取院系
   getcollege(e){
     this.setData({
@@ -61,6 +62,7 @@ Page({
     })
   },
 
+
   //获取专业
   getmajor(e){
     this.setData({
@@ -68,6 +70,7 @@ Page({
       disabled: false
     })
   },
+
 
   // 性别选择
   genderChange(e) {
@@ -81,6 +84,7 @@ Page({
     }
   },
   
+
   // 年级选择
   gradeChange(e) {
     // console.log(e);
@@ -117,15 +121,14 @@ Page({
     })
   },
 
+
   back(){
     wx.navigateBack({
       delta:1
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
     var NeedUseGetuserproifle = wx.getStorageSync('NeedUseGetuserprofile')
     // console.log(NeedUseGetuserproifle)
@@ -151,16 +154,7 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that=this;
     const openid=wx.getStorageSync("openid");
@@ -181,39 +175,4 @@ Page({
     console.log(res.data[0])
   })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

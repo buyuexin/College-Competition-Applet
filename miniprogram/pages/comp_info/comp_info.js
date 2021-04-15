@@ -3,7 +3,10 @@ let classvalue=0;
 let idvalue=0;
 let schoolcomp=""//用于唯一标识某个校内赛事
 let openid=""
+
 Page({
+
+
   data:{
     CustomBar: app.globalData.CustomBar,
     islike: 0,
@@ -12,6 +15,8 @@ Page({
     complist:[],
     title:"赛事详情",
   },
+
+
   //点击“招募消息”
   clickrls(e) {
     this.setData({
@@ -19,13 +24,12 @@ Page({
     })
     this.upteamlist()
   },
+
+
   //更新“招募消息”列表
   upteamlist(){
     var that=this
-    //  classvalue=wx.getStorageSync("class");
-    //  idvalue=wx.getStorageSync("id");
     if(schoolcomp!=0){
-      //console.log(1)
       wx.cloud.callFunction({
         name:"Gteamlist",
         data:{
@@ -34,13 +38,11 @@ Page({
         },
         success(res){
           console.log(res)
-          // var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
           var changeteamList=res.result.data
           if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
             teamList:changeteamList,
           })
-          // console.log(that.data.teamList)
         }
       })
     }else{
@@ -52,25 +54,23 @@ Page({
           id:idvalue
         },
         success(res){
-          // console.log(res)
-          // var changeteamList=res.result.data.concat(app.globalData.teamlist).reverse()
           var changeteamList=res.result.data.reverse()
-          // if(changeteamList.length>1){changeteamList.splice(0,1)}
           that.setData({
             teamList:changeteamList,
           })
-          // console.log(that.data.teamList)
         }
       })
     }
-    
   },
+
+
   //点击“比赛详情”
   clickinfo(e){
     this.setData({
          cur: parseInt(e.currentTarget.dataset.idx),
        })
   },
+
 
   bindChange: function(e) {
     //console.log(e.detail.current)
@@ -79,11 +79,14 @@ Page({
     });
   },
 
+
+  //跳转至赛事发布界面
   toTeamrls(e) {
     wx.navigateTo({
       url: '../events/team_rls/team_rls',
     })
   },
+
 
   //关注
   collect: function(e) {
@@ -158,16 +161,8 @@ Page({
         }
       })
     }
-    
   },
 
-  // changeTab(e) {
-  //   console.log(e.currentTarget.dataset.id);
-  //   this.setData({
-  //     TabCur: e.currentTarget.dataset.id,
-  //     scrollLeft: (e.currentTarget.dataset.id - 1) * 60
-  //   })
-  // },
 
   onLoad: function (options) {
     var that = this;
@@ -191,6 +186,8 @@ Page({
     // console.log(that.data.height_sys)
     that.getcompinfo()
   },
+
+
   //获取比赛详情
   getcompinfo(){
     var that=this
@@ -230,9 +227,9 @@ Page({
         }
       })
     }
-    
-    
   },
+
+
   //获取用户对赛事的关注信息
   getuserlike(){
     var that=this
@@ -288,8 +285,8 @@ Page({
       }
     })
     }
-    
   },
+
 
   onShow:function(){
    this.upteamlist()

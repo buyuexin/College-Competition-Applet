@@ -6,14 +6,9 @@
 <!-- 文本框 -->
 <view class="text">
   <view class="text-content">
-    <!-- <textarea class="weui-textarea" placeholder="赛事内容，最多可输入300字" maxlength='300' placeholder-class="weui-input__placeholder" bindinput="getContentInput" /> -->
     <textarea class="weui-textarea" placeholder="赛事内容，最多可输入500字" maxlength='500' placeholder-class="weui-input__placeholder" bindinput="getContentInput" />
   </view>
   <view class="down-info bg-white align-center">
-    <!-- <view class="img-btn" bindtap="chooseImage">
-        <image src="../../../images/img.png" class="img-icon"></image>
-        <view class="text-sm text-gray">照片</view>
-    </view> -->
     <view class="choose">
       <view class="img-btn margin-right-sm" bindtap="chooseImage">
           <image src="../../../images/img.png" class="img-icon"></image>
@@ -24,7 +19,6 @@
           <view class="text-sm text-gray">文件</view>
       </view>
     </view>
-    <!-- <view class="text-count">{{contentCount}}/300</view> -->
     <view class="text-count">{{contentCount}}/500</view>
   </view>
 </view>
@@ -38,6 +32,7 @@
   </block>
 </scroll-view>
 
+<!--表单-->
 <view class="info text">
   <view class="border-bottom cu-form-group">
     <view class="title">赛事名称</view>

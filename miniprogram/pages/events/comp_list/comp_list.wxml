@@ -3,6 +3,7 @@
 	<view slot="content">{{title}}</view>
 </cu-custom>
 
+<!--赛事展示-->
 <view class="cu-card" wx:if="{{type==0}}" wx:for="{{competitionList}}" wx:key="*this">
   <navigator url="../../comp_info/comp_info?class={{item.class}}&id={{item.id}}&schoolcomp=0">
     <view class="item cu-item shadow">
@@ -12,7 +13,6 @@
         </view>
         <view class="margin-left-xs">
           <view class="text-title0  margin-top-xs">
-            <!-- <text class="tag bg-{{item.statecolor}} radius">{{item.state}}</text><text class="margin-left-xs">{{item.name}}</text> -->
             <text class="tag bg-{{statecolor[states[index].statecolor]}} radius">{{state[states[index].state]}}</text><text class="margin-left-xs">{{item.name}}</text>
           </view>
           <view class="text-content">报名时间：{{item.regTime}}</view>
@@ -23,6 +23,7 @@
   </navigator>
 </view>
 
+<!--加载更多时样式显示-->
 <view class="loadmore" wx:if="{{isHideLoadMore}}">
   <view class="loading"></view>
   <view class="loadmore__tips">正在加载</view>

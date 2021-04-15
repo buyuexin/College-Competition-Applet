@@ -7,6 +7,7 @@
   <view class="title">头像</view>
   <image src="{{avatarUrl}}" class="cu-avatar radius"></image>
 </view>
+
 <form bindsubmit="formSubmit">
   <view class="border-bottom cu-form-group">
     <view class="title">昵称</view>

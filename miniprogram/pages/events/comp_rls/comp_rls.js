@@ -1,14 +1,9 @@
-// pages/team_rls/team_rls.js
 const app = getApp();
 var util = require('../../../utils/util.js');
 var schoolcomp=""
 var standard=1//用于判断是否所有输入框都有输入（照片除外）及判断时间设置逻辑是否真确
 const image=""
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     levelList: app.globalData.levelList,
     collegeList: app.globalData.collegeList,
@@ -27,17 +22,8 @@ Page({
     compStart:"",
     compEnd:"",
     isShow:true
-    // level: 0,  // 赛事级别序号
-    // college: 0,  // 发布学院序号
-    // type: 0, // 赛事类型序号
-    // contentCount: 0,
-    // content: "",
-    // regStart: '',  // 报名开始时间
-    // regEnd: '',  // 报名结束时间
-    // compStart: '',  // 比赛开始时间
-    // compEnd: '',  // 比赛结束时间
-    // images:[],  // 上传的图片数组
   },
+
 
   // 获取输入文本框的内容及字数
   getContentInput(e){
@@ -49,6 +35,7 @@ Page({
     })
   },
 
+
   //获取赛事名称
   getcompname(e){
     this.setData({
@@ -56,12 +43,14 @@ Page({
     })
   },
 
+
   //获取主办方
   getsponsor(e){
     this.setData({
       sponsor:e.detail.value
     })
   },
+
 
   // 选择图片
   chooseImage(e) {
@@ -92,14 +81,11 @@ Page({
             },
             fail:console.error
           })
-          // const images = this.data.images.concat(tempFilePaths)
-          // this.setData({
-          //   images: images.length <=6 ? images : images.slice(0, 6)
-          // })
         }
       })
     }
   },
+
 
   // 预览图片
   previewImage(e){
@@ -110,6 +96,7 @@ Page({
       urls: images,
     })
   },
+
 
   // 长按删除图片
   deleteImage: function (e) {//删除图片
@@ -135,6 +122,7 @@ Page({
     })
   },
 
+
   // 赛事级别选择
   levelChange(e) {
     // console.log(e)
@@ -143,6 +131,7 @@ Page({
     })
   },
 
+
   // 发布学院选择
   collegeChange(e) {
     this.setData({
@@ -150,12 +139,14 @@ Page({
     })
   },
 
+
   // 赛事类型选择
   typeChange(e) {
     this.setData({
       type: e.detail.value
     })
   },
+
 
   // 时间选择
   DateChange(e) {
@@ -216,8 +207,9 @@ Page({
       compStart: date,
       compEnd: date,
     });
-
   },
+
+
   //判断发布信息是否填写完整
   getstandard(){
     if(this.data.content==""||this.data.compname==""||this.data.sponsor==""){
@@ -227,6 +219,8 @@ Page({
     }
   },
 
+
+  //提交表单
   submitform(){
     var that=this
     that.getstandard()
@@ -281,53 +275,4 @@ Page({
       })  
     }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
