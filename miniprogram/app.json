@@ -13,7 +13,6 @@
     "pages/events/home/home",
     "pages/my/follow/follow",
     "pages/events/comp_list/comp_list",
-    "pages/events/team_list/team_list",
     "pages/my/guide/detail/detail",
     "pages/my/guide/guide"
   ],
