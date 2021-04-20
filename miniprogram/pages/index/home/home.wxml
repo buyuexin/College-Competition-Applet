@@ -18,11 +18,10 @@
 
 <view class="bg-white padding-sm">
   <view class="grid col-5 grid-square">
-    <view wx:for="{{nav}}" wx:key="index" style="background:{{item.color}};">
+    <view wx:for="{{nav}}" wx:key="index">
       <navigator url="../../events/comp_list/comp_list?title={{index}}">
         <view class="nav-item">
           <image class="" src="../../../images/{{index}}.png"></image>
-          <view class="">{{item.title}}</view>
         </view>
       </navigator>
     </view>

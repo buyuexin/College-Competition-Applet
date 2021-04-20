@@ -52,8 +52,8 @@
 }
 
 .nav-item>image{
-  height: 80rpx;
-  width: 80rpx;
+  height: 128rpx;
+  width: 128rpx;
 }
 
 .nav-item>view{
